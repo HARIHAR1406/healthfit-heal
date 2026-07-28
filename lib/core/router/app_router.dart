@@ -10,6 +10,14 @@ import '../../features/auth/presentation/pages/register_page.dart';
 import '../../features/auth/presentation/pages/splash_page.dart';
 import '../../features/auth/presentation/providers/auth_providers.dart';
 import '../../features/auth/presentation/providers/auth_state.dart';
+import '../../features/health/presentation/pages/bmi_page.dart';
+import '../../features/health/presentation/pages/blood_pressure_page.dart';
+import '../../features/health/presentation/pages/blood_sugar_page.dart';
+import '../../features/health/presentation/pages/health_dashboard_page.dart';
+import '../../features/health/presentation/pages/health_history_page.dart';
+import '../../features/health/presentation/pages/heart_rate_page.dart';
+import '../../features/health/presentation/pages/medical_records_page.dart';
+import '../../features/health/presentation/pages/spo2_page.dart';
 import '../../features/home/presentation/pages/home_page.dart';
 import '../../features/home/presentation/pages/placeholder_pages.dart';
 import '../../features/home/presentation/shell/main_shell_page.dart';
@@ -147,37 +155,63 @@ GoRouter appRouter(Ref ref) {
               GoRoute(
                 path: RouteNames.healthDashboard,
                 name: 'health',
-                builder: (_, __) => const HealthPlaceholderPage(),
+                builder: (_, __) => const HealthDashboardPage(),
                 routes: [
+                  GoRoute(
+                    path: 'bmi',
+                    name: 'bmi',
+                    builder: (_, __) => const BmiPage(),
+                  ),
                   GoRoute(
                     path: 'heart-rate',
                     name: 'heart-rate',
-                    builder: (_, __) => const HealthPlaceholderPage(),
+                    builder: (_, __) => const HeartRatePage(),
                   ),
+                  GoRoute(
+                    path: 'blood-pressure',
+                    name: 'blood-pressure',
+                    builder: (_, __) => const BloodPressurePage(),
+                  ),
+                  GoRoute(
+                    path: 'blood-sugar',
+                    name: 'blood-sugar',
+                    builder: (_, __) => const BloodSugarPage(),
+                  ),
+                  GoRoute(
+                    path: 'spo2',
+                    name: 'spo2',
+                    builder: (_, __) => const Spo2Page(),
+                  ),
+                  GoRoute(
+                    path: 'medical-records',
+                    name: 'medical-records',
+                    builder: (_, __) => const MedicalRecordsPage(),
+                  ),
+                  GoRoute(
+                    path: 'history',
+                    name: 'health-history',
+                    builder: (_, __) => const HealthHistoryPage(),
+                  ),
+                  // Legacy stub routes
                   GoRoute(
                     path: 'steps',
                     name: 'steps',
-                    builder: (_, __) => const HealthPlaceholderPage(),
+                    builder: (_, __) => const HealthDashboardPage(),
                   ),
                   GoRoute(
                     path: 'sleep',
                     name: 'sleep',
-                    builder: (_, __) => const HealthPlaceholderPage(),
+                    builder: (_, __) => const HealthDashboardPage(),
                   ),
                   GoRoute(
                     path: 'water',
                     name: 'water',
-                    builder: (_, __) => const HealthPlaceholderPage(),
+                    builder: (_, __) => const HealthDashboardPage(),
                   ),
                   GoRoute(
                     path: 'calories',
                     name: 'calories',
-                    builder: (_, __) => const HealthPlaceholderPage(),
-                  ),
-                  GoRoute(
-                    path: 'vitals',
-                    name: 'vitals',
-                    builder: (_, __) => const HealthPlaceholderPage(),
+                    builder: (_, __) => const HealthDashboardPage(),
                   ),
                 ],
               ),

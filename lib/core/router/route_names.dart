@@ -27,12 +27,18 @@ abstract final class RouteNames {
 
   // ── Health ────────────────────────────────────────────────────────────────
   static const String healthDashboard = '/health';
+  static const String bmi = '/health/bmi';
   static const String heartRate = '/health/heart-rate';
+  static const String bloodPressure = '/health/blood-pressure';
+  static const String bloodSugar = '/health/blood-sugar';
+  static const String spo2 = '/health/spo2';
+  static const String medicalRecords = '/health/medical-records';
+  static const String healthHistory = '/health/history';
+  // Legacy stubs (kept for dashboard metric card back-compat)
   static const String steps = '/health/steps';
   static const String sleep = '/health/sleep';
   static const String water = '/health/water';
   static const String calories = '/health/calories';
-  static const String vitals = '/health/vitals';
 
   // ── Workouts ──────────────────────────────────────────────────────────────
   static const String workoutDetail = '/workouts/:id';
