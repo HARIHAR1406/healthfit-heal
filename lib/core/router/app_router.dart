@@ -10,6 +10,9 @@ import '../../features/auth/presentation/pages/register_page.dart';
 import '../../features/auth/presentation/pages/splash_page.dart';
 import '../../features/auth/presentation/providers/auth_providers.dart';
 import '../../features/auth/presentation/providers/auth_state.dart';
+import '../../features/home/presentation/pages/home_page.dart';
+import '../../features/home/presentation/pages/placeholder_pages.dart';
+import '../../features/home/presentation/shell/main_shell_page.dart';
 import '../../shared/widgets/app_error_widget.dart';
 import 'route_names.dart';
 
@@ -17,13 +20,18 @@ part 'app_router.g.dart';
 
 /// GoRouter provider for HealthFit Heal.
 ///
-/// Auth guard redirects:
+/// Navigation structure:
+///   - Public routes: /splash, /onboarding
+///   - Auth routes:   /login, /register, /forgot-password
+///   - Shell routes:  StatefulShellRoute wrapping 5 bottom-nav tabs
+///   - Modal routes:  /ai-assistant (pushed over the shell)
+///
+/// Auth guard:
 ///   - Unauthenticated on a protected route → [RouteNames.login]
-///   - Authenticated on an auth route (login/register) → [RouteNames.home]
-///   - Splash handles its own navigation — no redirect applied there.
+///   - Authenticated on an auth route       → [RouteNames.home]
+///   - Splash/Onboarding: no redirect applied (self-managed)
 @riverpod
 GoRouter appRouter(Ref ref) {
-  // Trigger router rebuild when auth state changes
   final authListenable = _AuthChangeNotifier(ref);
   ref.onDispose(authListenable.dispose);
 
@@ -32,7 +40,7 @@ GoRouter appRouter(Ref ref) {
     debugLogDiagnostics: true,
     refreshListenable: authListenable,
 
-    // ── Global Error Page ────────────────────────────────────────────────────
+    // ── Global Error Page ──────────────────────────────────────────────────
     errorBuilder: (context, state) => Scaffold(
       body: AppErrorWidget(
         message: 'Page not found: ${state.uri.path}',
@@ -41,15 +49,16 @@ GoRouter appRouter(Ref ref) {
       ),
     ),
 
-    // ── Auth Guard ────────────────────────────────────────────────────────────
+    // ── Auth Guard ─────────────────────────────────────────────────────────
     redirect: (context, state) {
       final authState = ref.read(authNotifierProvider);
       final location = state.matchedLocation;
 
-      // Public routes — no redirect applied
-      final isPublicRoute = location == RouteNames.splash ||
-          location == RouteNames.onboarding;
-      if (isPublicRoute) return null;
+      // Public routes — never redirected
+      if (location == RouteNames.splash ||
+          location == RouteNames.onboarding) {
+        return null;
+      }
 
       final isAuthRoute = location == RouteNames.login ||
           location == RouteNames.register ||
@@ -59,142 +68,176 @@ GoRouter appRouter(Ref ref) {
       final isInitialOrLoading =
           authState is AuthInitial || authState is AuthLoading;
 
-      // Loading — let splash handle it, don't redirect
       if (isInitialOrLoading) return null;
 
-      // Unauthenticated user trying to reach a protected page
-      if (!isAuthenticated && !isAuthRoute) {
-        return RouteNames.login;
-      }
-
-      // Authenticated user landing on an auth page
-      if (isAuthenticated && isAuthRoute) {
-        return RouteNames.home;
-      }
+      if (!isAuthenticated && !isAuthRoute) return RouteNames.login;
+      if (isAuthenticated && isAuthRoute) return RouteNames.home;
 
       return null;
     },
 
     routes: [
-      // ── Auth Routes ─────────────────────────────────────────────────────────
+      // ── Public / Auth Routes ─────────────────────────────────────────────
       GoRoute(
         path: RouteNames.splash,
         name: 'splash',
-        builder: (context, state) => const SplashPage(),
+        builder: (_, __) => const SplashPage(),
       ),
-
       GoRoute(
         path: RouteNames.onboarding,
         name: 'onboarding',
-        builder: (context, state) => const OnboardingPage(),
+        builder: (_, __) => const OnboardingPage(),
       ),
-
       GoRoute(
         path: RouteNames.login,
         name: 'login',
-        builder: (context, state) => const LoginPage(),
+        builder: (_, __) => const LoginPage(),
       ),
-
       GoRoute(
         path: RouteNames.register,
         name: 'register',
-        builder: (context, state) => const RegisterPage(),
+        builder: (_, __) => const RegisterPage(),
       ),
-
       GoRoute(
         path: RouteNames.forgotPassword,
         name: 'forgot-password',
-        builder: (context, state) => const ForgotPasswordPage(),
+        builder: (_, __) => const ForgotPasswordPage(),
       ),
 
-      // ── Protected Routes ────────────────────────────────────────────────────
+      // ── AI Assistant (modal — presented over the shell) ──────────────────
       GoRoute(
-        path: RouteNames.home,
-        name: 'home',
-        builder: (context, state) => const _PlaceholderHomePage(),
+        path: RouteNames.aiAssistant,
+        name: 'ai-assistant',
+        pageBuilder: (context, state) => const MaterialPage(
+          fullscreenDialog: true,
+          child: AiAssistantPlaceholderPage(),
+        ),
       ),
 
-      // ── Additional feature routes will be added here ─────────────────────
+      // ── Insights (modal — presented over the shell) ──────────────────────
+      GoRoute(
+        path: RouteNames.insights,
+        name: 'insights',
+        pageBuilder: (context, state) => const MaterialPage(
+          fullscreenDialog: true,
+          child: AiAssistantPlaceholderPage(), // Reuse until Insights feature is built
+        ),
+      ),
+
+      // ── Main Shell (tabs + bottom nav + FAB) ─────────────────────────────
+      StatefulShellRoute.indexedStack(
+        builder: (context, state, navigationShell) => MainShellPage(
+          navigationShell: navigationShell,
+        ),
+        branches: [
+          // ── Tab 0: Home ──────────────────────────────────────────────────
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: RouteNames.home,
+                name: 'home',
+                builder: (_, __) => const HomePage(),
+              ),
+            ],
+          ),
+
+          // ── Tab 1: Health ────────────────────────────────────────────────
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: RouteNames.healthDashboard,
+                name: 'health',
+                builder: (_, __) => const HealthPlaceholderPage(),
+                routes: [
+                  GoRoute(
+                    path: 'heart-rate',
+                    name: 'heart-rate',
+                    builder: (_, __) => const HealthPlaceholderPage(),
+                  ),
+                  GoRoute(
+                    path: 'steps',
+                    name: 'steps',
+                    builder: (_, __) => const HealthPlaceholderPage(),
+                  ),
+                  GoRoute(
+                    path: 'sleep',
+                    name: 'sleep',
+                    builder: (_, __) => const HealthPlaceholderPage(),
+                  ),
+                  GoRoute(
+                    path: 'water',
+                    name: 'water',
+                    builder: (_, __) => const HealthPlaceholderPage(),
+                  ),
+                  GoRoute(
+                    path: 'calories',
+                    name: 'calories',
+                    builder: (_, __) => const HealthPlaceholderPage(),
+                  ),
+                  GoRoute(
+                    path: 'vitals',
+                    name: 'vitals',
+                    builder: (_, __) => const HealthPlaceholderPage(),
+                  ),
+                ],
+              ),
+            ],
+          ),
+
+          // ── Tab 2: Fitness ───────────────────────────────────────────────
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: RouteNames.workouts,
+                name: 'workouts',
+                builder: (_, __) => const FitnessPlaceholderPage(),
+              ),
+            ],
+          ),
+
+          // ── Tab 3: Nutrition ─────────────────────────────────────────────
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: RouteNames.nutrition,
+                name: 'nutrition',
+                builder: (_, __) => const NutritionPlaceholderPage(),
+              ),
+            ],
+          ),
+
+          // ── Tab 4: Profile ───────────────────────────────────────────────
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: RouteNames.profile,
+                name: 'profile',
+                builder: (_, __) => const ProfilePlaceholderPage(),
+              ),
+            ],
+          ),
+        ],
+      ),
     ],
   );
 }
 
-/// [ChangeNotifier] that notifies GoRouter whenever [authNotifierProvider]
-/// emits a new state, triggering the redirect guard to re-evaluate.
+// ── Auth Change Notifier ──────────────────────────────────────────────────────
+
+/// Listens to [authNotifierProvider] and notifies GoRouter to re-evaluate
+/// the redirect guard whenever the auth state changes.
 class _AuthChangeNotifier extends ChangeNotifier {
   _AuthChangeNotifier(Ref ref) {
-    _subscription = ref.listen<AuthState>(authNotifierProvider, (_, __) {
+    _sub = ref.listen<AuthState>(authNotifierProvider, (_, __) {
       notifyListeners();
     });
   }
 
-  late final ProviderSubscription<AuthState> _subscription;
+  late final ProviderSubscription<AuthState> _sub;
 
   @override
   void dispose() {
-    _subscription.close();
+    _sub.close();
     super.dispose();
-  }
-}
-
-/// Temporary home placeholder until the Home feature is implemented.
-///
-/// DELETE and replace with the real HomeShellPage when implementing the Home module.
-class _PlaceholderHomePage extends ConsumerWidget {
-  const _PlaceholderHomePage();
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final user = ref.watch(currentUserProvider);
-
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('HealthFit Heal'),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.logout_rounded),
-            tooltip: 'Sign out',
-            onPressed: () =>
-                ref.read(authNotifierProvider.notifier).logout(),
-          ),
-        ],
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Icon(
-              Icons.favorite_rounded,
-              size: 64,
-              color: Color(0xFF00C896),
-            ),
-            const SizedBox(height: 24),
-            Text(
-              'Welcome, ${user?.firstName ?? 'User'}! 👋',
-              style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                    fontWeight: FontWeight.w700,
-                  ),
-            ),
-            const SizedBox(height: 8),
-            Text(
-              'Auth module is working correctly.',
-              style: Theme.of(context).textTheme.bodyMedium,
-            ),
-            const SizedBox(height: 4),
-            Text(
-              user?.email ?? '',
-              style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                    color: const Color(0xFF00C896),
-                  ),
-            ),
-            const SizedBox(height: 32),
-            const Text(
-              '(Home feature coming next)',
-              style: TextStyle(color: Colors.grey),
-            ),
-          ],
-        ),
-      ),
-    );
   }
 }

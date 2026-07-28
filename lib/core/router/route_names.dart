@@ -46,6 +46,9 @@ abstract final class RouteNames {
   static const String foodSearch = '/nutrition/search';
   static const String mealDetail = '/nutrition/meal/:id';
 
+  // ── AI Assistant ──────────────────────────────────────────────────────────
+  static const String aiAssistant = '/ai-assistant';
+
   // ── Profile / Settings ────────────────────────────────────────────────────
   static const String settings = '/settings';
   static const String editProfile = '/profile/edit';
@@ -63,3 +66,4 @@ abstract final class RouteNames {
   static const String notFound = '/404';
   static const String error = '/error';
 }
+
