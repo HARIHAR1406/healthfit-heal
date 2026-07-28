@@ -65,6 +65,14 @@ abstract final class RouteNames {
 
   // ── AI Assistant ──────────────────────────────────────────────────────────
   static const String aiAssistant = '/ai-assistant';
+  static const String aiChat = '/ai-assistant/chat/:id';
+  static const String aiChatNew = '/ai-assistant/chat/new';
+  static const String chatHistory = '/ai-assistant/history';
+  static const String aiCoach = '/ai-assistant/coach';
+  static const String aiCoachChat = '/ai-assistant/coach/:type/chat';
+  static const String smartInsights = '/ai-assistant/insights';
+  static const String promptLibrary = '/ai-assistant/prompts';
+  static const String aiSettings = '/ai-assistant/settings';
 
   // ── Profile / Settings ────────────────────────────────────────────────────
   static const String settings = '/settings';

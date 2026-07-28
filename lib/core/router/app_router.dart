@@ -36,6 +36,14 @@ import '../../features/nutrition/presentation/pages/weight_tracker_page.dart';
 import '../../features/home/presentation/pages/home_page.dart';
 import '../../features/home/presentation/pages/placeholder_pages.dart';
 import '../../features/home/presentation/shell/main_shell_page.dart';
+import '../../features/ai_assistant/presentation/pages/ai_chat_page.dart';
+import '../../features/ai_assistant/presentation/pages/ai_coach_page.dart';
+import '../../features/ai_assistant/presentation/pages/ai_home_page.dart';
+import '../../features/ai_assistant/presentation/pages/ai_settings_page.dart';
+import '../../features/ai_assistant/presentation/pages/chat_history_page.dart';
+import '../../features/ai_assistant/presentation/pages/prompt_library_page.dart';
+import '../../features/ai_assistant/presentation/pages/smart_insights_page.dart';
+import '../../features/ai_assistant/domain/entities/conversation_entity.dart';
 import '../../shared/widgets/app_error_widget.dart';
 import 'route_names.dart';
 
@@ -127,24 +135,85 @@ GoRouter appRouter(Ref ref) {
         builder: (_, __) => const ForgotPasswordPage(),
       ),
 
-      // ── AI Assistant (modal — presented over the shell) ──────────────────
+      // ── AI Assistant (modal — full-screen over the shell) ────────────────
       GoRoute(
         path: RouteNames.aiAssistant,
         name: 'ai-assistant',
         pageBuilder: (context, state) => const MaterialPage(
           fullscreenDialog: true,
-          child: AiAssistantPlaceholderPage(),
+          child: AIHomePage(),
         ),
-      ),
-
-      // ── Insights (modal — presented over the shell) ──────────────────────
-      GoRoute(
-        path: RouteNames.insights,
-        name: 'insights',
-        pageBuilder: (context, state) => const MaterialPage(
-          fullscreenDialog: true,
-          child: AiAssistantPlaceholderPage(), // Reuse until Insights feature is built
-        ),
+        routes: [
+          // Chat with existing conversation
+          GoRoute(
+            path: 'chat/:id',
+            name: 'ai-chat',
+            builder: (context, state) {
+              final id = state.pathParameters['id']!;
+              final extra = state.extra as Map<String, dynamic>?;
+              return AIChatPage(
+                conversationId: id == 'new' ? null : id,
+                initialPrompt: extra?['initialPrompt'] as String?,
+              );
+            },
+          ),
+          // New conversation (optionally coach-seeded)
+          GoRoute(
+            path: 'chat/new',
+            name: 'ai-chat-new',
+            builder: (context, state) {
+              final extra = state.extra as Map<String, dynamic>?;
+              return AIChatPage(
+                initialPrompt: extra?['initialPrompt'] as String?,
+              );
+            },
+          ),
+          // Chat History
+          GoRoute(
+            path: 'history',
+            name: 'chat-history',
+            builder: (_, __) => const ChatHistoryPage(),
+          ),
+          // Coach Hub
+          GoRoute(
+            path: 'coach',
+            name: 'ai-coach',
+            builder: (_, __) => const AICoachPage(),
+            routes: [
+              // Coach-seeded chat
+              GoRoute(
+                path: ':type/chat',
+                name: 'ai-coach-chat',
+                builder: (context, state) {
+                  final typeName = state.pathParameters['type'] ?? 'general';
+                  final coachType = CoachType.values.firstWhere(
+                    (t) => t.name == typeName,
+                    orElse: () => CoachType.general,
+                  );
+                  return AIChatPage(coachType: coachType);
+                },
+              ),
+            ],
+          ),
+          // Smart Insights
+          GoRoute(
+            path: 'insights',
+            name: 'smart-insights',
+            builder: (_, __) => const SmartInsightsPage(),
+          ),
+          // Prompt Library
+          GoRoute(
+            path: 'prompts',
+            name: 'prompt-library',
+            builder: (_, __) => const PromptLibraryPage(),
+          ),
+          // AI Settings
+          GoRoute(
+            path: 'settings',
+            name: 'ai-settings',
+            builder: (_, __) => const AISettingsPage(),
+          ),
+        ],
       ),
 
       // ── Main Shell (tabs + bottom nav + FAB) ─────────────────────────────
