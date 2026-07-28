@@ -40,11 +40,17 @@ abstract final class RouteNames {
   static const String water = '/health/water';
   static const String calories = '/health/calories';
 
-  // ── Workouts ──────────────────────────────────────────────────────────────
-  static const String workoutDetail = '/workouts/:id';
+  // ── Fitness ───────────────────────────────────────────────────────────────
+  static const String workouts = '/workouts';
+  static const String workoutLibrary = '/workouts/library';
+  static const String workoutDetail = '/workouts/detail/:id';
   static const String workoutLog = '/workouts/log';
   static const String workoutHistory = '/workouts/history';
   static const String workoutPlans = '/workouts/plans';
+  static const String activeSession = '/workouts/session';
+  static const String sessionSummary = '/workouts/session/summary';
+  static const String fitnessAnalytics = '/workouts/analytics';
+  static const String achievements = '/workouts/achievements';
 
   // ── Nutrition ─────────────────────────────────────────────────────────────
   static const String nutritionLog = '/nutrition/log';

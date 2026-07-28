@@ -18,6 +18,14 @@ import '../../features/health/presentation/pages/health_history_page.dart';
 import '../../features/health/presentation/pages/heart_rate_page.dart';
 import '../../features/health/presentation/pages/medical_records_page.dart';
 import '../../features/health/presentation/pages/spo2_page.dart';
+import '../../features/fitness/presentation/pages/achievements_page.dart';
+import '../../features/fitness/presentation/pages/active_session_page.dart';
+import '../../features/fitness/presentation/pages/fitness_analytics_page.dart';
+import '../../features/fitness/presentation/pages/fitness_dashboard_page.dart';
+import '../../features/fitness/presentation/pages/session_summary_page.dart';
+import '../../features/fitness/presentation/pages/workout_detail_page.dart';
+import '../../features/fitness/presentation/pages/workout_history_page.dart';
+import '../../features/fitness/presentation/pages/workout_library_page.dart';
 import '../../features/home/presentation/pages/home_page.dart';
 import '../../features/home/presentation/pages/placeholder_pages.dart';
 import '../../features/home/presentation/shell/main_shell_page.dart';
@@ -223,8 +231,52 @@ GoRouter appRouter(Ref ref) {
             routes: [
               GoRoute(
                 path: RouteNames.workouts,
-                name: 'workouts',
-                builder: (_, __) => const FitnessPlaceholderPage(),
+                name: 'fitness',
+                builder: (_, __) => const FitnessDashboardPage(),
+                routes: [
+                  GoRoute(
+                    path: 'library',
+                    name: 'workout-library',
+                    builder: (context, state) {
+                      final cat = state.uri.queryParameters['category'];
+                      return WorkoutLibraryPage(initialCategory: cat);
+                    },
+                  ),
+                  GoRoute(
+                    path: 'detail/:id',
+                    name: 'workout-detail',
+                    builder: (_, state) => WorkoutDetailPage(
+                      workoutId: state.pathParameters['id'] ?? '',
+                    ),
+                  ),
+                  GoRoute(
+                    path: 'session',
+                    name: 'active-session',
+                    builder: (_, __) => const ActiveSessionPage(),
+                    routes: [
+                      GoRoute(
+                        path: 'summary',
+                        name: 'session-summary',
+                        builder: (_, __) => const SessionSummaryPage(),
+                      ),
+                    ],
+                  ),
+                  GoRoute(
+                    path: 'history',
+                    name: 'workout-history',
+                    builder: (_, __) => const WorkoutHistoryPage(),
+                  ),
+                  GoRoute(
+                    path: 'analytics',
+                    name: 'fitness-analytics',
+                    builder: (_, __) => const FitnessAnalyticsPage(),
+                  ),
+                  GoRoute(
+                    path: 'achievements',
+                    name: 'achievements',
+                    builder: (_, __) => const AchievementsPage(),
+                  ),
+                ],
               ),
             ],
           ),
