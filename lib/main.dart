@@ -1,0 +1,82 @@
+import 'dart:async';
+
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'config/env/environment.dart';
+import 'core/router/app_router.dart';
+import 'core/storage/hive_service.dart';
+import 'core/utils/app_logger.dart';
+import 'theme/app_theme.dart';
+
+Future<void> main() async {
+  // Ensure Flutter bindings are initialised before any platform calls
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // ── System UI ──────────────────────────────────────────────────────────────
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
+
+  // ── Initialise Services ────────────────────────────────────────────────────
+  await _initServices();
+
+  // ── Run App ────────────────────────────────────────────────────────────────
+  runApp(
+    const ProviderScope(
+      child: HealthFitHealApp(),
+    ),
+  );
+}
+
+/// Initialises all services required before [runApp].
+Future<void> _initServices() async {
+  log.info(
+    'Starting HealthFit Heal — '
+    'env=${Environment.name} '
+    'baseUrl=${Environment.baseUrl}',
+  );
+
+  // ── Hive (local storage) ───────────────────────────────────────────────────
+  await HiveService.instance.init();
+
+  // ── Firebase (placeholder — uncomment when configured) ────────────────────
+  // await FirebaseConfig.init();
+
+  log.info('Services initialised successfully.');
+}
+
+/// Root application widget for HealthFit Heal.
+///
+/// Wires [GoRouter] from [appRouterProvider] into [MaterialApp.router],
+/// and provides both [AppTheme.lightTheme] and [AppTheme.darkTheme].
+class HealthFitHealApp extends ConsumerWidget {
+  const HealthFitHealApp({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final router = ref.watch(appRouterProvider);
+
+    return MaterialApp.router(
+      // ── App Metadata ──────────────────────────────────────────────────────
+      title: 'HealthFit Heal',
+      debugShowCheckedModeBanner: Environment.showDebugBanner,
+
+      // ── Theming ───────────────────────────────────────────────────────────
+      theme: AppTheme.lightTheme,
+      darkTheme: AppTheme.darkTheme,
+      themeMode: ThemeMode.system,
+
+      // ── Navigation ────────────────────────────────────────────────────────
+      routerConfig: router,
+
+      // ── Localisation ──────────────────────────────────────────────────────
+      // TODO: Add flutter_localizations when i18n is implemented.
+      // localizationsDelegates: AppLocalizations.localizationsDelegates,
+      // supportedLocales: AppLocalizations.supportedLocales,
+      // locale: ref.watch(localeProvider),
+    );
+  }
+}

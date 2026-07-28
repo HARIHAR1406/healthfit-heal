@@ -1,0 +1,30 @@
+{
+  "_comment": "PLACEHOLDER — Replace this file with your real google-services.json downloaded from Firebase Console (https://console.firebase.google.com). Do NOT commit the real file to version control.",
+  "project_info": {
+    "project_number": "000000000000",
+    "project_id": "healthfit-heal-placeholder",
+    "storage_bucket": "healthfit-heal-placeholder.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:000000000000:android:0000000000000000000000",
+        "android_client_info": {
+          "package_name": "com.healthfitheal.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "REPLACE_WITH_YOUR_FIREBASE_API_KEY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

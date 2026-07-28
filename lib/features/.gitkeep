@@ -1,0 +1,32 @@
+# Features Directory
+#
+# This is where feature modules live, following a feature-first architecture.
+#
+# Each feature should have the structure:
+#
+#   features/
+#   └── <feature_name>/
+#       ├── data/
+#       │   ├── datasources/        ← Remote & local data sources
+#       │   ├── models/             ← JSON-serializable data models (@freezed)
+#       │   └── repositories/       ← Repository implementations
+#       ├── domain/
+#       │   ├── entities/           ← Pure domain entities
+#       │   ├── repositories/       ← Repository interfaces (abstract)
+#       │   └── usecases/           ← Business logic use cases
+#       └── presentation/
+#           ├── pages/              ← Full page widgets
+#           ├── widgets/            ← Feature-specific widgets
+#           └── providers/          ← Riverpod state providers
+#
+# Planned features (to be implemented):
+#   - auth/          Authentication & authorization
+#   - home/          Dashboard & overview
+#   - health/        Health metrics tracking
+#   - workout/       Workout logging & plans
+#   - nutrition/     Meal logging & calorie tracking
+#   - sleep/         Sleep tracking
+#   - water/         Water intake tracking
+#   - profile/       User profile & settings
+#   - insights/      Analytics & progress charts
+#   - notifications/ Push notification management
