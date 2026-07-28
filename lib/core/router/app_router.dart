@@ -26,6 +26,13 @@ import '../../features/fitness/presentation/pages/session_summary_page.dart';
 import '../../features/fitness/presentation/pages/workout_detail_page.dart';
 import '../../features/fitness/presentation/pages/workout_history_page.dart';
 import '../../features/fitness/presentation/pages/workout_library_page.dart';
+import '../../features/nutrition/presentation/pages/food_database_page.dart';
+import '../../features/nutrition/presentation/pages/food_detail_page.dart';
+import '../../features/nutrition/presentation/pages/meal_planner_page.dart';
+import '../../features/nutrition/presentation/pages/nutrition_analytics_page.dart';
+import '../../features/nutrition/presentation/pages/nutrition_dashboard_page.dart';
+import '../../features/nutrition/presentation/pages/water_tracker_page.dart';
+import '../../features/nutrition/presentation/pages/weight_tracker_page.dart';
 import '../../features/home/presentation/pages/home_page.dart';
 import '../../features/home/presentation/pages/placeholder_pages.dart';
 import '../../features/home/presentation/shell/main_shell_page.dart';
@@ -281,13 +288,49 @@ GoRouter appRouter(Ref ref) {
             ],
           ),
 
-          // ── Tab 3: Nutrition ─────────────────────────────────────────────
+          // ── Tab 3: Nutrition ───────────────────────────────────────────────
           StatefulShellBranch(
             routes: [
               GoRoute(
                 path: RouteNames.nutrition,
                 name: 'nutrition',
-                builder: (_, __) => const NutritionPlaceholderPage(),
+                builder: (_, __) => const NutritionDashboardPage(),
+                routes: [
+                  GoRoute(
+                    path: 'planner',
+                    name: 'meal-planner',
+                    builder: (_, __) => const MealPlannerPage(),
+                  ),
+                  GoRoute(
+                    path: 'foods',
+                    name: 'food-database',
+                    builder: (_, __) => const FoodDatabasePage(),
+                    routes: [
+                      GoRoute(
+                        path: 'detail/:foodId',
+                        name: 'food-detail',
+                        builder: (_, state) => FoodDetailPage(
+                          foodId: state.pathParameters['foodId'] ?? '',
+                        ),
+                      ),
+                    ],
+                  ),
+                  GoRoute(
+                    path: 'water',
+                    name: 'water-tracker',
+                    builder: (_, __) => const WaterTrackerPage(),
+                  ),
+                  GoRoute(
+                    path: 'weight',
+                    name: 'weight-tracker',
+                    builder: (_, __) => const WeightTrackerPage(),
+                  ),
+                  GoRoute(
+                    path: 'analytics',
+                    name: 'nutrition-analytics',
+                    builder: (_, __) => const NutritionAnalyticsPage(),
+                  ),
+                ],
               ),
             ],
           ),

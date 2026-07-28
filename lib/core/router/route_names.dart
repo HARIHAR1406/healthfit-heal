@@ -41,7 +41,6 @@ abstract final class RouteNames {
   static const String calories = '/health/calories';
 
   // ── Fitness ───────────────────────────────────────────────────────────────
-  static const String workouts = '/workouts';
   static const String workoutLibrary = '/workouts/library';
   static const String workoutDetail = '/workouts/detail/:id';
   static const String workoutLog = '/workouts/log';
@@ -53,10 +52,16 @@ abstract final class RouteNames {
   static const String achievements = '/workouts/achievements';
 
   // ── Nutrition ─────────────────────────────────────────────────────────────
+  static const String mealPlanner = '/nutrition/planner';
+  static const String foodDatabase = '/nutrition/foods';
+  static const String foodDetail = '/nutrition/foods/detail';
+  static const String waterTracker = '/nutrition/water';
+  static const String weightTracker = '/nutrition/weight';
+  static const String nutritionAnalytics = '/nutrition/analytics';
+  static const String calorieTracker = '/nutrition/calories';
   static const String nutritionLog = '/nutrition/log';
   static const String nutritionHistory = '/nutrition/history';
   static const String foodSearch = '/nutrition/search';
-  static const String mealDetail = '/nutrition/meal/:id';
 
   // ── AI Assistant ──────────────────────────────────────────────────────────
   static const String aiAssistant = '/ai-assistant';
