@@ -77,9 +77,14 @@ class HiveService {
 
   /// Deletes all data in all boxes. Use only for testing or factory reset.
   Future<void> clearAll() async {
-    for (final boxName in Hive.openBoxes) {
-      final b = Hive.box<dynamic>(boxName);
-      await b.clear();
+    // Clear the boxes we know about
+    for (final boxName in [
+      AppConstants.hiveSettingsBox,
+      AppConstants.hiveCacheBox,
+    ]) {
+      if (Hive.isBoxOpen(boxName)) {
+        await Hive.box<dynamic>(boxName).clear();
+      }
     }
     log.warning('HiveService: all boxes cleared.');
   }

@@ -3,6 +3,7 @@
 /// All methods return null if valid (as required by [FormField.validator]),
 /// or a user-facing error string if invalid.
 abstract final class Validators {
+
   // ── Email ─────────────────────────────────────────────────────────────────
 
   static String? email(String? value) {
@@ -157,3 +158,6 @@ abstract final class Validators {
         return null;
       };
 }
+
+/// Alias for [Validators] — used throughout auth feature pages.
+typedef AppValidators = Validators;

@@ -12,10 +12,17 @@ abstract final class AppConstants {
   static const String hiveCacheBox = 'cache_box';
   static const String hiveHealthBox = 'health_box';
 
+  // ── Secure Storage Keys ───────────────────────────────────────────────────
   static const String secureKeyAccessToken = 'access_token';
   static const String secureKeyRefreshToken = 'refresh_token';
   static const String secureKeyUserId = 'user_id';
   static const String secureKeyBiometricEnabled = 'biometric_enabled';
+  static const String secureKeyTokenExpiry = 'token_expiry';
+
+  // ── Hive Keys ─────────────────────────────────────────────────────────────
+  static const String hiveUserCacheKey = 'cached_user';
+  static const String hiveOnboardingCompletedKey = 'onboarding_completed';
+  static const String hiveRememberMeEmailKey = 'remember_me_email';
 
   // ── Network ───────────────────────────────────────────────────────────────
   static const Duration connectTimeout = Duration(seconds: 30);
