@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../../../core/router/route_names.dart';
 import '../../../../design_system/colors/app_colors.dart';
 import '../../../../design_system/spacing/app_spacing.dart';
 import '../../../../design_system/typography/app_typography.dart';
 import '../../../../features/auth/presentation/providers/auth_providers.dart';
+import '../../../../shared/widgets/global_search_overlay.dart';
 import '../providers/dashboard_providers.dart';
 
 /// Sticky dashboard header bar.
@@ -170,16 +173,7 @@ class _SearchButton extends StatelessWidget {
       label: 'Search',
       button: true,
       child: IconButton(
-        onPressed: () {
-          // TODO: Open search overlay when implemented
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('Search coming soon!'),
-              behavior: SnackBarBehavior.floating,
-              duration: Duration(seconds: 1),
-            ),
-          );
-        },
+        onPressed: () => showGlobalSearch(context),
         icon: Icon(
           Icons.search_rounded,
           color: isDark ? AppColors.textSecondaryDark : AppColors.textSecondaryLight,
@@ -205,9 +199,7 @@ class _NotificationButton extends StatelessWidget {
         clipBehavior: Clip.none,
         children: [
           IconButton(
-            onPressed: () {
-              // TODO: Navigate to notifications screen
-            },
+            onPressed: () => context.push(RouteNames.settings),
             icon: Icon(
               Icons.notifications_outlined,
               color: isDark

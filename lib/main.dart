@@ -8,6 +8,8 @@ import 'config/env/environment.dart';
 import 'core/router/app_router.dart';
 import 'core/storage/hive_service.dart';
 import 'core/utils/app_logger.dart';
+import 'features/profile/domain/entities/profile_entity.dart';
+import 'features/profile/presentation/providers/profile_providers.dart';
 import 'theme/app_theme.dart';
 
 Future<void> main() async {
@@ -67,7 +69,7 @@ class HealthFitHealApp extends ConsumerWidget {
       // ── Theming ───────────────────────────────────────────────────────────
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
-      themeMode: ThemeMode.system,
+      themeMode: _resolveThemeMode(ref.watch(appThemePreferenceProvider)),
 
       // ── Navigation ────────────────────────────────────────────────────────
       routerConfig: router,
@@ -79,4 +81,13 @@ class HealthFitHealApp extends ConsumerWidget {
       // locale: ref.watch(localeProvider),
     );
   }
+}
+
+/// Maps [AppThemePreference] to Flutter's [ThemeMode].
+ThemeMode _resolveThemeMode(AppThemePreference pref) {
+  return switch (pref) {
+    AppThemePreference.light => ThemeMode.light,
+    AppThemePreference.dark => ThemeMode.dark,
+    AppThemePreference.system => ThemeMode.system,
+  };
 }

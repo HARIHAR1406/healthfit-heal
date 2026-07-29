@@ -169,34 +169,74 @@ class HeroBanner extends ConsumerWidget {
 class _LogActivityButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Semantics(
-      label: 'Log Today\'s Activity',
-      button: true,
-      child: OutlinedButton.icon(
-        onPressed: () => context.go(RouteNames.workouts),
-        style: OutlinedButton.styleFrom(
-          foregroundColor: AppColors.white,
-          side: const BorderSide(
-            color: AppColors.white,
-            width: AppSpacing.borderNormal,
-          ),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(AppSpacing.radiusFull),
-          ),
-          padding: const EdgeInsets.symmetric(
-            horizontal: AppSpacing.md,
-            vertical: AppSpacing.xs,
+    return Row(
+      children: [
+        Semantics(
+          label: 'Log Today\'s Activity',
+          button: true,
+          child: OutlinedButton.icon(
+            onPressed: () => context.go(RouteNames.workouts),
+            style: OutlinedButton.styleFrom(
+              foregroundColor: AppColors.white,
+              side: const BorderSide(
+                color: AppColors.white,
+                width: AppSpacing.borderNormal,
+              ),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(AppSpacing.radiusFull),
+              ),
+              padding: const EdgeInsets.symmetric(
+                horizontal: AppSpacing.md,
+                vertical: AppSpacing.xs,
+              ),
+            ),
+            icon: const Icon(Icons.add_rounded, size: AppSpacing.iconSm),
+            label: Text(
+              'Log Activity',
+              style: AppTypography.labelMedium.copyWith(
+                color: AppColors.white,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
           ),
         ),
-        icon: const Icon(Icons.add_rounded, size: AppSpacing.iconSm),
-        label: Text(
-          'Log Activity',
-          style: AppTypography.labelMedium.copyWith(
-            color: AppColors.white,
-            fontWeight: FontWeight.w600,
+        const SizedBox(width: AppSpacing.xs),
+        Semantics(
+          label: 'View Reports & Analytics',
+          button: true,
+          child: GestureDetector(
+            onTap: () => context.push(RouteNames.reports),
+            child: Container(
+              padding: const EdgeInsets.symmetric(
+                horizontal: AppSpacing.sm,
+                vertical: AppSpacing.xs,
+              ),
+              decoration: BoxDecoration(
+                color: AppColors.white.withValues(alpha: 0.18),
+                borderRadius: BorderRadius.circular(AppSpacing.radiusFull),
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const Icon(
+                    Icons.bar_chart_rounded,
+                    color: AppColors.white,
+                    size: AppSpacing.iconXs,
+                  ),
+                  const SizedBox(width: 4),
+                  Text(
+                    'Reports',
+                    style: AppTypography.labelMedium.copyWith(
+                      color: AppColors.white,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
         ),
-      ),
+      ],
     );
   }
 }

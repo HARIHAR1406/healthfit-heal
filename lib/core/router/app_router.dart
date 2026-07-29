@@ -34,7 +34,6 @@ import '../../features/nutrition/presentation/pages/nutrition_dashboard_page.dar
 import '../../features/nutrition/presentation/pages/water_tracker_page.dart';
 import '../../features/nutrition/presentation/pages/weight_tracker_page.dart';
 import '../../features/home/presentation/pages/home_page.dart';
-import '../../features/home/presentation/pages/placeholder_pages.dart';
 import '../../features/home/presentation/shell/main_shell_page.dart';
 import '../../features/ai_assistant/presentation/pages/ai_chat_page.dart';
 import '../../features/ai_assistant/presentation/pages/ai_coach_page.dart';
@@ -44,6 +43,17 @@ import '../../features/ai_assistant/presentation/pages/chat_history_page.dart';
 import '../../features/ai_assistant/presentation/pages/prompt_library_page.dart';
 import '../../features/ai_assistant/presentation/pages/smart_insights_page.dart';
 import '../../features/ai_assistant/domain/entities/conversation_entity.dart';
+import '../../features/reports/presentation/pages/reports_dashboard_page.dart';
+import '../../features/reports/presentation/pages/health_analytics_page.dart';
+import '../../features/reports/presentation/pages/fitness_analytics_report_page.dart';
+import '../../features/reports/presentation/pages/nutrition_analytics_report_page.dart';
+import '../../features/reports/presentation/pages/ai_analytics_page.dart';
+import '../../features/reports/presentation/pages/export_center_page.dart';
+import '../../features/profile/presentation/pages/profile_page.dart';
+import '../../features/profile/presentation/pages/edit_profile_page.dart';
+import '../../features/profile/presentation/pages/edit_goals_page.dart';
+import '../../features/profile/presentation/pages/settings_page.dart';
+import '../../features/medication/presentation/pages/medication_dashboard_page.dart';
 import '../../shared/widgets/app_error_widget.dart';
 import 'route_names.dart';
 
@@ -410,9 +420,72 @@ GoRouter appRouter(Ref ref) {
               GoRoute(
                 path: RouteNames.profile,
                 name: 'profile',
-                builder: (_, __) => const ProfilePlaceholderPage(),
+                builder: (_, __) => const ProfilePage(),
               ),
             ],
+          ),
+        ],
+      ),
+      // ── Profile Sub-Routes (pushed modally over the shell) ────────────
+      GoRoute(
+        path: RouteNames.editProfile,
+        name: 'edit-profile',
+        builder: (_, __) => const EditProfilePage(),
+      ),
+      GoRoute(
+        path: RouteNames.editGoals,
+        name: 'edit-goals',
+        builder: (_, __) => const EditGoalsPage(),
+      ),
+      GoRoute(
+        path: RouteNames.settings,
+        name: 'settings',
+        builder: (_, __) => const SettingsPage(),
+      ),
+      GoRoute(
+        path: RouteNames.medication,
+        name: 'medication',
+        pageBuilder: (_, state) => MaterialPage(
+          key: state.pageKey,
+          fullscreenDialog: true,
+          child: const MedicationDashboardPage(),
+        ),
+      ),
+
+      // ── Modal: Reports & Analytics ──────────────────────────────────────
+      GoRoute(
+        path: RouteNames.reports,
+        name: 'reports',
+        pageBuilder: (_, state) => MaterialPage(
+          key: state.pageKey,
+          fullscreenDialog: true,
+          child: const ReportsDashboardPage(),
+        ),
+        routes: [
+          GoRoute(
+            path: 'health',
+            name: 'reports-health',
+            builder: (_, __) => const HealthAnalyticsPage(),
+          ),
+          GoRoute(
+            path: 'fitness',
+            name: 'reports-fitness',
+            builder: (_, __) => const FitnessAnalyticsReportPage(),
+          ),
+          GoRoute(
+            path: 'nutrition',
+            name: 'reports-nutrition',
+            builder: (_, __) => const NutritionAnalyticsReportPage(),
+          ),
+          GoRoute(
+            path: 'ai',
+            name: 'reports-ai',
+            builder: (_, __) => const AIAnalyticsPage(),
+          ),
+          GoRoute(
+            path: 'export',
+            name: 'reports-export',
+            builder: (_, __) => const ExportCenterPage(),
           ),
         ],
       ),

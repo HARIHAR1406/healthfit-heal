@@ -168,14 +168,14 @@ class DashboardMockRepository implements DashboardRepository {
           type: QuickActionType.reports,
           title: 'Reports',
           subtitle: 'Progress insights',
-          route: RouteNames.insights,
+          route: RouteNames.reports,
         ),
         const QuickActionEntity(
           id: 'medication',
           type: QuickActionType.medication,
           title: 'Medication',
           subtitle: 'Reminders & log',
-          route: RouteNames.healthDashboard,
+          route: RouteNames.medication,
         ),
       ];
 

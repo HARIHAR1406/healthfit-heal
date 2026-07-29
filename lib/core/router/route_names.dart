@@ -74,6 +74,14 @@ abstract final class RouteNames {
   static const String promptLibrary = '/ai-assistant/prompts';
   static const String aiSettings = '/ai-assistant/settings';
 
+  // ── Reports & Analytics ──────────────────────────────────────────────────
+  static const String reports = '/reports';
+  static const String reportsHealth = '/reports/health';
+  static const String reportsFitness = '/reports/fitness';
+    static const String reportsNutrition = '/reports/nutrition';
+  static const String reportsAI = '/reports/ai';
+  static const String reportsExport = '/reports/export';
+
   // ── Profile / Settings ────────────────────────────────────────────────────
   static const String settings = '/settings';
   static const String editProfile = '/profile/edit';
@@ -86,6 +94,9 @@ abstract final class RouteNames {
   // ── Goals ─────────────────────────────────────────────────────────────────
   static const String goals = '/goals';
   static const String editGoals = '/goals/edit';
+
+  // ── Medication ────────────────────────────────────────────────────────────
+  static const String medication = '/medication';
 
   // ── Error ─────────────────────────────────────────────────────────────────
   static const String notFound = '/404';
