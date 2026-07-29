@@ -1,13 +1,19 @@
+import '../../domain/entities/achievement_statistics_entity.dart';
 import '../../domain/entities/ai_report_entity.dart';
+import '../../domain/entities/comparison_data_entity.dart';
 import '../../domain/entities/fitness_report_entity.dart';
+import '../../domain/entities/health_insight_entity.dart';
 import '../../domain/entities/health_report_entity.dart';
 import '../../domain/entities/nutrition_report_entity.dart';
 import '../../domain/entities/report_filter.dart';
+import '../../domain/entities/trend_data_entity.dart';
 import '../../domain/repositories/reports_repository.dart';
 import '../mock/ai_mock_data.dart';
+import '../mock/analytics_mock_data.dart';
 import '../mock/fitness_mock_data.dart';
 import '../mock/health_mock_data.dart';
 import '../mock/nutrition_mock_data.dart';
+
 
 // ══════════════════════════════════════════════════════════════════════════════
 // MOCK REPORTS REPOSITORY
@@ -270,4 +276,40 @@ class MockReportsRepository implements ReportsRepository {
           .clamp(0.0, 100.0),
     );
   }
+
+  // ── AI Health Insights ────────────────────────────────────────────────────
+
+  @override
+  Future<InsightsReport> getInsights(ActiveFilter filter) =>
+      _delayed(InsightsMockData.generate(filter));
+
+  // ── Trend Analysis ────────────────────────────────────────────────────────
+
+  @override
+  Future<TrendsReport> getTrends(ActiveFilter filter) =>
+      _delayed(TrendsMockData.generate(filter));
+
+  // ── Comparison ────────────────────────────────────────────────────────────
+
+  @override
+  Future<ComparisonDataEntity> getComparison(
+    ComparisonPeriod period, {
+    DateTime? customStart,
+    DateTime? customEnd,
+  }) =>
+      _delayed(ComparisonMockData.generate(period));
+
+  // ── Achievements ──────────────────────────────────────────────────────────
+
+  @override
+  Future<AchievementStatisticsEntity> getAchievements(
+          ActiveFilter filter) =>
+      _delayed(AchievementMockData.generate(filter));
+
+  // ── Personal Records ──────────────────────────────────────────────────────
+
+  @override
+  Future<List<PersonalRecord>> getPersonalRecords() =>
+      _delayed(AchievementMockData.personalRecords());
 }
+

@@ -432,6 +432,20 @@ class _AnalyticsGrid extends StatelessWidget {
         colors: [AppColors.warning, const Color(0xFFFFCC80)],
         route: RouteNames.reportsAI,
       ),
+      _NavCard(
+        title: 'Insights',
+        subtitle: 'AI-generated health tips',
+        emoji: '🧠',
+        colors: [const Color(0xFF6C63FF), const Color(0xFF9D97FF)],
+        route: RouteNames.reportsInsights,
+      ),
+      _NavCard(
+        title: 'Compare',
+        subtitle: 'Period-over-period analysis',
+        emoji: '📊',
+        colors: [const Color(0xFF00B4D8), const Color(0xFF0077B6)],
+        route: RouteNames.reportsCompare,
+      ),
     ];
 
     return GridView.builder(
@@ -498,11 +512,32 @@ class _QuickSummaryList extends StatelessWidget {
         route: RouteNames.reportsHealth,
       ),
       _SummaryItem(
+        icon: Icons.psychology_rounded,
+        iconColor: const Color(0xFF6C63FF),
+        title: 'AI Insights',
+        sub: 'Personalized health recommendations',
+        route: RouteNames.reportsInsights,
+      ),
+      _SummaryItem(
+        icon: Icons.trending_up_rounded,
+        iconColor: AppColors.secondary,
+        title: 'Trend Analysis',
+        sub: 'Improving & declining metrics',
+        route: RouteNames.reportsTrends,
+      ),
+      _SummaryItem(
+        icon: Icons.compare_arrows_rounded,
+        iconColor: const Color(0xFF00B4D8),
+        title: 'Compare Periods',
+        sub: 'Week vs week, month vs month',
+        route: RouteNames.reportsCompare,
+      ),
+      _SummaryItem(
         icon: Icons.emoji_events_rounded,
         iconColor: AppColors.warning,
         title: 'Achievements',
         sub: 'Streak records & milestones',
-        route: RouteNames.reportsFitness,
+        route: RouteNames.reportsAchievements,
       ),
       _SummaryItem(
         icon: Icons.download_rounded,

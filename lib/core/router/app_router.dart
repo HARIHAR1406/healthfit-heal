@@ -49,6 +49,10 @@ import '../../features/reports/presentation/pages/fitness_analytics_report_page.
 import '../../features/reports/presentation/pages/nutrition_analytics_report_page.dart';
 import '../../features/reports/presentation/pages/ai_analytics_page.dart';
 import '../../features/reports/presentation/pages/export_center_page.dart';
+import '../../features/reports/presentation/pages/insights_page.dart';
+import '../../features/reports/presentation/pages/trends_page.dart';
+import '../../features/reports/presentation/pages/compare_reports_page.dart';
+import '../../features/reports/presentation/pages/achievements_page.dart' as reportsAchievements;
 import '../../features/profile/presentation/pages/profile_page.dart';
 import '../../features/profile/presentation/pages/edit_profile_page.dart';
 import '../../features/profile/presentation/pages/edit_goals_page.dart';
@@ -520,6 +524,27 @@ GoRouter appRouter(Ref ref) {
             path: 'export',
             name: 'reports-export',
             builder: (_, __) => const ExportCenterPage(),
+          ),
+          GoRoute(
+            path: 'insights',
+            name: 'reports-insights',
+            builder: (_, __) => const InsightsPage(),
+          ),
+          GoRoute(
+            path: 'trends',
+            name: 'reports-trends',
+            builder: (_, __) => const TrendsPage(),
+          ),
+          GoRoute(
+            path: 'compare',
+            name: 'reports-compare',
+            builder: (_, __) => const CompareReportsPage(),
+          ),
+          GoRoute(
+            path: 'achievements',
+            name: 'reports-achievements',
+            builder: (_, __) =>
+                const reportsAchievements.AchievementsPage(),
           ),
         ],
       ),

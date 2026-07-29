@@ -78,9 +78,14 @@ abstract final class RouteNames {
   static const String reports = '/reports';
   static const String reportsHealth = '/reports/health';
   static const String reportsFitness = '/reports/fitness';
-    static const String reportsNutrition = '/reports/nutrition';
+  static const String reportsNutrition = '/reports/nutrition';
   static const String reportsAI = '/reports/ai';
   static const String reportsExport = '/reports/export';
+  static const String reportsInsights = '/reports/insights';
+  static const String reportsTrends = '/reports/trends';
+  static const String reportsCompare = '/reports/compare';
+  static const String reportsAchievements = '/reports/achievements';
+
 
   // ── Profile / Settings ────────────────────────────────────────────────────
   static const String settings = '/settings';
