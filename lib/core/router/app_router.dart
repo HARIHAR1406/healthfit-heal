@@ -54,6 +54,10 @@ import '../../features/profile/presentation/pages/edit_profile_page.dart';
 import '../../features/profile/presentation/pages/edit_goals_page.dart';
 import '../../features/profile/presentation/pages/settings_page.dart';
 import '../../features/medication/presentation/pages/medication_dashboard_page.dart';
+import '../../features/notifications/presentation/pages/notification_center_page.dart';
+import '../../features/notifications/presentation/pages/notification_settings_page.dart';
+import '../../features/notifications/presentation/pages/reminder_history_page.dart';
+import '../../features/notifications/presentation/pages/reminder_manager_page.dart';
 import '../../shared/widgets/app_error_widget.dart';
 import 'route_names.dart';
 
@@ -450,6 +454,36 @@ GoRouter appRouter(Ref ref) {
           fullscreenDialog: true,
           child: const MedicationDashboardPage(),
         ),
+      ),
+
+      // ── Notification Center ───────────────────────────────────────────────
+      GoRoute(
+        path: RouteNames.notificationCenter,
+        name: 'notification-center',
+        pageBuilder: (_, state) => MaterialPage(
+          key: state.pageKey,
+          fullscreenDialog: true,
+          child: const NotificationCenterPage(),
+        ),
+        routes: [
+          GoRoute(
+            path: 'reminders',
+            name: 'reminder-manager',
+            builder: (_, __) => const ReminderManagerPage(),
+            routes: [
+              GoRoute(
+                path: 'history',
+                name: 'reminder-history',
+                builder: (_, __) => const ReminderHistoryPage(),
+              ),
+            ],
+          ),
+          GoRoute(
+            path: 'settings',
+            name: 'notification-settings',
+            builder: (_, __) => const NotificationSettingsPage(),
+          ),
+        ],
       ),
 
       // ── Modal: Reports & Analytics ──────────────────────────────────────

@@ -1,5 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../features/notifications/presentation/providers/notification_providers.dart';
 import '../../data/repositories/dashboard_mock_repository.dart';
 import '../../domain/entities/activity_item_entity.dart';
 import '../../domain/entities/dashboard_entity.dart';
@@ -66,9 +67,14 @@ final dashboardActivitiesProvider = Provider<List<ActivityItemEntity>>(
   name: 'dashboardActivitiesProvider',
 );
 
-/// Notification badge count.
+/// Notification badge count — sourced from the live notification module.
+/// Falls back to the mock dashboard value when notifications haven't loaded yet.
 final notificationCountProvider = Provider<int>(
-  (ref) => ref.watch(dashboardDataProvider)?.notificationCount ?? 0,
+  (ref) {
+    final liveCount = ref.watch(unreadNotificationCountProvider);
+    if (liveCount > 0) return liveCount;
+    return ref.watch(dashboardDataProvider)?.notificationCount ?? 0;
+  },
   name: 'notificationCountProvider',
 );
 

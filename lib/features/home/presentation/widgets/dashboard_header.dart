@@ -7,6 +7,7 @@ import '../../../../design_system/colors/app_colors.dart';
 import '../../../../design_system/spacing/app_spacing.dart';
 import '../../../../design_system/typography/app_typography.dart';
 import '../../../../features/auth/presentation/providers/auth_providers.dart';
+import '../../../../features/notifications/presentation/providers/notification_providers.dart';
 import '../../../../shared/widgets/global_search_overlay.dart';
 import '../providers/dashboard_providers.dart';
 
@@ -199,7 +200,7 @@ class _NotificationButton extends StatelessWidget {
         clipBehavior: Clip.none,
         children: [
           IconButton(
-            onPressed: () => context.push(RouteNames.settings),
+            onPressed: () => context.push(RouteNames.notificationCenter),
             icon: Icon(
               Icons.notifications_outlined,
               color: isDark

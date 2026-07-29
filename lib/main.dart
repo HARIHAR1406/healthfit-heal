@@ -8,6 +8,8 @@ import 'config/env/environment.dart';
 import 'core/router/app_router.dart';
 import 'core/storage/hive_service.dart';
 import 'core/utils/app_logger.dart';
+import 'features/notifications/data/services/background_service.dart';
+import 'features/notifications/data/services/notification_service.dart';
 import 'features/profile/domain/entities/profile_entity.dart';
 import 'features/profile/presentation/providers/profile_providers.dart';
 import 'theme/app_theme.dart';
@@ -43,6 +45,18 @@ Future<void> _initServices() async {
 
   // ── Hive (local storage) ───────────────────────────────────────────────────
   await HiveService.instance.init();
+
+  // ── Notification Service ───────────────────────────────────────────────────
+  // Mock mode: no platform permissions requested at startup.
+  // To activate real notifications, add flutter_local_notifications to
+  // pubspec.yaml and configure AndroidManifest/Info.plist (see NotificationService).
+  await NotificationService.instance.initialize();
+
+  // ── Background Service ────────────────────────────────────────────────────
+  // Registers all background task handlers (mock implementations).
+  // To activate real background tasks, add workmanager and call
+  // schedulePeriodicTask for each BackgroundTaskType in BackgroundService.
+  await BackgroundService.instance.initialize();
 
   // ── Firebase (placeholder — uncomment when configured) ────────────────────
   // await FirebaseConfig.init();

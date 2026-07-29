@@ -98,6 +98,12 @@ abstract final class RouteNames {
   // ── Medication ────────────────────────────────────────────────────────────
   static const String medication = '/medication';
 
+  // ── Notifications & Reminders ─────────────────────────────────────────────
+  static const String notificationCenter = '/notifications';
+  static const String reminderManager = '/notifications/reminders';
+  static const String notificationSettings = '/notifications/settings';
+  static const String reminderHistory = '/notifications/reminders/history';
+
   // ── Error ─────────────────────────────────────────────────────────────────
   static const String notFound = '/404';
   static const String error = '/error';
