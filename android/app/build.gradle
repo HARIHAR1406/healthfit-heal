@@ -1,9 +1,11 @@
 plugins {
     id "com.android.application"
     id "kotlin-android"
-    // Firebase - DO NOT REMOVE
+    // Firebase — google-services plugin (must be last)
     id "com.google.gms.google-services"
-    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
+    // Firebase Crashlytics
+    id "com.google.firebase.crashlytics"
+    // Flutter Gradle Plugin (must be applied after Android and Kotlin plugins)
     id "dev.flutter.flutter-gradle-plugin"
 }
 
@@ -31,23 +33,27 @@ android {
     ndkVersion "27.0.12077973"
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+        coreLibraryDesugaringEnabled true
     }
 
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
 
     defaultConfig {
         applicationId "com.healthfitheal.app"
-        // Minimum SDK 23 → Android 6.0 (covers ~99% of devices)
-        minSdk 23
+        // Minimum SDK 26 → Android 8.0
+        // • Health Connect requires API 26+
+        // • flutter_local_notifications exact alarms require API 26+
+        // • Covers ~97% of active Android devices
+        minSdk 26
         targetSdk flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
 
-        // Multidex support for large apps
+        // Multidex support for large apps (Firebase suite)
         multiDexEnabled true
     }
 
@@ -100,4 +106,16 @@ flutter {
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "androidx.multidex:multidex:2.0.1"
+
+    // Java 8+ API desugaring (required for coreLibraryDesugaringEnabled)
+    coreLibraryDesugaring "com.android.tools.desugar_jdk_libs:2.0.4"
+
+    // Firebase — use BOM to keep all versions in sync
+    implementation platform("com.google.firebase:firebase-bom:33.7.0")
+    implementation "com.google.firebase:firebase-analytics"
+    implementation "com.google.firebase:firebase-crashlytics"
+    implementation "com.google.firebase:firebase-messaging"
+
+    // Health Connect
+    implementation "androidx.health.connect:connect-client:1.1.0-rc01"
 }

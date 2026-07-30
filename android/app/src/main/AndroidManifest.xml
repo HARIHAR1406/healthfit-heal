@@ -1,20 +1,67 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- Permissions -->
+
+    <!-- ══════════════════════════════════════════════════════════════════════
+         PERMISSIONS
+    ══════════════════════════════════════════════════════════════════════ -->
+
+    <!-- Network -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+    <!-- Camera / Storage -->
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="32" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         android:maxSdkVersion="29" />
+    <!-- Android 13+ media permissions -->
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
+
+    <!-- Sensors & Biometrics -->
     <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />
     <uses-permission android:name="android.permission.BODY_SENSORS" />
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-    <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.BODY_SENSORS_BACKGROUND" />
     <uses-permission android:name="android.permission.USE_BIOMETRIC" />
     <uses-permission android:name="android.permission.USE_FINGERPRINT" />
+
+    <!-- ── Android Health Connect permissions ─────────────────────────────── -->
+    <!-- Steps -->
+    <uses-permission android:name="android.permission.health.READ_STEPS" />
+    <uses-permission android:name="android.permission.health.WRITE_STEPS" />
+    <!-- Heart Rate -->
+    <uses-permission android:name="android.permission.health.READ_HEART_RATE" />
+    <!-- Blood Pressure -->
+    <uses-permission android:name="android.permission.health.READ_BLOOD_PRESSURE" />
+    <!-- Blood Glucose -->
+    <uses-permission android:name="android.permission.health.READ_BLOOD_GLUCOSE" />
+    <!-- Sleep -->
+    <uses-permission android:name="android.permission.health.READ_SLEEP" />
+    <!-- Calories -->
+    <uses-permission android:name="android.permission.health.READ_ACTIVE_CALORIES_BURNED" />
+    <uses-permission android:name="android.permission.health.READ_TOTAL_CALORIES_BURNED" />
+    <uses-permission android:name="android.permission.health.WRITE_ACTIVE_CALORIES_BURNED" />
+    <!-- Weight & Height -->
+    <uses-permission android:name="android.permission.health.READ_WEIGHT" />
+    <uses-permission android:name="android.permission.health.WRITE_WEIGHT" />
+    <uses-permission android:name="android.permission.health.READ_HEIGHT" />
+    <!-- Oxygen Saturation -->
+    <uses-permission android:name="android.permission.health.READ_OXYGEN_SATURATION" />
+    <!-- Body Temperature -->
+    <uses-permission android:name="android.permission.health.READ_BODY_TEMPERATURE" />
+    <!-- Exercise / Workouts -->
+    <uses-permission android:name="android.permission.health.READ_EXERCISE" />
+    <uses-permission android:name="android.permission.health.WRITE_EXERCISE" />
+
+    <!-- Notifications -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <!-- Required for exact alarm scheduling (medication reminders) -->
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
+    <!-- Required for notification rescheduling after device reboot -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
         android:label="HealthFit Heal"
@@ -28,14 +75,16 @@
         android:usesCleartextTraffic="false"
         android:supportsRtl="true"
         android:theme="@style/LaunchTheme"
-        android:requestLegacyExternalStorage="false">
+        android:requestLegacyExternalStorage="false"
+        android:enableOnBackInvokedCallback="true">
 
-        <!-- Flutter -->
+        <!-- Flutter embedding -->
         <meta-data
             android:name="io.flutter.embedding.android.NormalTheme"
             android:resource="@style/NormalTheme" />
 
-        <!-- Firebase auto-init (set to false for manual control) -->
+        <!-- ── Firebase: manual init control ──────────────────────────────── -->
+        <!-- Set to false — Firebase initialized programmatically in FirebaseConfig.init() -->
         <meta-data
             android:name="firebase_messaging_auto_init_enabled"
             android:value="false" />
@@ -43,6 +92,47 @@
             android:name="firebase_analytics_collection_enabled"
             android:value="false" />
 
+        <!-- ── Firebase Cloud Messaging ───────────────────────────────────── -->
+        <service
+            android:name="com.google.firebase.messaging.FirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <!-- ── Flutter Local Notifications ───────────────────────────────── -->
+        <!-- Boot receiver to reschedule alarms after device restart -->
+        <receiver
+            android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationBootReceiver"
+            android:exported="true"
+            android:directBootAware="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+                <action android:name="com.htc.intent.action.QUICKBOOT_POWERON" />
+            </intent-filter>
+        </receiver>
+        <!-- Alarm receiver for exact scheduled notifications -->
+        <receiver
+            android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationReceiver"
+            android:exported="false" />
+
+        <!-- ── Android Health Connect ─────────────────────────────────────── -->
+        <!-- Declares the app uses Health Connect (required for Play Store listing) -->
+        <activity-alias
+            android:name="ViewPermissionUsageActivity"
+            android:exported="true"
+            android:targetActivity=".MainActivity"
+            android:permission="android.permission.START_VIEW_PERMISSION_USAGE">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW_PERMISSION_USAGE" />
+                <category android:name="android.intent.category.HEALTH_PERMISSIONS" />
+            </intent-filter>
+        </activity-alias>
+
+        <!-- ── Main Activity ──────────────────────────────────────────────── -->
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -55,11 +145,14 @@
             <meta-data
                 android:name="io.flutter.embedding.android.NormalTheme"
                 android:resource="@style/NormalTheme" />
+
+            <!-- App launcher -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            <!-- Deep link support (configure scheme as needed) -->
+
+            <!-- App links (HTTPS deep links) — verified domain -->
             <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -68,20 +161,39 @@
                     android:scheme="https"
                     android:host="healthfitheal.com" />
             </intent-filter>
+
+            <!-- Custom scheme deep links (for email verification, password reset) -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:scheme="healthfitheal"
+                    android:host="auth" />
+            </intent-filter>
         </activity>
 
-        <!-- Don't delete the meta-data below. -->
-        <!-- This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->
+        <!-- ── Flutter Tool Metadata ──────────────────────────────────────── -->
+        <!-- Do not remove — used by the Flutter tool to generate GeneratedPluginRegistrant -->
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
     </application>
 
-    <!-- Required to query activities if on Android 11+ -->
+    <!-- ── Intent Queries (Android 11+ package visibility) ─────────────────── -->
     <queries>
+        <!-- Health Connect app -->
+        <package android:name="com.google.android.apps.healthdata" />
+        <!-- Text processing -->
         <intent>
             <action android:name="android.intent.action.PROCESS_TEXT" />
             <data android:mimeType="text/plain" />
         </intent>
+        <!-- Browser for deep links -->
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="https" />
+        </intent>
     </queries>
+
 </manifest>

@@ -1,8 +1,12 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../config/env/environment.dart';
 import '../../data/datasources/auth_local_datasource.dart';
 import '../../data/datasources/auth_remote_datasource.dart';
+import '../../data/datasources/firebase_auth_datasource.dart';
+import '../../data/datasources/firebase_auth_token_provider.dart';
 import '../../data/repositories/auth_repository_impl.dart';
+import '../../data/repositories/firebase_auth_repository_impl.dart';
 import '../../domain/entities/user_entity.dart';
 import '../../domain/repositories/auth_repository.dart';
 import '../../domain/usecases/check_auth_status_usecase.dart';
@@ -15,9 +19,34 @@ import '../../services/session_service.dart';
 import 'auth_notifier.dart';
 import 'auth_state.dart';
 
-// ── Data Sources ──────────────────────────────────────────────────────────────
+// ══════════════════════════════════════════════════════════════════════════════
+// FIREBASE AUTH DATASOURCE
+// ══════════════════════════════════════════════════════════════════════════════
+
+/// Firebase Auth datasource — active when [Environment.enableFirebase] is true.
+final firebaseAuthDatasourceProvider = Provider<FirebaseAuthDatasource>(
+  (_) => FirebaseAuthDatasource(),
+  name: 'firebaseAuthDatasourceProvider',
+);
+
+/// Firebase-backed token provider for [AuthInterceptor].
+final firebaseAuthTokenProvider = Provider<FirebaseAuthTokenProvider>(
+  (ref) => FirebaseAuthTokenProvider(
+    firebaseAuth: ref.watch(firebaseAuthDatasourceProvider),
+  ),
+  name: 'firebaseAuthTokenProvider',
+);
+
+// ══════════════════════════════════════════════════════════════════════════════
+// DATA SOURCES
+// ══════════════════════════════════════════════════════════════════════════════
 
 /// Remote data source provider.
+///
+/// When [Environment.enableFirebase] is true, uses the mock datasource
+/// as a pass-through — the Firebase datasource is wired directly into
+/// [AuthRepositoryImpl] via [firebaseAuthDatasourceProvider].
+/// When Firebase is disabled, mock is used for development.
 final authRemoteDatasourceProvider = Provider<AuthRemoteDatasource>(
   (ref) => AuthRemoteDatasource(),
   name: 'authRemoteDatasourceProvider',
@@ -29,18 +58,33 @@ final authLocalDatasourceProvider = Provider<AuthLocalDatasource>(
   name: 'authLocalDatasourceProvider',
 );
 
-// ── Repository ────────────────────────────────────────────────────────────────
+// ══════════════════════════════════════════════════════════════════════════════
+// REPOSITORY
+// ══════════════════════════════════════════════════════════════════════════════
 
-/// Auth repository provider — exposes the [AuthRepository] interface.
+/// Auth repository provider — selects the implementation based on environment.
+///
+/// Production (Firebase enabled): uses [FirebaseAuthDatasource] for all auth ops.
+/// Development (Firebase disabled): uses mock [AuthRemoteDatasource].
 final authRepositoryProvider = Provider<AuthRepository>(
-  (ref) => AuthRepositoryImpl(
-    remote: ref.watch(authRemoteDatasourceProvider),
-    local: ref.watch(authLocalDatasourceProvider),
-  ),
+  (ref) {
+    if (Environment.enableFirebase) {
+      return FirebaseAuthRepositoryImpl(
+        firebase: ref.watch(firebaseAuthDatasourceProvider),
+        local: ref.watch(authLocalDatasourceProvider),
+      );
+    }
+    return AuthRepositoryImpl(
+      remote: ref.watch(authRemoteDatasourceProvider),
+      local: ref.watch(authLocalDatasourceProvider),
+    );
+  },
   name: 'authRepositoryProvider',
 );
 
-// ── Use Cases ─────────────────────────────────────────────────────────────────
+// ══════════════════════════════════════════════════════════════════════════════
+// USE CASES
+// ══════════════════════════════════════════════════════════════════════════════
 
 final loginUseCaseProvider = Provider<LoginUseCase>(
   (ref) => LoginUseCase(ref.watch(authRepositoryProvider)),
@@ -72,13 +116,12 @@ final checkAuthStatusUseCaseProvider = Provider<CheckAuthStatusUseCase>(
   name: 'checkAuthStatusUseCaseProvider',
 );
 
-// ── Auth Notifier ─────────────────────────────────────────────────────────────
+// ══════════════════════════════════════════════════════════════════════════════
+// AUTH NOTIFIER
+// ══════════════════════════════════════════════════════════════════════════════
 
 /// The primary auth state provider.
-///
-/// Watch this in the router, app bar, and any auth-gated widget.
-final authNotifierProvider =
-    StateNotifierProvider<AuthNotifier, AuthState>(
+final authNotifierProvider = StateNotifierProvider<AuthNotifier, AuthState>(
   (ref) => AuthNotifier(
     loginUseCase: ref.watch(loginUseCaseProvider),
     registerUseCase: ref.watch(registerUseCaseProvider),
@@ -90,29 +133,29 @@ final authNotifierProvider =
   name: 'authNotifierProvider',
 );
 
-// ── Convenience Selectors ─────────────────────────────────────────────────────
+// ══════════════════════════════════════════════════════════════════════════════
+// CONVENIENCE SELECTORS
+// ══════════════════════════════════════════════════════════════════════════════
 
-/// Provides the current [UserEntity] or null if not authenticated.
 final currentUserProvider = Provider<UserEntity?>(
   (ref) => ref.watch(authNotifierProvider).user,
   name: 'currentUserProvider',
 );
 
-/// True when a valid session exists.
 final isAuthenticatedProvider = Provider<bool>(
   (ref) => ref.watch(authNotifierProvider).isAuthenticated,
   name: 'isAuthenticatedProvider',
 );
 
-/// True when an auth operation is in progress.
 final authIsLoadingProvider = Provider<bool>(
   (ref) => ref.watch(authNotifierProvider).isLoading,
   name: 'authIsLoadingProvider',
 );
 
-// ── Session Service ────────────────────────────────────────────────────────────
+// ══════════════════════════════════════════════════════════════════════════════
+// SESSION SERVICE
+// ══════════════════════════════════════════════════════════════════════════════
 
-/// Session service provider.
 final sessionServiceProvider = Provider<SessionService>(
   (ref) => SessionService(
     localDatasource: ref.watch(authLocalDatasourceProvider),

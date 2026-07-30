@@ -148,6 +148,23 @@ class AuthLocalDatasource {
     return (box.get(AppConstants.hiveOnboardingCompletedKey) as bool?) ?? false;
   }
 
+  // ── Firebase Helpers ──────────────────────────────────────────────────────
+
+  /// Builds an [AuthTokenModel] from a Firebase ID token.
+  ///
+  /// Firebase manages refresh internally — no refresh token is stored.
+  AuthTokenModel buildTokenFromIdToken({
+    required String idToken,
+    required DateTime expiresAt,
+  }) {
+    return AuthTokenModel(
+      accessToken: idToken,
+      refreshToken: '', // Firebase SDK handles refresh
+      expiresAt: expiresAt,
+      tokenType: 'Bearer',
+    );
+  }
+
   // ── Full Clear ────────────────────────────────────────────────────────────
 
   /// Clears all auth-related local data (called on logout).

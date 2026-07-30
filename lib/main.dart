@@ -6,16 +6,21 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'config/env/environment.dart';
 import 'core/router/app_router.dart';
-import 'core/storage/hive_service.dart';
 import 'core/utils/app_logger.dart';
-import 'features/notifications/data/services/background_service.dart';
-import 'features/notifications/data/services/notification_service.dart';
 import 'features/profile/domain/entities/profile_entity.dart';
 import 'features/profile/presentation/providers/profile_providers.dart';
+import 'injection_container.dart';
 import 'theme/app_theme.dart';
 
+/// Entry point for HealthFit Heal.
+///
+/// Startup sequence:
+///   1. Flutter bindings
+///   2. System UI / orientation lock
+///   3. [InjectionContainer.initialize] — all services in dependency order
+///   4. [runApp] with [ProviderScope] + provider overrides
 Future<void> main() async {
-  // Ensure Flutter bindings are initialised before any platform calls
+  // ── Bindings ───────────────────────────────────────────────────────────────
   WidgetsFlutterBinding.ensureInitialized();
 
   // ── System UI ──────────────────────────────────────────────────────────────
@@ -24,44 +29,27 @@ Future<void> main() async {
     DeviceOrientation.portraitDown,
   ]);
 
-  // ── Initialise Services ────────────────────────────────────────────────────
-  await _initServices();
+  await SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+
+  // ── Initialise All Services ────────────────────────────────────────────────
+  final providerOverrides = await InjectionContainer.initialize();
+
+  log.info(
+    '╔════════════════════════════════════════╗\n'
+    '║      HealthFit Heal — Starting         ║\n'
+    '║  env=${Environment.name.padRight(35)}║\n'
+    '║  ai =${Environment.aiProvider.padRight(35)}║\n'
+    '║  fb =${Environment.enableFirebase.toString().padRight(35)}║\n'
+    '╚════════════════════════════════════════╝',
+  );
 
   // ── Run App ────────────────────────────────────────────────────────────────
   runApp(
-    const ProviderScope(
-      child: HealthFitHealApp(),
+    ProviderScope(
+      overrides: providerOverrides,
+      child: const HealthFitHealApp(),
     ),
   );
-}
-
-/// Initialises all services required before [runApp].
-Future<void> _initServices() async {
-  log.info(
-    'Starting HealthFit Heal — '
-    'env=${Environment.name} '
-    'baseUrl=${Environment.baseUrl}',
-  );
-
-  // ── Hive (local storage) ───────────────────────────────────────────────────
-  await HiveService.instance.init();
-
-  // ── Notification Service ───────────────────────────────────────────────────
-  // Mock mode: no platform permissions requested at startup.
-  // To activate real notifications, add flutter_local_notifications to
-  // pubspec.yaml and configure AndroidManifest/Info.plist (see NotificationService).
-  await NotificationService.instance.initialize();
-
-  // ── Background Service ────────────────────────────────────────────────────
-  // Registers all background task handlers (mock implementations).
-  // To activate real background tasks, add workmanager and call
-  // schedulePeriodicTask for each BackgroundTaskType in BackgroundService.
-  await BackgroundService.instance.initialize();
-
-  // ── Firebase (placeholder — uncomment when configured) ────────────────────
-  // await FirebaseConfig.init();
-
-  log.info('Services initialised successfully.');
 }
 
 /// Root application widget for HealthFit Heal.
@@ -92,7 +80,6 @@ class HealthFitHealApp extends ConsumerWidget {
       // TODO: Add flutter_localizations when i18n is implemented.
       // localizationsDelegates: AppLocalizations.localizationsDelegates,
       // supportedLocales: AppLocalizations.supportedLocales,
-      // locale: ref.watch(localeProvider),
     );
   }
 }

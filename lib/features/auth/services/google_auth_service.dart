@@ -1,12 +1,17 @@
+import 'package:google_sign_in/google_sign_in.dart';
+
 import '../../../core/utils/app_logger.dart';
 
 /// Google OAuth sign-in service for HealthFit Heal.
 ///
-/// This is an architecture placeholder. Full implementation requires:
-///   1. Add `google_sign_in: ^6.x` to pubspec.yaml
-///   2. Configure Firebase project and `google-services.json`
-///   3. Add SHA-1 certificate fingerprint to Firebase Console
-///   4. Uncomment the implementation below
+/// Uses the `google_sign_in` package to handle the native Google Sign-In
+/// flow on Android. The returned [GoogleSignInResult] contains the
+/// Google ID token used to create a Firebase Auth credential.
+///
+/// ── Required setup ─────────────────────────────────────────────────────────
+///   1. Add SHA-1 + SHA-256 fingerprints to Firebase Console → Android app
+///   2. Download updated google-services.json → android/app/
+///   3. Ensure android/app/build.gradle has google-services plugin applied
 ///
 /// See: https://firebase.flutter.dev/docs/auth/social#google
 class GoogleAuthService {
@@ -17,63 +22,116 @@ class GoogleAuthService {
   /// Singleton instance.
   static GoogleAuthService get instance => _instance;
 
-  // TODO: Uncomment when google_sign_in is added to pubspec.yaml
-  // final GoogleSignIn _googleSignIn = GoogleSignIn(
-  //   scopes: ['email', 'profile'],
-  // );
+  final GoogleSignIn _googleSignIn = GoogleSignIn(
+    scopes: ['email', 'profile'],
+    // Server client ID from google-services.json
+    // serverClientId: 'YOUR_WEB_CLIENT_ID.apps.googleusercontent.com',
+  );
+
+  // ── Sign In ────────────────────────────────────────────────────────────────
 
   /// Initiates the Google Sign-In flow and returns a [GoogleSignInResult].
   ///
-  /// Throws [GoogleAuthException] if the sign-in is cancelled or fails.
+  /// Returns the Google ID token and access token for Firebase credential creation.
+  /// Throws [GoogleAuthException] if the flow fails or is cancelled.
   Future<GoogleSignInResult> signIn() async {
-    // TODO: Implement with google_sign_in package.
-    //
-    // final account = await _googleSignIn.signIn();
-    // if (account == null) throw GoogleAuthException.cancelled();
-    //
-    // final auth = await account.authentication;
-    // final idToken = auth.idToken;
-    // if (idToken == null) throw GoogleAuthException.noToken();
-    //
-    // return GoogleSignInResult(
-    //   idToken: idToken,
-    //   email: account.email,
-    //   displayName: account.displayName ?? '',
-    //   photoUrl: account.photoUrl,
-    // );
+    try {
+      // Trigger the Google sign-in dialog
+      final account = await _googleSignIn.signIn();
 
-    log.warning('GoogleAuthService.signIn() — NOT YET IMPLEMENTED');
-    throw UnimplementedError(
-      'Google Sign-In is not yet configured. '
-      'Add google_sign_in to pubspec.yaml and configure Firebase.',
-    );
+      if (account == null) {
+        log.info('GoogleAuthService: user cancelled sign-in');
+        throw GoogleAuthException.cancelled();
+      }
+
+      log.info('GoogleAuthService: account selected — ${account.email}');
+
+      // Obtain auth tokens
+      final auth = await account.authentication;
+      final idToken = auth.idToken;
+      final accessToken = auth.accessToken;
+
+      if (idToken == null) {
+        log.error('GoogleAuthService: no ID token returned');
+        throw GoogleAuthException.noToken();
+      }
+
+      return GoogleSignInResult(
+        idToken: idToken,
+        accessToken: accessToken,
+        email: account.email,
+        displayName: account.displayName ?? '',
+        photoUrl: account.photoUrl,
+      );
+    } on GoogleAuthException {
+      rethrow;
+    } catch (e, st) {
+      log.error('GoogleAuthService: sign-in failed', error: e, stackTrace: st);
+      throw GoogleAuthException(e.toString());
+    }
   }
 
-  /// Signs out of Google.
+  // ── Sign Out ───────────────────────────────────────────────────────────────
+
+  /// Signs out of Google (clears cached account).
   Future<void> signOut() async {
-    // TODO: Uncomment when implemented.
-    // await _googleSignIn.signOut();
-    log.info('GoogleAuthService.signOut() called (no-op until implemented)');
+    try {
+      await _googleSignIn.signOut();
+      log.info('GoogleAuthService: signed out');
+    } catch (e) {
+      log.warning('GoogleAuthService: sign-out error', error: e);
+    }
+  }
+
+  // ── Silent Sign-In ────────────────────────────────────────────────────────
+
+  /// Attempts a silent sign-in (no UI) to restore a previous session.
+  Future<GoogleSignInResult?> signInSilently() async {
+    try {
+      final account = await _googleSignIn.signInSilently();
+      if (account == null) return null;
+
+      final auth = await account.authentication;
+      final idToken = auth.idToken;
+      final accessToken = auth.accessToken;
+
+      if (idToken == null) return null;
+
+      return GoogleSignInResult(
+        idToken: idToken,
+        accessToken: accessToken,
+        email: account.email,
+        displayName: account.displayName ?? '',
+        photoUrl: account.photoUrl,
+      );
+    } catch (_) {
+      return null;
+    }
   }
 
   /// Returns true if the user is currently signed in to Google.
-  Future<bool> isSignedIn() async {
-    // TODO: return await _googleSignIn.isSignedIn();
-    return false;
-  }
+  Future<bool> isSignedIn() => _googleSignIn.isSignedIn();
 }
 
-/// Result of a successful Google Sign-In.
+// ══════════════════════════════════════════════════════════════════════════════
+// VALUE OBJECTS
+// ══════════════════════════════════════════════════════════════════════════════
+
+/// Result of a successful Google Sign-In flow.
 class GoogleSignInResult {
   const GoogleSignInResult({
     required this.idToken,
+    this.accessToken,
     required this.email,
     required this.displayName,
     this.photoUrl,
   });
 
-  /// The Google ID token to exchange for app tokens.
+  /// Google ID token — used to create a Firebase Auth credential.
   final String idToken;
+
+  /// Google access token (optional — may be null on some platforms).
+  final String? accessToken;
 
   final String email;
   final String displayName;
@@ -89,9 +147,8 @@ class GoogleAuthException implements Exception {
   factory GoogleAuthException.cancelled() =>
       const GoogleAuthException('Google sign-in was cancelled.');
 
-  factory GoogleAuthException.noToken() => const GoogleAuthException(
-        'Failed to obtain Google authentication token.',
-      );
+  factory GoogleAuthException.noToken() =>
+      const GoogleAuthException('Failed to obtain Google authentication token.');
 
   @override
   String toString() => 'GoogleAuthException: $message';

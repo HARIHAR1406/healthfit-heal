@@ -1,3 +1,4 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
 
 import '../../config/env/environment.dart';
@@ -5,35 +6,76 @@ import '../../core/constants/app_constants.dart';
 import '../../core/errors/app_exception.dart';
 import '../../core/utils/app_logger.dart';
 import 'interceptors/auth_interceptor.dart';
+import 'interceptors/connectivity_interceptor.dart';
 import 'interceptors/logging_interceptor.dart';
+import 'interceptors/performance_interceptor.dart';
+import 'interceptors/retry_interceptor.dart';
+import 'token_provider.dart';
 
-/// Configured [Dio] HTTP client factory for HealthFit Heal.
+/// Production-ready [Dio] HTTP client factory for HealthFit Heal.
 ///
-/// All network calls in the app should use an instance returned
-/// by [DioClient.instance]. Interceptors are applied in order:
-///   1. [LoggingInterceptor] — logs requests/responses.
-///   2. [AuthInterceptor]   — attaches bearer token & handles 401 refresh.
+/// ── Interceptor order (applied sequentially) ─────────────────────────────────
+///   1. [ConnectivityInterceptor] — rejects immediately if offline
+///   2. [LoggingInterceptor]     — logs requests (PII-safe in production)
+///   3. [AuthInterceptor]        — attaches Bearer token + handles 401 refresh
+///   4. [RetryInterceptor]       — retries on 5xx / timeouts with backoff
+///   5. [PerformanceInterceptor] — records Firebase Performance metrics
+///
+/// ── Instances ─────────────────────────────────────────────────────────────────
+///   [DioClient.authenticated]   — with token injection (most API calls)
+///   [DioClient.unauthenticated] — without token (public endpoints, file uploads)
 class DioClient {
   DioClient._();
 
-  static Dio? _dio;
+  static Dio? _authenticated;
+  static Dio? _unauthenticated;
 
-  /// Returns the singleton [Dio] instance, creating it on first call.
-  static Dio get instance {
-    _dio ??= _create();
-    return _dio!;
+  // ── Active Token Provider ──────────────────────────────────────────────────
+
+  /// Set this before creating instances to inject the token provider.
+  /// Called by [InjectionContainer] on app startup.
+  static TokenProvider _tokenProvider = const NoOpTokenProvider();
+
+  static void setTokenProvider(TokenProvider provider) {
+    _tokenProvider = provider;
+    // Reset instances so they pick up the new provider
+    reset();
+    log.info('DioClient: token provider updated → ${provider.runtimeType}');
   }
 
-  /// Re-creates the [Dio] instance (use after logout to clear auth state).
-  static void reset() => _dio = null;
+  // ── Instance Access ────────────────────────────────────────────────────────
 
-  static Dio _create() {
+  /// Authenticated Dio instance (attaches Bearer token, handles refresh).
+  static Dio get instance => authenticated;
+
+  /// Authenticated Dio instance.
+  static Dio get authenticated {
+    _authenticated ??= _create(withAuth: true);
+    return _authenticated!;
+  }
+
+  /// Unauthenticated Dio instance — for public endpoints and file uploads.
+  static Dio get unauthenticated {
+    _unauthenticated ??= _create(withAuth: false);
+    return _unauthenticated!;
+  }
+
+  /// Re-creates all instances (called on logout or token provider change).
+  static void reset() {
+    _authenticated = null;
+    _unauthenticated = null;
+    log.info('DioClient: instances reset');
+  }
+
+  // ── Factory ────────────────────────────────────────────────────────────────
+
+  static Dio _create({required bool withAuth}) {
     final dio = Dio(
       BaseOptions(
         baseUrl: Environment.baseUrl,
-        connectTimeout: AppConstants.connectTimeout,
-        receiveTimeout: AppConstants.receiveTimeout,
-        sendTimeout: AppConstants.sendTimeout,
+        connectTimeout: Environment.connectTimeout,
+        receiveTimeout: Environment.receiveTimeout,
+        sendTimeout: Environment.sendTimeout,
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json',
@@ -44,18 +86,24 @@ class DioClient {
       ),
     );
 
-    // ── Interceptors (order matters) ──────────────────────────────────────
+    // ── Interceptors (order matters) ─────────────────────────────────────────
     dio.interceptors.addAll([
+      ConnectivityInterceptor(Connectivity()),
       LoggingInterceptor(),
-      AuthInterceptor(dio),
+      if (withAuth) AuthInterceptor(dio, _tokenProvider),
+      RetryInterceptor(dio: dio),
+      if (Environment.enablePerformanceMonitoring) PerformanceInterceptor(),
     ]);
 
-    log.info('DioClient created → ${Environment.baseUrl}');
+    log.info(
+      'DioClient: created '
+      '(auth=$withAuth, env=${Environment.name}, base=${Environment.baseUrl})',
+    );
     return dio;
   }
 }
 
-/// Maps a [DioException] to an [AppException].
+/// Maps a [DioException] to a typed [AppException].
 AppException mapDioException(DioException e) {
   switch (e.type) {
     case DioExceptionType.connectionTimeout:
@@ -64,6 +112,8 @@ AppException mapDioException(DioException e) {
       return const TimeoutException();
 
     case DioExceptionType.connectionError:
+      // Check if this is an offline rejection from ConnectivityInterceptor
+      if (e.error is NetworkException) return e.error as NetworkException;
       return const NetworkException();
 
     case DioExceptionType.badResponse:
@@ -78,6 +128,11 @@ AppException mapDioException(DioException e) {
         404 => const NotFoundException(),
         409 => ConflictException(message: message),
         422 => ValidationException(message: message),
+        429 => const ServerException(
+            message: 'Too many requests. Please try again later.',
+            statusCode: 429,
+            code: 'RATE_LIMITED',
+          ),
         _ => ServerException(
             message: message,
             statusCode: statusCode,

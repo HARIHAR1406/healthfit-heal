@@ -1,34 +1,44 @@
 import 'package:dio/dio.dart';
 
-import '../../../core/constants/app_constants.dart';
-import '../../../core/storage/secure_storage_service.dart';
 import '../../../core/utils/app_logger.dart';
+import '../token_provider.dart';
 
-/// Dio interceptor that attaches the Bearer token and handles token refresh.
+/// Dio interceptor that attaches Bearer tokens and handles 401 token refresh.
 ///
-/// On every request, the stored [accessToken] is added to the
-/// `Authorization` header. When a 401 is received, a single token
-/// refresh attempt is made using the [refreshToken]. If that also
-/// fails, the user should be redirected to the login screen.
+/// Uses [TokenProvider] for token retrieval — decoupled from Firebase or
+/// custom backend, so this interceptor works with any auth strategy.
+///
+/// Flow:
+///   1. onRequest  → read token from [TokenProvider], add to Authorization header
+///   2. onError(401) → call [TokenProvider.refreshAccessToken()] once
+///   3. If refresh succeeds → retry original request with new token
+///   4. If refresh fails   → clear tokens + let the error propagate
 class AuthInterceptor extends Interceptor {
-  AuthInterceptor(this._dio);
+  AuthInterceptor(this._dio, this._tokenProvider);
 
   final Dio _dio;
+  final TokenProvider _tokenProvider;
   bool _isRefreshing = false;
+
+  /// Auth endpoint paths that should NOT receive a token header.
+  static const _authPaths = {
+    '/auth/login',
+    '/auth/register',
+    '/auth/refresh',
+    '/auth/forgot-password',
+    '/auth/google',
+  };
 
   @override
   Future<void> onRequest(
     RequestOptions options,
     RequestInterceptorHandler handler,
   ) async {
-    // Do not attach token to auth endpoints
     if (_isAuthEndpoint(options.path)) {
       return handler.next(options);
     }
 
-    final token = await SecureStorageService.instance.read(
-      AppConstants.secureKeyAccessToken,
-    );
+    final token = await _tokenProvider.getAccessToken();
 
     if (token != null && token.isNotEmpty) {
       options.headers['Authorization'] = 'Bearer $token';
@@ -42,7 +52,6 @@ class AuthInterceptor extends Interceptor {
     DioException err,
     ErrorInterceptorHandler handler,
   ) async {
-    // Only attempt refresh on 401 from non-auth endpoints
     if (err.response?.statusCode != 401 ||
         _isAuthEndpoint(err.requestOptions.path) ||
         _isRefreshing) {
@@ -50,55 +59,25 @@ class AuthInterceptor extends Interceptor {
     }
 
     _isRefreshing = true;
-    log.info('Access token expired — attempting refresh…');
+    log.info('AuthInterceptor: 401 received — attempting token refresh…');
 
     try {
-      final refreshToken = await SecureStorageService.instance.read(
-        AppConstants.secureKeyRefreshToken,
-      );
+      final newToken = await _tokenProvider.refreshAccessToken();
 
-      if (refreshToken == null || refreshToken.isEmpty) {
-        log.warning('No refresh token found — clearing session.');
-        await _clearSession();
+      if (newToken == null || newToken.isEmpty) {
+        log.warning('AuthInterceptor: refresh returned no token — clearing session');
+        await _tokenProvider.clearTokens();
         _isRefreshing = false;
         return handler.next(err);
       }
 
-      // ── Token refresh call ──────────────────────────────────────────────
-      final response = await _dio.post<Map<String, dynamic>>(
-        '/auth/refresh',
-        data: {'refresh_token': refreshToken},
-      );
-
-      final newAccessToken =
-          (response.data?['access_token'] as String?) ?? '';
-      final newRefreshToken =
-          (response.data?['refresh_token'] as String?) ?? '';
-
-      if (newAccessToken.isEmpty) {
-        await _clearSession();
-        _isRefreshing = false;
-        return handler.next(err);
-      }
-
-      await SecureStorageService.instance.write(
-        AppConstants.secureKeyAccessToken,
-        newAccessToken,
-      );
-      if (newRefreshToken.isNotEmpty) {
-        await SecureStorageService.instance.write(
-          AppConstants.secureKeyRefreshToken,
-          newRefreshToken,
-        );
-      }
-
-      log.info('Token refreshed successfully.');
+      log.info('AuthInterceptor: token refreshed — retrying original request');
 
       // Retry the original request with the new token
       final retryOptions = err.requestOptions.copyWith(
         headers: {
           ...err.requestOptions.headers,
-          'Authorization': 'Bearer $newAccessToken',
+          'Authorization': 'Bearer $newToken',
         },
       );
 
@@ -106,21 +85,13 @@ class AuthInterceptor extends Interceptor {
       _isRefreshing = false;
       return handler.resolve(retryResponse);
     } catch (e) {
-      log.error('Token refresh failed.', error: e);
-      await _clearSession();
+      log.error('AuthInterceptor: token refresh failed — clearing session', error: e);
+      await _tokenProvider.clearTokens();
       _isRefreshing = false;
       handler.next(err);
     }
   }
 
-  Future<void> _clearSession() async {
-    await SecureStorageService.instance.deleteAll();
-    // TODO: Dispatch a global auth-failure event or navigate to login.
-    // Example: ref.read(authNotifierProvider.notifier).signOut();
-  }
-
   bool _isAuthEndpoint(String path) =>
-      path.contains('/auth/login') ||
-      path.contains('/auth/register') ||
-      path.contains('/auth/refresh');
+      _authPaths.any((p) => path.contains(p));
 }

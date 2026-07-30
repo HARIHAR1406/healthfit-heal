@@ -1,59 +1,149 @@
-/// Firebase configuration placeholder for HealthFit Heal.
+import 'dart:ui';
+
+import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:firebase_performance/firebase_performance.dart';
+import 'package:firebase_remote_config/firebase_remote_config.dart';
+import 'package:flutter/foundation.dart';
+
+import '../../core/utils/app_logger.dart';
+import '../env/environment.dart';
+
+/// Full Firebase initialization and service configuration for HealthFit Heal.
 ///
-/// Firebase is scaffolded but NOT initialised yet.
-/// To activate Firebase:
-///   1. Create a Firebase project at https://console.firebase.google.com
-///   2. Run `flutterfire configure` to generate google-services.json
-///      and replace the placeholder in android/app/google-services.json
-///   3. Uncomment [FirebaseConfig.init] and add `await FirebaseConfig.init()`
-///      to [main.dart] before [runApp].
-///   4. Add required Firebase service packages (e.g. firebase_auth,
-///      cloud_firestore, firebase_messaging) to pubspec.yaml.
+/// ── How to activate ─────────────────────────────────────────────────────────
+/// 1. Create a Firebase project at https://console.firebase.google.com
+/// 2. Run: `flutterfire configure --project=your-project-id`
+///    This generates `firebase_options.dart` and `android/app/google-services.json`
+/// 3. Set `--dart-define=FIREBASE_ENABLED=true` in your build command
+/// 4. Call `await FirebaseConfig.init()` in main() before runApp()
+///
+/// ── Required Firebase Console setup ─────────────────────────────────────────
+/// • Enable Email/Password + Google auth providers
+/// • Create Firestore database (start in production mode)
+/// • Enable Firebase Storage
+/// • Enable Cloud Messaging
+/// • Enable Crashlytics
+/// • Enable Analytics (linked to Crashlytics)
+/// • Enable Remote Config
+/// • Enable Performance Monitoring
 ///
 /// See: https://firebase.flutter.dev/docs/overview
 abstract final class FirebaseConfig {
-  // ── Feature Flags ─────────────────────────────────────────────────────────
-  static const bool enableAnalytics = false;
-  static const bool enableCrashlytics = false;
-  static const bool enableRemoteConfig = false;
-  static const bool enableMessaging = false;
-  static const bool enablePerformance = false;
+  // ── Feature Flags ──────────────────────────────────────────────────────────
+  static bool get enableAnalytics => !kDebugMode;
+  static bool get enableCrashlytics => !kDebugMode;
+  static const bool enableRemoteConfig = true;
+  static const bool enableMessaging = true;
+  static bool get enablePerformance => !kDebugMode;
 
-  // ── Initialisation ────────────────────────────────────────────────────────
-  // TODO: Uncomment when Firebase is configured.
-  //
-  // static Future<void> init() async {
-  //   await Firebase.initializeApp(
-  //     options: DefaultFirebaseOptions.currentPlatform,
-  //   );
-  //
-  //   if (enableCrashlytics) {
-  //     await FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(
-  //       !kDebugMode,
-  //     );
-  //     FlutterError.onError =
-  //         FirebaseCrashlytics.instance.recordFlutterFatalError;
-  //     PlatformDispatcher.instance.onError = (error, stack) {
-  //       FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
-  //       return true;
-  //     };
-  //   }
-  //
-  //   if (enableAnalytics) {
-  //     await FirebaseAnalytics.instance.setAnalyticsCollectionEnabled(
-  //       !kDebugMode,
-  //     );
-  //   }
-  //
-  //   if (enableRemoteConfig) {
-  //     final remoteConfig = FirebaseRemoteConfig.instance;
-  //     await remoteConfig.setConfigSettings(
-  //       RemoteConfigSettings(
-  //         fetchTimeout: const Duration(seconds: 10),
-  //         minimumFetchInterval: const Duration(hours: 1),
-  //       ),
-  //     );
-  //     await remoteConfig.fetchAndActivate();
-  //   }
-  // }
+  // ── Remote Config Defaults ─────────────────────────────────────────────────
+  static const Map<String, dynamic> _remoteConfigDefaults = {
+    'ai_provider': 'mock',
+    'ai_model': 'gemini-1.5-flash',
+    'max_ai_messages_per_session': 50,
+    'health_sync_interval_minutes': 30,
+    'offline_queue_max_size': 500,
+    'force_update_required': false,
+    'minimum_app_version': '1.0.0',
+    'maintenance_mode': false,
+    'feature_health_connect': true,
+    'feature_ai_coach': true,
+    'feature_reports': true,
+    'feature_nutrition_ai': false,
+  };
+
+  // ── Initialisation ─────────────────────────────────────────────────────────
+
+  /// Initialises all Firebase services.
+  ///
+  /// Must be called after [WidgetsFlutterBinding.ensureInitialized()]
+  /// and before [runApp()].
+  static Future<void> init() async {
+    try {
+      // Core Firebase init — uses generated firebase_options.dart
+      // Generated by: flutterfire configure
+      await Firebase.initializeApp(
+        // options: DefaultFirebaseOptions.currentPlatform,
+        // TODO: Uncomment after running `flutterfire configure`
+      );
+
+      await Future.wait([
+        if (enableCrashlytics) _initCrashlytics(),
+        if (enableAnalytics) _initAnalytics(),
+        if (enableRemoteConfig) _initRemoteConfig(),
+        if (enablePerformance) _initPerformance(),
+      ]);
+
+      log.info('FirebaseConfig: all services initialised (env=${Environment.name})');
+    } catch (e, st) {
+      log.error('FirebaseConfig: initialization failed', error: e, stackTrace: st);
+      rethrow;
+    }
+  }
+
+  // ── Crashlytics ────────────────────────────────────────────────────────────
+
+  static Future<void> _initCrashlytics() async {
+    final crashlytics = FirebaseCrashlytics.instance;
+
+    await crashlytics.setCrashlyticsCollectionEnabled(!kDebugMode);
+
+    // Capture Flutter framework errors
+    FlutterError.onError = (FlutterErrorDetails details) {
+      if (kDebugMode) {
+        FlutterError.presentError(details);
+      } else {
+        crashlytics.recordFlutterFatalError(details);
+      }
+    };
+
+    // Capture errors from the Dart layer (isolates, async gaps, etc.)
+    PlatformDispatcher.instance.onError = (Object error, StackTrace stack) {
+      crashlytics.recordError(error, stack, fatal: true);
+      return true;
+    };
+
+    log.info('Crashlytics: initialised (collection=${!kDebugMode})');
+  }
+
+  // ── Analytics ─────────────────────────────────────────────────────────────
+
+  static Future<void> _initAnalytics() async {
+    await FirebaseAnalytics.instance.setAnalyticsCollectionEnabled(!kDebugMode);
+    log.info('Analytics: collection enabled=${!kDebugMode}');
+  }
+
+  // ── Remote Config ──────────────────────────────────────────────────────────
+
+  static Future<void> _initRemoteConfig() async {
+    final remoteConfig = FirebaseRemoteConfig.instance;
+
+    await remoteConfig.setDefaults(_remoteConfigDefaults);
+
+    await remoteConfig.setConfigSettings(
+      RemoteConfigSettings(
+        fetchTimeout: const Duration(seconds: 15),
+        minimumFetchInterval: Environment.isProduction
+            ? const Duration(hours: 1)
+            : const Duration(seconds: 30), // fast refresh in dev/staging
+      ),
+    );
+
+    await remoteConfig.fetchAndActivate();
+
+    log.info(
+      'RemoteConfig: fetched and activated '
+      '(lastFetch=${remoteConfig.lastFetchTime})',
+    );
+  }
+
+  // ── Performance Monitoring ─────────────────────────────────────────────────
+
+  static Future<void> _initPerformance() async {
+    await FirebasePerformance.instance
+        .setPerformanceCollectionEnabled(!kDebugMode);
+    log.info('Performance: monitoring enabled=${!kDebugMode}');
+  }
 }

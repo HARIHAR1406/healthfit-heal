@@ -1,5 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../config/env/environment.dart';
+import '../../../data/providers/gemini_ai_provider.dart';
+import '../../../data/providers/openai_ai_provider.dart';
 import '../../../data/repositories/mock_ai_repository.dart';
 import '../../../domain/entities/ai_insight_entity.dart';
 import '../../../domain/entities/conversation_entity.dart';
@@ -9,8 +12,9 @@ import '../../../domain/repositories/ai_repository.dart';
 import 'ai_notifier.dart';
 import 'ai_state.dart';
 
-// ── Repository Provider ────────────────────────────────────────────────────────
-// To switch to Gemini/OpenAI, replace MockAIRepository with your implementation.
+// ══════════════════════════════════════════════════════════════════════════════
+// AI PROVIDER SELECTION
+// ══════════════════════════════════════════════════════════════════════════════
 
 final _mockRepoProvider = Provider<MockAIRepository>((ref) {
   final repo = MockAIRepository();
@@ -18,8 +22,21 @@ final _mockRepoProvider = Provider<MockAIRepository>((ref) {
   return repo;
 }, name: 'mockAIRepo');
 
+/// Environment-based AI repository provider.
+///
+/// Routes to the correct AI implementation based on [Environment.aiProvider]:
+///   - 'gemini' → [GeminiAIProvider] (requires GEMINI_API_KEY dart-define)
+///   - 'openai' → [OpenAIProvider]   (requires OPENAI_API_KEY dart-define)
+///   - 'mock'   → [MockAIRepository]  (default, no keys needed)
+///
+/// Switch providers without changing any UI code:
+///   flutter run --dart-define=AI_PROVIDER=gemini --dart-define=GEMINI_API_KEY=xyz
 final aiRepositoryProvider = Provider<AIRepository>(
-  (ref) => ref.watch(_mockRepoProvider),
+  (ref) => switch (Environment.aiProvider) {
+    'gemini' => GeminiAIProvider(),
+    'openai' => OpenAIProvider(),
+    _ => ref.watch(_mockRepoProvider),
+  },
   name: 'aiRepositoryProvider',
 );
 
