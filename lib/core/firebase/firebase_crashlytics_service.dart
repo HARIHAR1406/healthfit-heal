@@ -1,7 +1,7 @@
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 
-import '../../utils/app_logger.dart';
+import '../utils/app_logger.dart';
 import '../../../config/env/environment.dart';
 
 /// Firebase Crashlytics service wrapper for HealthFit Heal.

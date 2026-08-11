@@ -77,7 +77,7 @@ class GeminiFoodVisionProvider implements FoodVisionService {
       log.debug(
         'GeminiFoodVisionProvider: sending image '
         '(${(imageBytes.length / 1024).toStringAsFixed(0)} KB) '
-        'to Gemini $\_model',
+        'to Gemini $_model',
       );
 
       final response = await _dio

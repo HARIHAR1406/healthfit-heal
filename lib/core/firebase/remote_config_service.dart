@@ -1,7 +1,7 @@
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../utils/app_logger.dart';
+import '../utils/app_logger.dart';
 
 /// Firebase Remote Config wrapper for HealthFit Heal.
 ///

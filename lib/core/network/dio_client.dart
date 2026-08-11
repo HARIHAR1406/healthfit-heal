@@ -109,6 +109,7 @@ AppException mapDioException(DioException e) {
     case DioExceptionType.connectionTimeout:
     case DioExceptionType.sendTimeout:
     case DioExceptionType.receiveTimeout:
+    case DioExceptionType.transformTimeout:
       return const TimeoutException();
 
     case DioExceptionType.connectionError:

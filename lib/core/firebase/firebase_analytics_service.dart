@@ -1,7 +1,7 @@
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/foundation.dart';
 
-import '../../utils/app_logger.dart';
+import '../utils/app_logger.dart';
 import '../../../config/env/environment.dart';
 
 /// Firebase Analytics service wrapper for HealthFit Heal.
