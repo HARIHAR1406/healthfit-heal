@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -26,8 +28,15 @@ import '../../features/fitness/presentation/pages/session_summary_page.dart';
 import '../../features/fitness/presentation/pages/workout_detail_page.dart';
 import '../../features/fitness/presentation/pages/workout_history_page.dart';
 import '../../features/fitness/presentation/pages/workout_library_page.dart';
+import '../../core/trust/domain/entities/meal_nutrition_result.dart';
+import '../../core/trust/domain/entities/trusted_recommendation.dart';
+import '../../core/trust/recommendation/recommendation_context.dart';
+import '../../features/nutrition/domain/entities/detected_food.dart';
 import '../../features/nutrition/presentation/pages/food_database_page.dart';
 import '../../features/nutrition/presentation/pages/food_detail_page.dart';
+import '../../features/nutrition/presentation/pages/food_detection_page.dart';
+import '../../features/nutrition/presentation/pages/food_scan_result_page.dart';
+import '../../features/nutrition/presentation/pages/food_scanner_page.dart';
 import '../../features/nutrition/presentation/pages/meal_planner_page.dart';
 import '../../features/nutrition/presentation/pages/nutrition_analytics_page.dart';
 import '../../features/nutrition/presentation/pages/nutrition_dashboard_page.dart';
@@ -416,6 +425,57 @@ GoRouter appRouter(Ref ref) {
                     path: 'analytics',
                     name: 'nutrition-analytics',
                     builder: (_, __) => const NutritionAnalyticsPage(),
+                  ),
+                  // ── Food Vision Scanner (Phase 13) ─────────────────────
+                  GoRoute(
+                    path: 'scan',
+                    name: 'food-scanner',
+                    builder: (_, __) => const FoodScannerPage(),
+                    routes: [
+                      GoRoute(
+                        path: 'detection',
+                        name: 'food-detection',
+                        builder: (_, state) {
+                          final extra =
+                              state.extra as Map<String, dynamic>?;
+                          return FoodDetectionPage(
+                            detectedFoods:
+                                (extra?['detectedFoods'] as List? ?? [])
+                                    .whereType<DetectedFood>()
+                                    .toList(),
+                            imageBytes:
+                                (extra?['imageBytes'] as Uint8List?) ??
+                                Uint8List(0),
+                            providerName:
+                                extra?['providerName'] as String? ?? 'Unknown',
+                            noFoodDetected:
+                                extra?['noFoodDetected'] as bool? ?? false,
+                          );
+                        },
+                      ),
+                      GoRoute(
+                        path: 'result',
+                        name: 'food-scan-result',
+                        builder: (_, state) {
+                          final extra =
+                              state.extra as Map<String, dynamic>;
+                          return FoodScanResultPage(
+                            imageBytes:
+                                extra['imageBytes'] as Uint8List,
+                            confirmedItems:
+                                (extra['confirmedItems'] as List)
+                                    .whereType<ConfirmedFoodItem>()
+                                    .toList(),
+                            mealResult:
+                                extra['mealResult'] as MealNutritionResult,
+                            recommendation:
+                                extra['recommendation'] as TrustedRecommendation,
+                            context:
+                                extra['context'] as RecommendationContext,
+                          );
+                        },
+                      ),
+                    ],
                   ),
                 ],
               ),

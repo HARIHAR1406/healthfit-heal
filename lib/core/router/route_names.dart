@@ -63,6 +63,11 @@ abstract final class RouteNames {
   static const String nutritionHistory = '/nutrition/history';
   static const String foodSearch = '/nutrition/search';
 
+  // ── Food Vision (Phase 13) ────────────────────────────────────────────────
+  static const String foodScanner = '/nutrition/scan';
+  static const String foodDetection = '/nutrition/scan/detection';
+  static const String foodScanResult = '/nutrition/scan/result';
+
   // ── AI Assistant ──────────────────────────────────────────────────────────
   static const String aiAssistant = '/ai-assistant';
   static const String aiChat = '/ai-assistant/chat/:id';

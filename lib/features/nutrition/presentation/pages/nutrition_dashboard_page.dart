@@ -99,6 +99,13 @@ class _Body extends ConsumerWidget {
               ),
             ),
             actions: [
+              // ── Phase 13: AI Food Vision scan entry ──────────────────────
+              IconButton(
+                icon: Icon(Icons.camera_enhance_rounded,
+                    color: AppColors.primary),
+                tooltip: 'Scan Food',
+                onPressed: () => context.push(RouteNames.foodScanner),
+              ),
               IconButton(
                 icon: Icon(Icons.analytics_outlined,
                     color: isDark
