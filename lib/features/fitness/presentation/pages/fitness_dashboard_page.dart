@@ -13,6 +13,7 @@ import '../providers/fitness_state.dart';
 import '../widgets/fitness_history_widgets.dart';
 import '../widgets/fitness_widgets.dart';
 import '../widgets/workout_card.dart';
+import '../widgets/adaptive_workout_card.dart';
 
 /// Fitness Module landing page — daily activity + quick actions + library preview.
 class FitnessDashboardPage extends ConsumerStatefulWidget {

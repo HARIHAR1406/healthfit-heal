@@ -8,6 +8,7 @@ import '../../../../design_system/spacing/app_spacing.dart';
 import '../../../../design_system/typography/app_typography.dart';
 import '../../domain/entities/workout_session_entity.dart';
 import '../providers/fitness_providers.dart';
+import '../providers/adaptive_workout_providers.dart';
 
 /// Post-workout summary shown when a session finishes.
 class SessionSummaryPage extends ConsumerWidget {
@@ -160,6 +161,8 @@ class SessionSummaryPage extends ConsumerWidget {
                 ),
               ),
 
+              const SizedBox(height: AppSpacing.xl),
+              _buildAdaptiveAnalysis(context, ref, isDark),
               const Spacer(),
 
               // ── Actions ─────────────────────────────────────────────────────
@@ -205,6 +208,59 @@ class SessionSummaryPage extends ConsumerWidget {
             ],
           ),
         ),
+      ),
+    );
+  }
+  Widget _buildAdaptiveAnalysis(BuildContext context, WidgetRef ref, bool isDark) {
+    final analysis = ref.watch(postWorkoutAnalysisProvider);
+    if (analysis == null) return const SizedBox.shrink();
+
+    final quality = analysis['quality'] as dynamic;
+    final adaptation = analysis['adaptation'] as dynamic;
+
+    return Container(
+      padding: const EdgeInsets.all(AppSpacing.lg),
+      decoration: BoxDecoration(
+        color: isDark ? AppColors.cardDark : AppColors.cardLight,
+        borderRadius: BorderRadius.circular(AppSpacing.radiusLg),
+        border: Border.all(
+          color: AppColors.primary.withValues(alpha: 0.3),
+        ),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              const Icon(Icons.analytics_rounded, size: 20, color: AppColors.primary),
+              const SizedBox(width: AppSpacing.sm),
+              Text(
+                'Session Analysis',
+                style: AppTypography.titleMedium.copyWith(fontWeight: FontWeight.bold),
+              ),
+              const Spacer(),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                decoration: BoxDecoration(
+                  color: quality.score > 80 ? AppColors.success.withValues(alpha: 0.2) : AppColors.warning.withValues(alpha: 0.2),
+                  borderRadius: BorderRadius.circular(AppSpacing.radiusSm),
+                ),
+                child: Text(
+                  'Score: ${quality.score}',
+                  style: AppTypography.labelSmall.copyWith(
+                    color: quality.score > 80 ? AppColors.success : AppColors.warning,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: AppSpacing.sm),
+          Text(
+            adaptation.reasoning,
+            style: AppTypography.bodySmall,
+          ),
+        ],
       ),
     );
   }
