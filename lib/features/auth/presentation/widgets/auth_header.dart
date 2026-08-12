@@ -35,7 +35,7 @@ class AuthHeader extends StatelessWidget {
           colors: [
             AppColors.primaryDark,
             AppColors.primary,
-            AppColors.tertiary.withValues(alpha: 0.8),
+            AppColors.tertiary.withOpacity(0.8),
           ],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
@@ -97,10 +97,10 @@ class _LogoBadge extends StatelessWidget {
       width: size,
       height: size,
       decoration: BoxDecoration(
-        color: AppColors.white.withValues(alpha: 0.2),
+        color: AppColors.white.withOpacity(0.2),
         borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
         border: Border.all(
-          color: AppColors.white.withValues(alpha: 0.4),
+          color: AppColors.white.withOpacity(0.4),
           width: AppSpacing.borderNormal,
         ),
       ),
@@ -136,7 +136,7 @@ class AuthLogo extends StatelessWidget {
         borderRadius: BorderRadius.circular(size * 0.25),
         boxShadow: [
           BoxShadow(
-            color: AppColors.primary.withValues(alpha: 0.4),
+            color: AppColors.primary.withOpacity(0.4),
             blurRadius: 24,
             spreadRadius: 4,
             offset: const Offset(0, 8),

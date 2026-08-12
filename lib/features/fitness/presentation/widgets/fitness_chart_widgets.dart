@@ -215,8 +215,8 @@ class CaloriesTrendChart extends StatelessWidget {
               show: true,
               gradient: LinearGradient(
                 colors: [
-                  color.withValues(alpha: 0.2),
-                  color.withValues(alpha: 0.0),
+                  color.withOpacity(0.2),
+                  color.withOpacity(0.0),
                 ],
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,

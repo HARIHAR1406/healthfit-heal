@@ -191,7 +191,7 @@ class _OverallScoreSection extends StatelessWidget {
           borderRadius: BorderRadius.circular(AppSpacing.radiusXxl),
           boxShadow: [
             BoxShadow(
-              color: AppColors.primary.withValues(alpha: 0.2),
+              color: AppColors.primary.withOpacity(0.2),
               blurRadius: 24,
               offset: const Offset(0, 8),
             ),
@@ -206,7 +206,7 @@ class _OverallScoreSection extends StatelessWidget {
                   Text(
                     'Overall Health Score',
                     style: AppTypography.titleSmall.copyWith(
-                      color: Colors.white.withValues(alpha: 0.8),
+                      color: Colors.white.withOpacity(0.8),
                     ),
                   ),
                   const SizedBox(height: AppSpacing.xs),
@@ -231,7 +231,7 @@ class _OverallScoreSection extends StatelessWidget {
                         child: Text(
                           ' / 100',
                           style: AppTypography.titleMedium.copyWith(
-                            color: Colors.white.withValues(alpha: 0.6),
+                            color: Colors.white.withOpacity(0.6),
                           ),
                         ),
                       ),
@@ -290,7 +290,7 @@ class _ScoreBar extends StatelessWidget {
           child: Text(
             label,
             style: AppTypography.captionText.copyWith(
-              color: Colors.white.withValues(alpha: 0.75),
+              color: Colors.white.withOpacity(0.75),
               fontSize: 11,
             ),
           ),
@@ -304,7 +304,7 @@ class _ScoreBar extends StatelessWidget {
               curve: Curves.easeOutCubic,
               builder: (_, v, __) => LinearProgressIndicator(
                 value: v,
-                backgroundColor: Colors.white.withValues(alpha: 0.1),
+                backgroundColor: Colors.white.withOpacity(0.1),
                 valueColor: AlwaysStoppedAnimation(color),
                 minHeight: 6,
               ),
@@ -317,7 +317,7 @@ class _ScoreBar extends StatelessWidget {
           child: Text(
             '${(value * 100).toInt()}',
             style: AppTypography.captionText.copyWith(
-              color: Colors.white.withValues(alpha: 0.85),
+              color: Colors.white.withOpacity(0.85),
               fontWeight: FontWeight.w600,
               fontSize: 11,
             ),
@@ -337,7 +337,7 @@ class _LoadingScorePlaceholder extends StatelessWidget {
     return Container(
       height: 200,
       decoration: BoxDecoration(
-        color: const Color(0xFF1A2A4A).withValues(alpha: 0.5),
+        color: const Color(0xFF1A2A4A).withOpacity(0.5),
         borderRadius: BorderRadius.circular(AppSpacing.radiusXxl),
       ),
       child: const Center(
@@ -554,8 +554,8 @@ class _QuickSummaryList extends StatelessWidget {
         borderRadius: BorderRadius.circular(AppSpacing.radiusXl),
         border: Border.all(
           color: isDark
-              ? Colors.white.withValues(alpha: 0.06)
-              : Colors.grey.withValues(alpha: 0.08),
+              ? Colors.white.withOpacity(0.06)
+              : Colors.grey.withOpacity(0.08),
         ),
       ),
       child: Column(
@@ -571,7 +571,7 @@ class _QuickSummaryList extends StatelessWidget {
                 leading: Container(
                   padding: const EdgeInsets.all(AppSpacing.xs),
                   decoration: BoxDecoration(
-                    color: item.iconColor.withValues(alpha: 0.1),
+                    color: item.iconColor.withOpacity(0.1),
                     borderRadius:
                         BorderRadius.circular(AppSpacing.radiusMd),
                   ),
@@ -584,8 +584,8 @@ class _QuickSummaryList extends StatelessWidget {
                   height: 1,
                   indent: AppSpacing.xxl + AppSpacing.xs,
                   color: isDark
-                      ? Colors.white.withValues(alpha: 0.05)
-                      : Colors.grey.withValues(alpha: 0.08),
+                      ? Colors.white.withOpacity(0.05)
+                      : Colors.grey.withOpacity(0.08),
                 ),
             ],
           );

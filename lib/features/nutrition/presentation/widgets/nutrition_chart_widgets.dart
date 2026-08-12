@@ -115,8 +115,8 @@ class CaloriesBarChart extends StatelessWidget {
                     top: Radius.circular(6)),
                 gradient: LinearGradient(
                   colors: overGoal
-                      ? [AppColors.error, AppColors.error.withValues(alpha: 0.7)]
-                      : [AppColors.chartCoral, AppColors.chartCoral.withValues(alpha: 0.7)],
+                      ? [AppColors.error, AppColors.error.withOpacity(0.7)]
+                      : [AppColors.chartCoral, AppColors.chartCoral.withOpacity(0.7)],
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                 ),
@@ -128,7 +128,7 @@ class CaloriesBarChart extends StatelessWidget {
           horizontalLines: [
             HorizontalLine(
               y: goal,
-              color: AppColors.primary.withValues(alpha: 0.5),
+              color: AppColors.primary.withOpacity(0.5),
               strokeWidth: 1.5,
               dashArray: [6, 4],
               label: HorizontalLineLabel(
@@ -370,7 +370,7 @@ class WaterIntakeChart extends StatelessWidget {
                 gradient: LinearGradient(
                   colors: [
                     AppColors.chartSky,
-                    AppColors.chartSky.withValues(alpha: 0.6)
+                    AppColors.chartSky.withOpacity(0.6)
                   ],
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
@@ -383,7 +383,7 @@ class WaterIntakeChart extends StatelessWidget {
           horizontalLines: [
             HorizontalLine(
               y: 2500,
-              color: AppColors.primary.withValues(alpha: 0.4),
+              color: AppColors.primary.withOpacity(0.4),
               strokeWidth: 1.5,
               dashArray: [6, 4],
             ),
@@ -496,8 +496,8 @@ class WeightProgressChart extends StatelessWidget {
               show: true,
               gradient: LinearGradient(
                 colors: [
-                  AppColors.primary.withValues(alpha: 0.2),
-                  AppColors.primary.withValues(alpha: 0.0),
+                  AppColors.primary.withOpacity(0.2),
+                  AppColors.primary.withOpacity(0.0),
                 ],
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
@@ -509,7 +509,7 @@ class WeightProgressChart extends StatelessWidget {
           horizontalLines: [
             HorizontalLine(
               y: goalKg,
-              color: AppColors.success.withValues(alpha: 0.5),
+              color: AppColors.success.withOpacity(0.5),
               strokeWidth: 1.5,
               dashArray: [6, 4],
               label: HorizontalLineLabel(
@@ -613,7 +613,7 @@ class NutritionScoreChart extends StatelessWidget {
                 borderRadius: const BorderRadius.vertical(
                     top: Radius.circular(6)),
                 gradient: LinearGradient(
-                  colors: [color, color.withValues(alpha: 0.7)],
+                  colors: [color, color.withOpacity(0.7)],
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                 ),

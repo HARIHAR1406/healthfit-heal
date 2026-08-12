@@ -1,14 +1,14 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../config/env/environment.dart';
-import '../../../data/providers/gemini_ai_provider.dart';
-import '../../../data/providers/openai_ai_provider.dart';
-import '../../../data/repositories/mock_ai_repository.dart';
-import '../../../domain/entities/ai_insight_entity.dart';
-import '../../../domain/entities/conversation_entity.dart';
-import '../../../domain/entities/message_entity.dart';
-import '../../../domain/entities/suggested_prompt_entity.dart';
-import '../../../domain/repositories/ai_repository.dart';
+import '../../data/providers/gemini_ai_provider.dart';
+import '../../data/providers/openai_ai_provider.dart';
+import '../../data/repositories/mock_ai_repository.dart';
+import '../../domain/entities/ai_insight_entity.dart';
+import '../../domain/entities/conversation_entity.dart';
+import '../../domain/entities/message_entity.dart';
+import '../../domain/entities/suggested_prompt_entity.dart';
+import '../../domain/repositories/ai_repository.dart';
 import 'ai_notifier.dart';
 import 'ai_state.dart';
 

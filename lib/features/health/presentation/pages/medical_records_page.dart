@@ -179,7 +179,7 @@ class _FilterChip extends StatelessWidget {
             horizontal: AppSpacing.sm, vertical: AppSpacing.xs),
         decoration: BoxDecoration(
           color: selected
-              ? AppColors.secondary.withValues(alpha: 0.12)
+              ? AppColors.secondary.withOpacity(0.12)
               : isDark
                   ? AppColors.cardDark
                   : AppColors.cardLight,
@@ -344,11 +344,11 @@ class _RecordDetailSheet extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(AppSpacing.md),
               decoration: BoxDecoration(
-                color: AppColors.secondary.withValues(alpha: 0.07),
+                color: AppColors.secondary.withOpacity(0.07),
                 borderRadius:
                     BorderRadius.circular(AppSpacing.radiusMd),
                 border: Border.all(
-                    color: AppColors.secondary.withValues(alpha: 0.25)),
+                    color: AppColors.secondary.withOpacity(0.25)),
               ),
               child: Row(
                 children: [

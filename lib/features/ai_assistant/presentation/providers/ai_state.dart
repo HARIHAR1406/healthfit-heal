@@ -1,7 +1,7 @@
-import '../../../domain/entities/ai_insight_entity.dart';
-import '../../../domain/entities/conversation_entity.dart';
-import '../../../domain/entities/message_entity.dart';
-import '../../../domain/entities/suggested_prompt_entity.dart';
+import '../../domain/entities/ai_insight_entity.dart';
+import '../../domain/entities/conversation_entity.dart';
+import '../../domain/entities/message_entity.dart';
+import '../../domain/entities/suggested_prompt_entity.dart';
 
 // ══════════════════════════════════════════════════════════════════════════════
 // CHAT STATE

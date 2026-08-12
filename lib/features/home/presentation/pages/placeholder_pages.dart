@@ -50,7 +50,7 @@ class TabPlaceholderPage extends StatelessWidget {
                 width: 100,
                 height: 100,
                 decoration: BoxDecoration(
-                  color: color.withValues(alpha: 0.12),
+                  color: color.withOpacity(0.12),
                   shape: BoxShape.circle,
                 ),
                 child: Icon(icon, size: 48, color: color),
@@ -83,9 +83,9 @@ class TabPlaceholderPage extends StatelessWidget {
                   vertical: AppSpacing.xs,
                 ),
                 decoration: BoxDecoration(
-                  color: color.withValues(alpha: 0.1),
+                  color: color.withOpacity(0.1),
                   borderRadius: BorderRadius.circular(AppSpacing.radiusFull),
-                  border: Border.all(color: color.withValues(alpha: 0.3)),
+                  border: Border.all(color: color.withOpacity(0.3)),
                 ),
                 child: Text(
                   'Coming soon',
@@ -197,7 +197,7 @@ class AiAssistantPlaceholderPage extends StatelessWidget {
                   shape: BoxShape.circle,
                   boxShadow: [
                     BoxShadow(
-                      color: AppColors.tertiary.withValues(alpha: 0.4),
+                      color: AppColors.tertiary.withOpacity(0.4),
                       blurRadius: 30,
                       spreadRadius: 5,
                     ),
@@ -238,10 +238,10 @@ class AiAssistantPlaceholderPage extends StatelessWidget {
                   vertical: AppSpacing.xs,
                 ),
                 decoration: BoxDecoration(
-                  color: AppColors.tertiary.withValues(alpha: 0.1),
+                  color: AppColors.tertiary.withOpacity(0.1),
                   borderRadius: BorderRadius.circular(AppSpacing.radiusFull),
                   border: Border.all(
-                    color: AppColors.tertiary.withValues(alpha: 0.3),
+                    color: AppColors.tertiary.withOpacity(0.3),
                   ),
                 ),
                 child: Text(

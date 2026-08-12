@@ -186,7 +186,7 @@ class _MedHeroBanner extends StatelessWidget {
                       borderRadius: BorderRadius.circular(AppSpacing.radiusLg),
                       boxShadow: [
                         BoxShadow(
-                          color: const Color(0xFF2196F3).withValues(alpha: 0.3),
+                          color: const Color(0xFF2196F3).withOpacity(0.3),
                           blurRadius: 16,
                           offset: const Offset(0, 4),
                         ),
@@ -254,14 +254,14 @@ class _AdherenceCard extends StatelessWidget {
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            color.withValues(alpha: 0.15),
-            color.withValues(alpha: 0.05),
+            color.withOpacity(0.15),
+            color.withOpacity(0.05),
           ],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
         borderRadius: BorderRadius.circular(AppSpacing.radiusXxl),
-        border: Border.all(color: color.withValues(alpha: 0.2)),
+        border: Border.all(color: color.withOpacity(0.2)),
       ),
       child: Column(
         children: [
@@ -281,7 +281,7 @@ class _AdherenceCard extends StatelessWidget {
                       builder: (_, v, __) => CircularProgressIndicator(
                         value: v,
                         strokeWidth: 8,
-                        backgroundColor: color.withValues(alpha: 0.15),
+                        backgroundColor: color.withOpacity(0.15),
                         valueColor: AlwaysStoppedAnimation(color),
                       ),
                     ),
@@ -377,7 +377,7 @@ class _StatBubble extends StatelessWidget {
         padding: const EdgeInsets.symmetric(
             vertical: AppSpacing.sm, horizontal: AppSpacing.xs),
         decoration: BoxDecoration(
-          color: color.withValues(alpha: 0.1),
+          color: color.withOpacity(0.1),
           borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
         ),
         child: Column(
@@ -500,12 +500,12 @@ class _DoseTile extends StatelessWidget {
         color: isDark ? AppColors.cardDark : AppColors.white,
         borderRadius: BorderRadius.circular(AppSpacing.radiusXl),
         border: Border.all(
-          color: dose.medication.color.withValues(alpha: 0.2),
+          color: dose.medication.color.withOpacity(0.2),
           width: AppSpacing.borderThin,
         ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.04),
+            color: Colors.black.withOpacity(0.04),
             blurRadius: 8,
             offset: const Offset(0, 2),
           ),
@@ -518,7 +518,7 @@ class _DoseTile extends StatelessWidget {
             width: 44,
             height: 44,
             decoration: BoxDecoration(
-              color: dose.medication.color.withValues(alpha: 0.15),
+              color: dose.medication.color.withOpacity(0.15),
               borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
             ),
             child: Icon(dose.medication.form.icon,
@@ -567,7 +567,7 @@ class _DoseTile extends StatelessWidget {
                 // Skip
                 IconButton(
                   icon: Icon(Icons.remove_circle_outline_rounded,
-                      color: AppColors.warning.withValues(alpha: 0.8), size: 20),
+                      color: AppColors.warning.withOpacity(0.8), size: 20),
                   onPressed: onSkip,
                   tooltip: 'Skip',
                   padding: EdgeInsets.zero,
@@ -614,7 +614,7 @@ class _EmptySchedule extends StatelessWidget {
       child: Column(
         children: [
           Icon(Icons.check_circle_rounded,
-              size: 48, color: AppColors.primary.withValues(alpha: 0.5)),
+              size: 48, color: AppColors.primary.withOpacity(0.5)),
           const SizedBox(height: AppSpacing.sm),
           Text(
             'No doses scheduled for today',
@@ -732,7 +732,7 @@ class _MedicationCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(AppSpacing.radiusXl),
         border: Border.all(
           color: medication.isActive
-              ? medication.color.withValues(alpha: 0.2)
+              ? medication.color.withOpacity(0.2)
               : AppColors.dividerLight,
           width: AppSpacing.borderThin,
         ),
@@ -747,8 +747,8 @@ class _MedicationCard extends StatelessWidget {
           height: 44,
           decoration: BoxDecoration(
             color: medication.isActive
-                ? medication.color.withValues(alpha: 0.15)
-                : AppColors.dividerLight.withValues(alpha: 0.5),
+                ? medication.color.withOpacity(0.15)
+                : AppColors.dividerLight.withOpacity(0.5),
             borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
           ),
           child: Icon(
@@ -783,7 +783,7 @@ class _MedicationCard extends StatelessWidget {
               Text(
                 '⏰ $timesLabel',
                 style: AppTypography.captionText.copyWith(
-                  color: medication.color.withValues(alpha: 0.8),
+                  color: medication.color.withOpacity(0.8),
                   fontSize: 10,
                 ),
               ),
@@ -799,7 +799,7 @@ class _MedicationCard extends StatelessWidget {
             ),
             IconButton(
               icon: Icon(Icons.delete_outline_rounded,
-                  color: AppColors.error.withValues(alpha: 0.6), size: 18),
+                  color: AppColors.error.withOpacity(0.6), size: 18),
               onPressed: onDelete,
               padding: EdgeInsets.zero,
               constraints: const BoxConstraints(minWidth: 32, minHeight: 32),
@@ -869,7 +869,7 @@ class _AddMedicationSheet extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(
                       horizontal: AppSpacing.lg, vertical: AppSpacing.sm),
                   decoration: BoxDecoration(
-                    color: AppColors.primary.withValues(alpha: 0.1),
+                    color: AppColors.primary.withOpacity(0.1),
                     borderRadius: BorderRadius.circular(AppSpacing.radiusFull),
                   ),
                   child: Text(
@@ -913,7 +913,7 @@ class _ErrorView extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(Icons.error_outline_rounded,
-                size: 48, color: AppColors.error.withValues(alpha: 0.6)),
+                size: 48, color: AppColors.error.withOpacity(0.6)),
             const SizedBox(height: AppSpacing.md),
             Text(message, textAlign: TextAlign.center),
             const SizedBox(height: AppSpacing.md),

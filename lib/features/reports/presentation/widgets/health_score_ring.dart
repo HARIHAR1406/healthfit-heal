@@ -151,7 +151,7 @@ class _ScoreRingPainter extends CustomPainter {
 
     // Background track
     final trackPaint = Paint()
-      ..color = (isDark ? Colors.white : Colors.grey).withValues(alpha: 0.1)
+      ..color = (isDark ? Colors.white : Colors.grey).withOpacity(0.1)
       ..style = PaintingStyle.stroke
       ..strokeWidth = strokeWidth
       ..strokeCap = StrokeCap.round;
@@ -299,7 +299,7 @@ class _RadarPainter extends CustomPainter {
     if (n < 3) return;
 
     final gridColor =
-        (isDark ? Colors.white : Colors.grey).withValues(alpha: 0.12);
+        (isDark ? Colors.white : Colors.grey).withOpacity(0.12);
     final gridPaint = Paint()
       ..color = gridColor
       ..style = PaintingStyle.stroke
@@ -332,7 +332,7 @@ class _RadarPainter extends CustomPainter {
     // ── Filled area ────────────────────────────────────────────────────────
     final areaPath = Path();
     final fillPaint = Paint()
-      ..color = AppColors.primary.withValues(alpha: 0.15)
+      ..color = AppColors.primary.withOpacity(0.15)
       ..style = PaintingStyle.fill;
     final strokePaint = Paint()
       ..color = AppColors.primary
@@ -423,10 +423,10 @@ class ExportCard extends StatelessWidget {
         decoration: BoxDecoration(
           color: isDark ? const Color(0xFF1A1F3A) : Colors.white,
           borderRadius: BorderRadius.circular(AppSpacing.radiusXl),
-          border: Border.all(color: color.withValues(alpha: 0.2)),
+          border: Border.all(color: color.withOpacity(0.2)),
           boxShadow: [
             BoxShadow(
-              color: color.withValues(alpha: 0.08),
+              color: color.withOpacity(0.08),
               blurRadius: 8,
               offset: const Offset(0, 3),
             ),
@@ -440,7 +440,7 @@ class ExportCard extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
-                    color: color.withValues(alpha: 0.12),
+                    color: color.withOpacity(0.12),
                     borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
                   ),
                   child: Icon(icon, color: color, size: 22),
@@ -450,7 +450,7 @@ class ExportCard extends StatelessWidget {
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                     decoration: BoxDecoration(
-                      color: color.withValues(alpha: 0.12),
+                      color: color.withOpacity(0.12),
                       borderRadius: BorderRadius.circular(AppSpacing.radiusSm),
                     ),
                     child: Text(

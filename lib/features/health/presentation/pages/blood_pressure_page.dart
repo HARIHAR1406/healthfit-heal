@@ -160,7 +160,7 @@ class _LatestCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(AppSpacing.radiusXxl),
         boxShadow: [
           BoxShadow(
-            color: AppColors.secondary.withValues(alpha: 0.3),
+            color: AppColors.secondary.withOpacity(0.3),
             blurRadius: 20,
             offset: const Offset(0, 8),
           ),
@@ -172,7 +172,7 @@ class _LatestCard extends StatelessWidget {
           Text(
             'Latest Reading',
             style: AppTypography.overline.copyWith(
-              color: AppColors.white.withValues(alpha: 0.8),
+              color: AppColors.white.withOpacity(0.8),
             ),
           ),
           const SizedBox(height: AppSpacing.xs),
@@ -192,7 +192,7 @@ class _LatestCard extends StatelessWidget {
                 child: Text(
                   '/$dia',
                   style: AppTypography.headlineSmall.copyWith(
-                    color: AppColors.white.withValues(alpha: 0.7),
+                    color: AppColors.white.withOpacity(0.7),
                     fontWeight: FontWeight.w600,
                   ),
                 ),
@@ -202,7 +202,7 @@ class _LatestCard extends StatelessWidget {
                 child: Text(
                   'mmHg',
                   style: AppTypography.bodySmall.copyWith(
-                    color: AppColors.white.withValues(alpha: 0.7),
+                    color: AppColors.white.withOpacity(0.7),
                   ),
                 ),
               ),
@@ -217,7 +217,7 @@ class _LatestCard extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(
                       horizontal: AppSpacing.sm, vertical: 3),
                   decoration: BoxDecoration(
-                    color: AppColors.white.withValues(alpha: 0.2),
+                    color: AppColors.white.withOpacity(0.2),
                     borderRadius:
                         BorderRadius.circular(AppSpacing.radiusFull),
                   ),

@@ -237,7 +237,7 @@ class _OverallBanner extends StatelessWidget {
           BoxShadow(
             color:
                 (better ? AppColors.secondary : AppColors.error)
-                    .withValues(alpha: 0.3),
+                    .withOpacity(0.3),
             blurRadius: 20,
             offset: const Offset(0, 6),
           ),
@@ -248,7 +248,7 @@ class _OverallBanner extends StatelessWidget {
           Text(
             better ? '🎉 You\'re Improving!' : '📉 Needs Attention',
             style: AppTypography.titleSmall.copyWith(
-              color: Colors.white.withValues(alpha: 0.9),
+              color: Colors.white.withOpacity(0.9),
             ),
           ),
           const SizedBox(height: 4),
@@ -268,7 +268,7 @@ class _OverallBanner extends StatelessWidget {
                 child: Text(
                   ' pts overall',
                   style: AppTypography.bodyMedium.copyWith(
-                    color: Colors.white.withValues(alpha: 0.7),
+                    color: Colors.white.withOpacity(0.7),
                   ),
                 ),
               ),
@@ -278,7 +278,7 @@ class _OverallBanner extends StatelessWidget {
           Text(
             '${data.current.label} vs ${data.previous.label}  ·  Winner: ${data.winnerLabel}',
             style: AppTypography.captionText.copyWith(
-              color: Colors.white.withValues(alpha: 0.75),
+              color: Colors.white.withOpacity(0.75),
             ),
           ),
           const SizedBox(height: AppSpacing.md),
@@ -329,7 +329,7 @@ class _BannerStat2 extends StatelessWidget {
             )),
         Text(label,
             style: AppTypography.captionText.copyWith(
-              color: Colors.white.withValues(alpha: 0.65),
+              color: Colors.white.withOpacity(0.65),
               fontSize: 10,
             )),
       ],
@@ -408,7 +408,7 @@ class _ScoreBlock extends StatelessWidget {
         borderRadius: BorderRadius.circular(AppSpacing.radiusLg),
         border: Border.all(
           color:
-              color.withValues(alpha: 0.25),
+              color.withOpacity(0.25),
         ),
       ),
       child: Column(
@@ -545,7 +545,7 @@ class _ErrorView extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Icon(Icons.error_outline_rounded,
-              color: AppColors.error.withValues(alpha: 0.5), size: 48),
+              color: AppColors.error.withOpacity(0.5), size: 48),
           const SizedBox(height: AppSpacing.sm),
           Text(message, textAlign: TextAlign.center),
           const SizedBox(height: AppSpacing.md),

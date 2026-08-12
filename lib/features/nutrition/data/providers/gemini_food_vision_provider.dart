@@ -5,8 +5,8 @@ import 'package:dio/dio.dart';
 
 import '../../../../../core/security/api_key_manager.dart';
 import '../../../../../core/utils/app_logger.dart';
-import '../../../domain/entities/detected_food.dart';
-import '../food_vision_service.dart';
+import '../../domain/entities/detected_food.dart';
+import '../services/food_vision_service.dart';
 
 /// Gemini 1.5 Flash Vision implementation of [FoodVisionService].
 ///

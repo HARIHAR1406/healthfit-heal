@@ -127,9 +127,9 @@ class _HealthyRangeCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(AppSpacing.lg),
       decoration: BoxDecoration(
-        color: AppColors.success.withValues(alpha: 0.07),
+        color: AppColors.success.withOpacity(0.07),
         borderRadius: BorderRadius.circular(AppSpacing.radiusXl),
-        border: Border.all(color: AppColors.success.withValues(alpha: 0.3)),
+        border: Border.all(color: AppColors.success.withOpacity(0.3)),
       ),
       child: Row(
         children: [
@@ -340,7 +340,7 @@ class _CalcResult extends StatelessWidget {
       duration: const Duration(milliseconds: 300),
       padding: const EdgeInsets.all(AppSpacing.md),
       decoration: BoxDecoration(
-        color: AppColors.chartIndigo.withValues(alpha: 0.08),
+        color: AppColors.chartIndigo.withOpacity(0.08),
         borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
       ),
       child: Row(
@@ -390,7 +390,7 @@ class _UnitToggle extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: AppSpacing.sm),
         decoration: BoxDecoration(
           color: selected
-              ? AppColors.chartIndigo.withValues(alpha: 0.12)
+              ? AppColors.chartIndigo.withOpacity(0.12)
               : Colors.transparent,
           borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
           border: Border.all(
@@ -470,7 +470,7 @@ class _NumberSlider extends StatelessWidget {
           divisions: divisions ?? (max - min).toInt(),
           onChanged: onChanged,
           activeColor: AppColors.chartIndigo,
-          inactiveColor: AppColors.chartIndigo.withValues(alpha: 0.2),
+          inactiveColor: AppColors.chartIndigo.withOpacity(0.2),
         ),
       ],
     );

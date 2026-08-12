@@ -393,7 +393,7 @@ class _CalorieAreaChart extends StatelessWidget {
             horizontalLines: [
               HorizontalLine(
                 y: target,
-                color: AppColors.primary.withValues(alpha: 0.5),
+                color: AppColors.primary.withOpacity(0.5),
                 strokeWidth: 1.5,
                 dashArray: [6, 4],
                 label: HorizontalLineLabel(
@@ -413,7 +413,7 @@ class _CalorieAreaChart extends StatelessWidget {
             drawVerticalLine: false,
             getDrawingHorizontalLine: (_) => FlLine(
               color: (isDark ? Colors.white : Colors.grey)
-                  .withValues(alpha: 0.08),
+                  .withOpacity(0.08),
               strokeWidth: 1,
             ),
           ),
@@ -468,8 +468,8 @@ class _CalorieAreaChart extends StatelessWidget {
                 show: true,
                 gradient: LinearGradient(
                   colors: [
-                    AppColors.warning.withValues(alpha: 0.25),
-                    AppColors.warning.withValues(alpha: 0.02),
+                    AppColors.warning.withOpacity(0.25),
+                    AppColors.warning.withOpacity(0.02),
                   ],
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
@@ -560,8 +560,8 @@ class _SimpleAreaChart extends StatelessWidget {
                 show: true,
                 gradient: LinearGradient(
                   colors: [
-                    color.withValues(alpha: 0.25),
-                    color.withValues(alpha: 0.02),
+                    color.withOpacity(0.25),
+                    color.withOpacity(0.02),
                   ],
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
@@ -634,7 +634,7 @@ class _MacroStackedChart extends StatelessWidget {
             drawVerticalLine: false,
             getDrawingHorizontalLine: (_) => FlLine(
               color: (isDark ? Colors.white : Colors.grey)
-                  .withValues(alpha: 0.08),
+                  .withOpacity(0.08),
               strokeWidth: 1,
             ),
           ),
@@ -770,7 +770,7 @@ class _MealConsistencyChart extends StatelessWidget {
                                     color: logged
                                         ? AppColors.primary
                                         : AppColors.error
-                                            .withValues(alpha: 0.25),
+                                            .withOpacity(0.25),
                                   ),
                                 ),
                               ),

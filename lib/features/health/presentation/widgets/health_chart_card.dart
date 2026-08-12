@@ -205,8 +205,8 @@ class HealthLineChart extends StatelessWidget {
         show: true,
         gradient: LinearGradient(
           colors: [
-            c.withValues(alpha: 0.18),
-            c.withValues(alpha: 0.0),
+            c.withOpacity(0.18),
+            c.withOpacity(0.0),
           ],
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
@@ -257,7 +257,7 @@ class HealthBarChart extends StatelessWidget {
                 gradient: LinearGradient(
                   colors: [
                     color,
-                    color.withValues(alpha: 0.6),
+                    color.withOpacity(0.6),
                   ],
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,

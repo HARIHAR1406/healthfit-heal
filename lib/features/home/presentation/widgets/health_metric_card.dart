@@ -81,8 +81,8 @@ class HealthMetricCard extends StatelessWidget {
               boxShadow: [
                 BoxShadow(
                   color: isDark
-                      ? Colors.black.withValues(alpha: 0.3)
-                      : _color.withValues(alpha: 0.06),
+                      ? Colors.black.withOpacity(0.3)
+                      : _color.withOpacity(0.06),
                   blurRadius: 12,
                   offset: const Offset(0, 4),
                 ),
@@ -101,7 +101,7 @@ class HealthMetricCard extends StatelessWidget {
                       width: 40,
                       height: 40,
                       decoration: BoxDecoration(
-                        color: _color.withValues(alpha: 0.12),
+                        color: _color.withOpacity(0.12),
                         borderRadius:
                             BorderRadius.circular(AppSpacing.radiusMd),
                       ),
@@ -169,7 +169,7 @@ class HealthMetricCard extends StatelessWidget {
                     vertical: 2,
                   ),
                   decoration: BoxDecoration(
-                    color: _statusColor.withValues(alpha: 0.12),
+                    color: _statusColor.withOpacity(0.12),
                     borderRadius: BorderRadius.circular(AppSpacing.radiusFull),
                   ),
                   child: Row(

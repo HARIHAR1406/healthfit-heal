@@ -151,7 +151,7 @@ class _TimelineItemState extends State<_TimelineItem> {
                     shape: BoxShape.circle,
                     boxShadow: [
                       BoxShadow(
-                        color: _dotColor.withValues(alpha: 0.4),
+                        color: _dotColor.withOpacity(0.4),
                         blurRadius: 6,
                       ),
                     ],

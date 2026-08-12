@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 
+import '../../domain/entities/notification_entity.dart';
 import '../../domain/entities/reminder_entity.dart';
 import 'notification_service.dart';
 

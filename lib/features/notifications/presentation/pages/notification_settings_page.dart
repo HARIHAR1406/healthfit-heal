@@ -206,11 +206,11 @@ class _NotificationSettingsPageState
                   Container(
                     padding: const EdgeInsets.all(AppSpacing.md),
                     decoration: BoxDecoration(
-                      color: const Color(0xFF6C63FF).withValues(alpha: 0.1),
+                      color: const Color(0xFF6C63FF).withOpacity(0.1),
                       borderRadius:
                           BorderRadius.circular(AppSpacing.radiusXl),
                       border: Border.all(
-                          color: const Color(0xFF6C63FF).withValues(alpha: 0.3)),
+                          color: const Color(0xFF6C63FF).withOpacity(0.3)),
                     ),
                     child: Row(
                       children: [
@@ -314,7 +314,7 @@ class _SettingsSwitchTile extends StatelessWidget {
           width: 38,
           height: 38,
           decoration: BoxDecoration(
-            color: color.withValues(alpha: 0.12),
+            color: color.withOpacity(0.12),
             borderRadius: BorderRadius.circular(AppSpacing.radiusSm),
           ),
           child: Icon(icon, color: color, size: 20),
@@ -371,7 +371,7 @@ class _QuietHoursTile extends StatelessWidget {
         width: 38,
         height: 38,
         decoration: BoxDecoration(
-          color: const Color(0xFF6C63FF).withValues(alpha: 0.1),
+          color: const Color(0xFF6C63FF).withOpacity(0.1),
           borderRadius: BorderRadius.circular(AppSpacing.radiusSm),
         ),
         child: const Icon(Icons.access_time_rounded,
@@ -395,7 +395,7 @@ class _QuietHoursTile extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
           decoration: BoxDecoration(
-            color: const Color(0xFF6C63FF).withValues(alpha: 0.12),
+            color: const Color(0xFF6C63FF).withOpacity(0.12),
             borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
           ),
           child: Text(

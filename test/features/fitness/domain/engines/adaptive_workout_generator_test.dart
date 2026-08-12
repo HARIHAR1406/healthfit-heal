@@ -1,12 +1,12 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:health_fit_heal/features/fitness/domain/engines/adaptive_workout_generator.dart';
-import 'package:health_fit_heal/features/fitness/domain/engines/exercise_recommendation_engine.dart';
-import 'package:health_fit_heal/features/fitness/domain/entities/adaptive/workout_context.dart';
-import 'package:health_fit_heal/features/fitness/domain/entities/adaptive/workout_readiness.dart';
-import 'package:health_fit_heal/features/fitness/domain/entities/fitness_stats_entity.dart';
-import 'package:health_fit_heal/features/fitness/domain/entities/workout_entity.dart';
-import 'package:health_fit_heal/features/profile/domain/entities/profile_entity.dart';
+import 'package:healthfit_heal/features/fitness/domain/engines/adaptive_workout_generator.dart';
+import 'package:healthfit_heal/features/fitness/domain/engines/exercise_recommendation_engine.dart';
+import 'package:healthfit_heal/features/fitness/domain/entities/adaptive/workout_context.dart';
+import 'package:healthfit_heal/features/fitness/domain/entities/adaptive/workout_readiness.dart';
+import 'package:healthfit_heal/features/fitness/domain/entities/fitness_stats_entity.dart';
+import 'package:healthfit_heal/features/fitness/domain/entities/workout_entity.dart';
+import 'package:healthfit_heal/features/profile/domain/entities/profile_entity.dart';
 
 void main() {
   late AdaptiveWorkoutGenerator generator;

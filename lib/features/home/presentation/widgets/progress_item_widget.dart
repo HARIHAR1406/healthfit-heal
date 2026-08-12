@@ -49,15 +49,15 @@ class ProgressItemWidget extends StatelessWidget {
           borderRadius: BorderRadius.circular(AppSpacing.radiusXl),
           border: Border.all(
             color: item.isGoalReached
-                ? color.withValues(alpha: 0.3)
+                ? color.withOpacity(0.3)
                 : isDark ? AppColors.dividerDark : AppColors.dividerLight,
             width: AppSpacing.borderNormal,
           ),
           boxShadow: [
             BoxShadow(
               color: isDark
-                  ? Colors.black.withValues(alpha: 0.2)
-                  : color.withValues(alpha: 0.06),
+                  ? Colors.black.withOpacity(0.2)
+                  : color.withOpacity(0.06),
               blurRadius: 10,
               offset: const Offset(0, 4),
             ),
@@ -114,7 +114,7 @@ class ProgressItemWidget extends StatelessWidget {
                   vertical: 2,
                 ),
                 decoration: BoxDecoration(
-                  color: color.withValues(alpha: 0.15),
+                  color: color.withOpacity(0.15),
                   borderRadius: BorderRadius.circular(AppSpacing.radiusFull),
                 ),
                 child: Text(

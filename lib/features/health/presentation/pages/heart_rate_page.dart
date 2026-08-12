@@ -155,7 +155,7 @@ class _CurrentBpmCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(AppSpacing.radiusXxl),
         boxShadow: [
           BoxShadow(
-            color: AppColors.chartCoral.withValues(alpha: 0.35),
+            color: AppColors.chartCoral.withOpacity(0.35),
             blurRadius: 20,
             offset: const Offset(0, 8),
           ),
@@ -175,7 +175,7 @@ class _CurrentBpmCard extends StatelessWidget {
               Text(
                 'Current',
                 style: AppTypography.bodySmall.copyWith(
-                  color: AppColors.white.withValues(alpha: 0.8),
+                  color: AppColors.white.withOpacity(0.8),
                 ),
               ),
               Text(
@@ -189,7 +189,7 @@ class _CurrentBpmCard extends StatelessWidget {
               Text(
                 'beats per minute',
                 style: AppTypography.bodySmall.copyWith(
-                  color: AppColors.white.withValues(alpha: 0.8),
+                  color: AppColors.white.withOpacity(0.8),
                 ),
               ),
             ],
@@ -232,7 +232,7 @@ class _AvgCard extends StatelessWidget {
             width: 36,
             height: 36,
             decoration: BoxDecoration(
-              color: color.withValues(alpha: 0.12),
+              color: color.withOpacity(0.12),
               borderRadius: BorderRadius.circular(AppSpacing.radiusSm),
             ),
             child: Icon(icon, color: color, size: AppSpacing.iconSm),
@@ -275,10 +275,10 @@ class _SensorCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(AppSpacing.lg),
       decoration: BoxDecoration(
-        color: AppColors.chartCoral.withValues(alpha: 0.07),
+        color: AppColors.chartCoral.withOpacity(0.07),
         borderRadius: BorderRadius.circular(AppSpacing.radiusXl),
         border:
-            Border.all(color: AppColors.chartCoral.withValues(alpha: 0.25)),
+            Border.all(color: AppColors.chartCoral.withOpacity(0.25)),
       ),
       child: Row(
         children: [

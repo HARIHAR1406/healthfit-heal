@@ -81,15 +81,15 @@ class _InsightCardState extends State<InsightCard>
           borderRadius: BorderRadius.circular(AppSpacing.radiusXl),
           border: Border.all(
             color: _expanded
-                ? catColor.withValues(alpha: 0.4)
+                ? catColor.withOpacity(0.4)
                 : (widget.isDark
-                    ? Colors.white.withValues(alpha: 0.06)
-                    : Colors.grey.withValues(alpha: 0.1)),
+                    ? Colors.white.withOpacity(0.06)
+                    : Colors.grey.withOpacity(0.1)),
             width: _expanded ? 1.5 : 1,
           ),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withValues(alpha: widget.isDark ? 0.18 : 0.05),
+              color: Colors.black.withOpacity(widget.isDark ? 0.18 : 0.05),
               blurRadius: 10,
               offset: const Offset(0, 3),
             ),
@@ -108,7 +108,7 @@ class _InsightCardState extends State<InsightCard>
                   Container(
                     padding: const EdgeInsets.all(AppSpacing.xs),
                     decoration: BoxDecoration(
-                      color: catColor.withValues(alpha: 0.12),
+                      color: catColor.withOpacity(0.12),
                       borderRadius:
                           BorderRadius.circular(AppSpacing.radiusMd),
                     ),
@@ -251,7 +251,7 @@ class _PriorityChip extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
       decoration: BoxDecoration(
-        color: priority.color.withValues(alpha: 0.12),
+        color: priority.color.withOpacity(0.12),
         borderRadius: BorderRadius.circular(100),
       ),
       child: Text(
@@ -291,8 +291,8 @@ class _MetricChip extends StatelessWidget {
               const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
           decoration: BoxDecoration(
             color: isDark
-                ? Colors.white.withValues(alpha: 0.06)
-                : Colors.grey.withValues(alpha: 0.08),
+                ? Colors.white.withOpacity(0.06)
+                : Colors.grey.withOpacity(0.08),
             borderRadius: BorderRadius.circular(8),
           ),
           child: Text(
@@ -401,13 +401,13 @@ class TrendCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(AppSpacing.radiusXl),
           border: Border.all(
             color: isDark
-                ? Colors.white.withValues(alpha: 0.06)
-                : Colors.grey.withValues(alpha: 0.1),
+                ? Colors.white.withOpacity(0.06)
+                : Colors.grey.withOpacity(0.1),
           ),
           boxShadow: [
             BoxShadow(
               color:
-                  Colors.black.withValues(alpha: isDark ? 0.15 : 0.04),
+                  Colors.black.withOpacity(isDark ? 0.15 : 0.04),
               blurRadius: 8,
               offset: const Offset(0, 2),
             ),
@@ -510,7 +510,7 @@ class _RiskBadge extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 3),
       decoration: BoxDecoration(
-        color: color.withValues(alpha: 0.12),
+        color: color.withOpacity(0.12),
         borderRadius: BorderRadius.circular(100),
       ),
       child: Text(
@@ -542,7 +542,7 @@ class _ChangePill extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       decoration: BoxDecoration(
-        color: color.withValues(alpha: 0.1),
+        color: color.withOpacity(0.1),
         borderRadius: BorderRadius.circular(100),
       ),
       child: Row(
@@ -606,8 +606,8 @@ class _SparkLine extends StatelessWidget {
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 colors: [
-                  color.withValues(alpha: 0.25),
-                  color.withValues(alpha: 0.0),
+                  color.withOpacity(0.25),
+                  color.withOpacity(0.0),
                 ],
               ),
             ),
@@ -646,13 +646,13 @@ class ComparisonCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(AppSpacing.radiusXl),
         border: Border.all(
           color: isDark
-              ? Colors.white.withValues(alpha: 0.06)
-              : Colors.grey.withValues(alpha: 0.1),
+              ? Colors.white.withOpacity(0.06)
+              : Colors.grey.withOpacity(0.1),
         ),
         boxShadow: [
           BoxShadow(
             color:
-                Colors.black.withValues(alpha: isDark ? 0.15 : 0.04),
+                Colors.black.withOpacity(isDark ? 0.15 : 0.04),
             blurRadius: 8,
             offset: const Offset(0, 2),
           ),
@@ -701,7 +701,7 @@ class ComparisonCard extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(4),
                 decoration: BoxDecoration(
-                  color: dirColor.withValues(alpha: 0.1),
+                  color: dirColor.withOpacity(0.1),
                   shape: BoxShape.circle,
                 ),
                 child: Icon(
@@ -813,7 +813,7 @@ class _OverlaySparkLine extends StatelessWidget {
       return LineChartBarData(
         spots: spots,
         isCurved: true,
-        color: c.withValues(alpha: solid ? 1.0 : 0.4),
+        color: c.withOpacity(solid ? 1.0 : 0.4),
         barWidth: solid ? 2 : 1.5,
         dashArray: solid ? null : [4, 4],
         dotData: const FlDotData(show: false),
@@ -852,7 +852,7 @@ class AchievementCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final tierColor =
-        Color(achievement.tier.colorValue).withValues(alpha: 1.0);
+        Color(achievement.tier.colorValue).withOpacity(1.0);
 
     return Container(
       decoration: BoxDecoration(
@@ -860,16 +860,16 @@ class AchievementCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(AppSpacing.radiusXl),
         border: Border.all(
           color: achievement.isNew
-              ? tierColor.withValues(alpha: 0.4)
+              ? tierColor.withOpacity(0.4)
               : isDark
-                  ? Colors.white.withValues(alpha: 0.06)
-                  : Colors.grey.withValues(alpha: 0.1),
+                  ? Colors.white.withOpacity(0.06)
+                  : Colors.grey.withOpacity(0.1),
           width: achievement.isNew ? 1.5 : 1,
         ),
         boxShadow: [
           BoxShadow(
             color:
-                Colors.black.withValues(alpha: isDark ? 0.15 : 0.04),
+                Colors.black.withOpacity(isDark ? 0.15 : 0.04),
             blurRadius: 8,
             offset: const Offset(0, 2),
           ),
@@ -889,8 +889,8 @@ class AchievementCard extends StatelessWidget {
                   shape: BoxShape.circle,
                   gradient: LinearGradient(
                     colors: [
-                      tierColor.withValues(alpha: 0.2),
-                      tierColor.withValues(alpha: 0.05),
+                      tierColor.withOpacity(0.2),
+                      tierColor.withOpacity(0.05),
                     ],
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
@@ -929,7 +929,7 @@ class AchievementCard extends StatelessWidget {
             padding:
                 const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
             decoration: BoxDecoration(
-              color: tierColor.withValues(alpha: 0.12),
+              color: tierColor.withOpacity(0.12),
               borderRadius: BorderRadius.circular(100),
             ),
             child: Text(
@@ -987,8 +987,8 @@ class GoalStatsCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(AppSpacing.radiusXl),
         border: Border.all(
           color: isDark
-              ? Colors.white.withValues(alpha: 0.06)
-              : Colors.grey.withValues(alpha: 0.1),
+              ? Colors.white.withOpacity(0.06)
+              : Colors.grey.withOpacity(0.1),
         ),
       ),
       padding: const EdgeInsets.all(AppSpacing.md),
@@ -1309,7 +1309,7 @@ class WeeklyHeatMap extends StatelessWidget {
                 height: cellSize,
                 margin: const EdgeInsets.only(right: 2),
                 decoration: BoxDecoration(
-                  color: color.withValues(alpha: 0.1 + i * 0.2),
+                  color: color.withOpacity(0.1 + i * 0.2),
                   borderRadius: BorderRadius.circular(2),
                 ),
               );
@@ -1355,8 +1355,8 @@ class _HeatCellWidget extends StatelessWidget {
       return Container(
         decoration: BoxDecoration(
           color: isDark
-              ? Colors.white.withValues(alpha: 0.03)
-              : Colors.grey.withValues(alpha: 0.05),
+              ? Colors.white.withOpacity(0.03)
+              : Colors.grey.withOpacity(0.05),
           borderRadius: BorderRadius.circular(2),
         ),
       );
@@ -1370,7 +1370,7 @@ class _HeatCellWidget extends StatelessWidget {
           : '',
       child: Container(
         decoration: BoxDecoration(
-          color: color.withValues(alpha: intensity),
+          color: color.withOpacity(intensity),
           borderRadius: BorderRadius.circular(2),
         ),
       ),
@@ -1409,8 +1409,8 @@ class RadarChartWidget extends StatelessWidget {
 
     final gColor = gridColor ??
         (isDark
-            ? Colors.white.withValues(alpha: 0.12)
-            : Colors.grey.withValues(alpha: 0.2));
+            ? Colors.white.withOpacity(0.12)
+            : Colors.grey.withOpacity(0.2));
 
     return SizedBox(
       width: size,
@@ -1419,7 +1419,7 @@ class RadarChartWidget extends StatelessWidget {
         painter: _RadarPainter(
           axes: axes,
           values: values,
-          fillColor: color.withValues(alpha: 0.2),
+          fillColor: color.withOpacity(0.2),
           strokeColor: color,
           gridColor: gColor,
           labelColor: isDark

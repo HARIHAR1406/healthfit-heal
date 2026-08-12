@@ -118,7 +118,7 @@ class _GaugePainter extends CustomPainter {
     // Draw arc segments
     for (final seg in _segments) {
       final paint = Paint()
-        ..color = seg.color.withValues(alpha: isDark ? 0.9 : 1.0)
+        ..color = seg.color.withOpacity(isDark ? 0.9 : 1.0)
         ..style = PaintingStyle.stroke
         ..strokeWidth = strokeW
         ..strokeCap = StrokeCap.butt;

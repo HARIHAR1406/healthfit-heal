@@ -151,7 +151,7 @@ class _WeightBody extends StatelessWidget {
             borderRadius: BorderRadius.circular(AppSpacing.radiusXxl),
             boxShadow: [
               BoxShadow(
-                color: AppColors.primary.withValues(alpha: 0.3),
+                color: AppColors.primary.withOpacity(0.3),
                 blurRadius: 20,
                 offset: const Offset(0, 8),
               ),
@@ -169,7 +169,7 @@ class _WeightBody extends StatelessWidget {
               Container(
                 width: 1,
                 height: 60,
-                color: AppColors.white.withValues(alpha: 0.3),
+                color: AppColors.white.withOpacity(0.3),
               ),
               _WeightHeroStat(
                 label: 'Goal',
@@ -178,7 +178,7 @@ class _WeightBody extends StatelessWidget {
               Container(
                 width: 1,
                 height: 60,
-                color: AppColors.white.withValues(alpha: 0.3),
+                color: AppColors.white.withOpacity(0.3),
               ),
               _WeightHeroStat(
                 label: 'BMI',
@@ -235,7 +235,7 @@ class _WeightBody extends StatelessWidget {
                     value: tracker.progressToGoal!,
                     minHeight: 8,
                     backgroundColor:
-                        AppColors.primary.withValues(alpha: 0.12),
+                        AppColors.primary.withOpacity(0.12),
                     valueColor: const AlwaysStoppedAnimation<Color>(
                         AppColors.primary),
                   ),
@@ -311,14 +311,14 @@ class _WeightHeroStat extends StatelessWidget {
         Text(
           label,
           style: AppTypography.overline.copyWith(
-            color: AppColors.white.withValues(alpha: 0.75),
+            color: AppColors.white.withOpacity(0.75),
           ),
         ),
         if (sub != null)
           Text(
             sub!,
             style: AppTypography.captionText.copyWith(
-              color: AppColors.white.withValues(alpha: 0.8),
+              color: AppColors.white.withOpacity(0.8),
               fontWeight: FontWeight.w600,
             ),
           ),
@@ -401,7 +401,7 @@ class _BmiReferenceCard extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(
                           horizontal: 6, vertical: 2),
                       decoration: BoxDecoration(
-                        color: r.color.withValues(alpha: 0.12),
+                        color: r.color.withOpacity(0.12),
                         borderRadius:
                             BorderRadius.circular(AppSpacing.radiusFull),
                       ),

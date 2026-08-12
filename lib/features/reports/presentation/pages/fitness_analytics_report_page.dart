@@ -263,7 +263,7 @@ class _StreakCard extends StatelessWidget {
             children: [
               Text('🔥 Current Streak',
                   style: AppTypography.bodySmall
-                      .copyWith(color: Colors.white.withValues(alpha: 0.85))),
+                      .copyWith(color: Colors.white.withOpacity(0.85))),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
@@ -278,7 +278,7 @@ class _StreakCard extends StatelessWidget {
                     padding: const EdgeInsets.only(bottom: 6),
                     child: Text(' days',
                         style: AppTypography.bodyMedium.copyWith(
-                          color: Colors.white.withValues(alpha: 0.8),
+                          color: Colors.white.withOpacity(0.8),
                         )),
                   ),
                 ],
@@ -318,7 +318,7 @@ class _StatPill extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
       decoration: BoxDecoration(
-        color: Colors.white.withValues(alpha: 0.2),
+        color: Colors.white.withOpacity(0.2),
         borderRadius: BorderRadius.circular(AppSpacing.radiusXl),
       ),
       child: Row(
@@ -371,7 +371,7 @@ class _FrequencyBarChart extends StatelessWidget {
             drawVerticalLine: false,
             getDrawingHorizontalLine: (_) => FlLine(
               color: (isDark ? Colors.white : Colors.grey)
-                  .withValues(alpha: 0.08),
+                  .withOpacity(0.08),
               strokeWidth: 1,
             ),
           ),
@@ -432,7 +432,7 @@ class _FrequencyBarChart extends StatelessWidget {
                   color: isActive
                       ? AppColors.primary
                       : (isDark ? Colors.white : Colors.grey)
-                          .withValues(alpha: 0.12),
+                          .withOpacity(0.12),
                   width: 6,
                   borderRadius: BorderRadius.circular(4),
                 ),
@@ -484,7 +484,7 @@ class _AreaLineChart extends StatelessWidget {
             drawVerticalLine: false,
             getDrawingHorizontalLine: (_) => FlLine(
               color: (isDark ? Colors.white : Colors.grey)
-                  .withValues(alpha: 0.08),
+                  .withOpacity(0.08),
               strokeWidth: 1,
             ),
           ),
@@ -558,8 +558,8 @@ class _AreaLineChart extends StatelessWidget {
                 show: true,
                 gradient: LinearGradient(
                   colors: [
-                    color.withValues(alpha: 0.25),
-                    color.withValues(alpha: 0.02),
+                    color.withOpacity(0.25),
+                    color.withOpacity(0.02),
                   ],
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
@@ -696,8 +696,8 @@ class _GoalCompletionCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(AppSpacing.radiusXl),
         border: Border.all(
           color: isDark
-              ? Colors.white.withValues(alpha: 0.06)
-              : Colors.grey.withValues(alpha: 0.08),
+              ? Colors.white.withOpacity(0.06)
+              : Colors.grey.withOpacity(0.08),
         ),
       ),
       child: Column(
@@ -748,7 +748,7 @@ class _GoalCompletionCard extends StatelessWidget {
                     builder: (_, v, __) => LinearProgressIndicator(
                       value: v,
                       backgroundColor:
-                          AppColors.primary.withValues(alpha: 0.1),
+                          AppColors.primary.withOpacity(0.1),
                       valueColor: const AlwaysStoppedAnimation(
                           AppColors.primary),
                       minHeight: 14,

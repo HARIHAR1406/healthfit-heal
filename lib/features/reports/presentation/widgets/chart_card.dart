@@ -50,12 +50,12 @@ class ChartCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(AppSpacing.radiusXl),
         border: Border.all(
           color: isDark
-              ? Colors.white.withValues(alpha: 0.06)
-              : Colors.grey.withValues(alpha: 0.08),
+              ? Colors.white.withOpacity(0.06)
+              : Colors.grey.withOpacity(0.08),
         ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.06),
+            color: Colors.black.withOpacity(isDark ? 0.2 : 0.06),
             blurRadius: 12,
             offset: const Offset(0, 4),
           ),
@@ -251,7 +251,7 @@ class _ErrorBox extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(Icons.bar_chart_rounded,
-                color: AppColors.error.withValues(alpha: 0.4), size: 40),
+                color: AppColors.error.withOpacity(0.4), size: 40),
             const SizedBox(height: AppSpacing.xs),
             Text(
               'Failed to load chart',

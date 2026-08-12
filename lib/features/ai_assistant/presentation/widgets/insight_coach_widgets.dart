@@ -41,20 +41,20 @@ class InsightCard extends StatelessWidget {
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              color.withValues(alpha: isDark ? 0.2 : 0.1),
-              color.withValues(alpha: isDark ? 0.05 : 0.03),
+              color.withOpacity(isDark ? 0.2 : 0.1),
+              color.withOpacity(isDark ? 0.05 : 0.03),
             ],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
           borderRadius: BorderRadius.circular(AppSpacing.radiusXl),
           border: Border.all(
-            color: color.withValues(alpha: 0.25),
+            color: color.withOpacity(0.25),
             width: AppSpacing.borderThin,
           ),
           boxShadow: [
             BoxShadow(
-              color: color.withValues(alpha: isDark ? 0.15 : 0.08),
+              color: color.withOpacity(isDark ? 0.15 : 0.08),
               blurRadius: 12,
               offset: const Offset(0, 4),
             ),
@@ -70,7 +70,7 @@ class InsightCard extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.all(AppSpacing.sm),
                   decoration: BoxDecoration(
-                    color: color.withValues(alpha: 0.15),
+                    color: color.withOpacity(0.15),
                     borderRadius:
                         BorderRadius.circular(AppSpacing.radiusMd),
                   ),
@@ -230,7 +230,7 @@ class _PriorityBadge extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
       decoration: BoxDecoration(
-        color: priority.badgeColor.withValues(alpha: 0.15),
+        color: priority.badgeColor.withOpacity(0.15),
         borderRadius: BorderRadius.circular(4),
       ),
       child: Text(
@@ -338,8 +338,8 @@ class CoachCard extends StatelessWidget {
             colors: isSelected
                 ? colors
                 : [
-                    colors[0].withValues(alpha: 0.15),
-                    colors[1].withValues(alpha: 0.08),
+                    colors[0].withOpacity(0.15),
+                    colors[1].withOpacity(0.08),
                   ],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
@@ -347,21 +347,21 @@ class CoachCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(AppSpacing.radiusXl),
           border: Border.all(
             color: isSelected
-                ? colors[0].withValues(alpha: 0.6)
-                : colors[0].withValues(alpha: 0.25),
+                ? colors[0].withOpacity(0.6)
+                : colors[0].withOpacity(0.25),
             width: isSelected ? 2 : AppSpacing.borderThin,
           ),
           boxShadow: isSelected
               ? [
                   BoxShadow(
-                    color: colors[0].withValues(alpha: 0.4),
+                    color: colors[0].withOpacity(0.4),
                     blurRadius: 20,
                     offset: const Offset(0, 6),
                   ),
                 ]
               : [
                   BoxShadow(
-                    color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.06),
+                    color: Colors.black.withOpacity(isDark ? 0.2 : 0.06),
                     blurRadius: 8,
                     offset: const Offset(0, 2),
                   ),
@@ -391,7 +391,7 @@ class CoachCard extends StatelessWidget {
               _descriptions[coachType] ?? '',
               style: AppTypography.bodySmall.copyWith(
                 color: isSelected
-                    ? Colors.white.withValues(alpha: 0.85)
+                    ? Colors.white.withOpacity(0.85)
                     : (isDark
                         ? AppColors.textSecondaryDark
                         : AppColors.textSecondaryLight),
@@ -449,10 +449,10 @@ class PromptCard extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(AppSpacing.md),
         decoration: BoxDecoration(
-          color: prompt.color.withValues(alpha: isDark ? 0.12 : 0.08),
+          color: prompt.color.withOpacity(isDark ? 0.12 : 0.08),
           borderRadius: BorderRadius.circular(AppSpacing.radiusXl),
           border: Border.all(
-            color: prompt.color.withValues(alpha: 0.25),
+            color: prompt.color.withOpacity(0.25),
             width: AppSpacing.borderThin,
           ),
         ),
@@ -462,7 +462,7 @@ class PromptCard extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(AppSpacing.sm),
               decoration: BoxDecoration(
-                color: prompt.color.withValues(alpha: 0.15),
+                color: prompt.color.withOpacity(0.15),
                 borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
               ),
               child: Icon(prompt.icon, color: prompt.color, size: 20),
@@ -486,7 +486,7 @@ class PromptCard extends StatelessWidget {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                 decoration: BoxDecoration(
-                  color: prompt.color.withValues(alpha: 0.2),
+                  color: prompt.color.withOpacity(0.2),
                   borderRadius: BorderRadius.circular(4),
                 ),
                 child: Text(
@@ -576,13 +576,13 @@ class ConversationTile extends StatelessWidget {
                 BorderRadius.circular(AppSpacing.radiusXl),
             border: Border.all(
               color: isDark
-                  ? Colors.white.withValues(alpha: 0.06)
-                  : Colors.grey.withValues(alpha: 0.12),
+                  ? Colors.white.withOpacity(0.06)
+                  : Colors.grey.withOpacity(0.12),
             ),
             boxShadow: [
               BoxShadow(
                 color: Colors.black
-                    .withValues(alpha: isDark ? 0.2 : 0.05),
+                    .withOpacity(isDark ? 0.2 : 0.05),
                 blurRadius: 6,
                 offset: const Offset(0, 2),
               ),
@@ -665,7 +665,7 @@ class ConversationTile extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(
                           horizontal: 6, vertical: 2),
                       decoration: BoxDecoration(
-                        color: colors[0].withValues(alpha: 0.15),
+                        color: colors[0].withOpacity(0.15),
                         borderRadius: BorderRadius.circular(4),
                       ),
                       child: Text(
@@ -736,7 +736,7 @@ class _SwipeBg extends StatelessWidget {
       margin: const EdgeInsets.only(
           left: AppSpacing.md, right: AppSpacing.md, bottom: AppSpacing.xs),
       decoration: BoxDecoration(
-        color: color.withValues(alpha: 0.15),
+        color: color.withOpacity(0.15),
         borderRadius: BorderRadius.circular(AppSpacing.radiusXl),
       ),
       alignment: alignment,
@@ -789,7 +789,7 @@ class _ConversationContextMenu extends StatelessWidget {
             width: 40,
             height: 4,
             decoration: BoxDecoration(
-              color: Colors.grey.withValues(alpha: 0.3),
+              color: Colors.grey.withOpacity(0.3),
               borderRadius: BorderRadius.circular(2),
             ),
           ),

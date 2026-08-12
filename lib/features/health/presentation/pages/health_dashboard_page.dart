@@ -308,7 +308,7 @@ class _HealthScoreCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(AppSpacing.radiusXxl),
         boxShadow: [
           BoxShadow(
-            color: AppColors.secondary.withValues(alpha: 0.3),
+            color: AppColors.secondary.withOpacity(0.3),
             blurRadius: 20,
             offset: const Offset(0, 8),
           ),
@@ -324,7 +324,7 @@ class _HealthScoreCard extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(
                       horizontal: AppSpacing.sm, vertical: 3),
                   decoration: BoxDecoration(
-                    color: AppColors.white.withValues(alpha: 0.2),
+                    color: AppColors.white.withOpacity(0.2),
                     borderRadius:
                         BorderRadius.circular(AppSpacing.radiusFull),
                   ),
@@ -348,7 +348,7 @@ class _HealthScoreCard extends StatelessWidget {
                 Text(
                   status,
                   style: AppTypography.bodyMedium.copyWith(
-                    color: AppColors.white.withValues(alpha: 0.85),
+                    color: AppColors.white.withOpacity(0.85),
                   ),
                 ),
                 const SizedBox(height: AppSpacing.md),
@@ -359,7 +359,7 @@ class _HealthScoreCard extends StatelessWidget {
                   child: LinearProgressIndicator(
                     value: score / 100.0,
                     backgroundColor:
-                        AppColors.white.withValues(alpha: 0.25),
+                        AppColors.white.withOpacity(0.25),
                     valueColor: const AlwaysStoppedAnimation<Color>(
                         AppColors.white),
                     minHeight: 8,
@@ -372,7 +372,7 @@ class _HealthScoreCard extends StatelessWidget {
           Icon(
             Icons.health_and_safety_rounded,
             size: 72,
-            color: AppColors.white.withValues(alpha: 0.25),
+            color: AppColors.white.withOpacity(0.25),
           ),
         ],
       ),
@@ -415,7 +415,7 @@ class _MiniStatCard extends StatelessWidget {
             width: 36,
             height: 36,
             decoration: BoxDecoration(
-              color: color.withValues(alpha: 0.12),
+              color: color.withOpacity(0.12),
               borderRadius: BorderRadius.circular(AppSpacing.radiusSm),
             ),
             child: Icon(icon, color: color, size: AppSpacing.iconSm),
@@ -482,7 +482,7 @@ class _RefreshBanner extends StatelessWidget {
       padding: const EdgeInsets.symmetric(
           horizontal: AppSpacing.md, vertical: AppSpacing.xs),
       decoration: BoxDecoration(
-        color: AppColors.secondary.withValues(alpha: 0.08),
+        color: AppColors.secondary.withOpacity(0.08),
         borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
       ),
       child: Row(

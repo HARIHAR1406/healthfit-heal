@@ -1,10 +1,10 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:health_fit_heal/features/fitness/domain/engines/workout_analysis_engine.dart';
-import 'package:health_fit_heal/features/fitness/domain/entities/adaptive/workout_adaptation.dart';
-import 'package:health_fit_heal/features/fitness/domain/entities/adaptive/workout_progression.dart';
-import 'package:health_fit_heal/features/fitness/domain/entities/workout_entity.dart';
-import 'package:health_fit_heal/features/fitness/domain/entities/workout_session_entity.dart';
+import 'package:healthfit_heal/features/fitness/domain/engines/workout_analysis_engine.dart';
+import 'package:healthfit_heal/features/fitness/domain/entities/adaptive/workout_adaptation.dart';
+import 'package:healthfit_heal/features/fitness/domain/entities/adaptive/workout_progression.dart';
+import 'package:healthfit_heal/features/fitness/domain/entities/workout_entity.dart';
+import 'package:healthfit_heal/features/fitness/domain/entities/workout_session_entity.dart';
 
 void main() {
   late WorkoutAnalysisEngine engine;

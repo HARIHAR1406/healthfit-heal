@@ -29,8 +29,8 @@ class MealNutritionSummaryCard extends StatelessWidget {
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            AppColors.primary.withValues(alpha: 0.85),
-            AppColors.primaryDark.withValues(alpha: 0.95),
+            AppColors.primary.withOpacity(0.85),
+            AppColors.primaryDark.withOpacity(0.95),
           ],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
@@ -38,7 +38,7 @@ class MealNutritionSummaryCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(AppSpacing.cardRadius),
         boxShadow: [
           BoxShadow(
-            color: AppColors.primary.withValues(alpha: 0.3),
+            color: AppColors.primary.withOpacity(0.3),
             blurRadius: 16,
             offset: const Offset(0, 6),
           ),
@@ -74,7 +74,7 @@ class MealNutritionSummaryCard extends StatelessWidget {
                 child: Text(
                   'kcal',
                   style: AppTypography.bodyLarge.copyWith(
-                    color: Colors.white.withValues(alpha: 0.8),
+                    color: Colors.white.withOpacity(0.8),
                   ),
                 ),
               ),
@@ -158,7 +158,7 @@ class _MacroChip extends StatelessWidget {
         Text(
           label,
           style: AppTypography.labelSmall.copyWith(
-            color: Colors.white.withValues(alpha: 0.75),
+            color: Colors.white.withOpacity(0.75),
           ),
         ),
       ],
@@ -336,7 +336,7 @@ class _ProvenanceRow extends StatelessWidget {
         Icon(
           _sourceIcon(source.sourceType),
           size: 12,
-          color: AppColors.textSecondaryLight.withValues(alpha: 0.7),
+          color: AppColors.textSecondaryLight.withOpacity(0.7),
         ),
         const SizedBox(width: 4),
         Expanded(
@@ -345,8 +345,8 @@ class _ProvenanceRow extends StatelessWidget {
             '${source.externalId ?? source.verificationStatus.label}',
             style: AppTypography.labelSmall.copyWith(
               color: isDark
-                  ? AppColors.textSecondaryDark.withValues(alpha: 0.7)
-                  : AppColors.textSecondaryLight.withValues(alpha: 0.7),
+                  ? AppColors.textSecondaryDark.withOpacity(0.7)
+                  : AppColors.textSecondaryLight.withOpacity(0.7),
               fontStyle: FontStyle.italic,
             ),
           ),
@@ -391,7 +391,7 @@ class _SourceBadge extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
       decoration: BoxDecoration(
-        color: color.withValues(alpha: 0.12),
+        color: color.withOpacity(0.12),
         borderRadius: BorderRadius.circular(8),
       ),
       child: Text(
@@ -425,9 +425,9 @@ class UnresolvableFoodsWarning extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: AppSpacing.md),
       padding: const EdgeInsets.all(AppSpacing.md),
       decoration: BoxDecoration(
-        color: AppColors.warning.withValues(alpha: 0.08),
+        color: AppColors.warning.withOpacity(0.08),
         borderRadius: BorderRadius.circular(AppSpacing.cardRadius),
-        border: Border.all(color: AppColors.warning.withValues(alpha: 0.3)),
+        border: Border.all(color: AppColors.warning.withOpacity(0.3)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -502,8 +502,8 @@ class RecommendationCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(AppSpacing.cardRadius),
         border: Border.all(
           color: hasCritical
-              ? AppColors.warning.withValues(alpha: 0.4)
-              : AppColors.primary.withValues(alpha: 0.3),
+              ? AppColors.warning.withOpacity(0.4)
+              : AppColors.primary.withOpacity(0.3),
         ),
       ),
       child: Column(
@@ -546,10 +546,10 @@ class RecommendationCard extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(AppSpacing.sm),
               decoration: BoxDecoration(
-                color: AppColors.primary.withValues(alpha: 0.06),
+                color: AppColors.primary.withOpacity(0.06),
                 borderRadius: BorderRadius.circular(8),
                 border: Border.all(
-                  color: AppColors.primary.withValues(alpha: 0.2),
+                  color: AppColors.primary.withOpacity(0.2),
                 ),
               ),
               child: Column(
@@ -675,9 +675,9 @@ class _DisclaimerBanner extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(AppSpacing.sm),
       decoration: BoxDecoration(
-        color: AppColors.warning.withValues(alpha: 0.08),
+        color: AppColors.warning.withOpacity(0.08),
         borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: AppColors.warning.withValues(alpha: 0.3)),
+        border: Border.all(color: AppColors.warning.withOpacity(0.3)),
       ),
       child: Row(
         children: [
@@ -776,8 +776,8 @@ class _HealthChip extends StatelessWidget {
           fontWeight: FontWeight.w600,
         ),
       ),
-      backgroundColor: color.withValues(alpha: 0.1),
-      side: BorderSide(color: color.withValues(alpha: 0.35)),
+      backgroundColor: color.withOpacity(0.1),
+      side: BorderSide(color: color.withOpacity(0.35)),
       visualDensity: VisualDensity.compact,
     );
   }
@@ -813,9 +813,9 @@ class GoalContextBanner extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: AppSpacing.sm),
       padding: const EdgeInsets.all(AppSpacing.sm),
       decoration: BoxDecoration(
-        color: AppColors.info.withValues(alpha: 0.08),
+        color: AppColors.info.withOpacity(0.08),
         borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: AppColors.info.withValues(alpha: 0.3)),
+        border: Border.all(color: AppColors.info.withOpacity(0.3)),
       ),
       child: Row(
         children: [

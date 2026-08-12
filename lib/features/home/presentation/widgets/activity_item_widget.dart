@@ -69,10 +69,10 @@ class ActivityItemWidget extends StatelessWidget {
                     width: 38,
                     height: 38,
                     decoration: BoxDecoration(
-                      color: color.withValues(alpha: 0.12),
+                      color: color.withOpacity(0.12),
                       shape: BoxShape.circle,
                       border: Border.all(
-                        color: color.withValues(alpha: 0.3),
+                        color: color.withOpacity(0.3),
                         width: AppSpacing.borderNormal,
                       ),
                     ),
@@ -139,7 +139,7 @@ class ActivityItemWidget extends StatelessWidget {
                               vertical: 2,
                             ),
                             decoration: BoxDecoration(
-                              color: color.withValues(alpha: 0.1),
+                              color: color.withOpacity(0.1),
                               borderRadius: BorderRadius.circular(
                                 AppSpacing.radiusFull,
                               ),

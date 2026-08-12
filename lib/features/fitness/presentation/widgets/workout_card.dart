@@ -114,7 +114,7 @@ class _CardContent extends StatelessWidget {
         borderRadius: BorderRadius.circular(AppSpacing.radiusXxl),
         boxShadow: [
           BoxShadow(
-            color: gradient.first.withValues(alpha: 0.3),
+            color: gradient.first.withOpacity(0.3),
             blurRadius: 16,
             offset: const Offset(0, 6),
           ),
@@ -185,7 +185,7 @@ class _CategoryBadge extends StatelessWidget {
       padding: const EdgeInsets.symmetric(
           horizontal: AppSpacing.sm, vertical: AppSpacing.xxs),
       decoration: BoxDecoration(
-        color: AppColors.white.withValues(alpha: 0.2),
+        color: AppColors.white.withOpacity(0.2),
         borderRadius: BorderRadius.circular(AppSpacing.radiusFull),
       ),
       child: Text(
@@ -211,7 +211,7 @@ class _StatBadge extends StatelessWidget {
       padding: const EdgeInsets.symmetric(
           horizontal: AppSpacing.xs, vertical: 3),
       decoration: BoxDecoration(
-        color: AppColors.white.withValues(alpha: 0.18),
+        color: AppColors.white.withOpacity(0.18),
         borderRadius: BorderRadius.circular(AppSpacing.radiusFull),
       ),
       child: Row(
@@ -246,9 +246,9 @@ class _DifficultyBadge extends StatelessWidget {
       padding: const EdgeInsets.symmetric(
           horizontal: AppSpacing.xs, vertical: 3),
       decoration: BoxDecoration(
-        color: _color.withValues(alpha: 0.25),
+        color: _color.withOpacity(0.25),
         borderRadius: BorderRadius.circular(AppSpacing.radiusFull),
-        border: Border.all(color: _color.withValues(alpha: 0.5)),
+        border: Border.all(color: _color.withOpacity(0.5)),
       ),
       child: Text(
         difficulty.label,

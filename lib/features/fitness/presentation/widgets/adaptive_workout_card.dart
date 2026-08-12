@@ -41,7 +41,7 @@ class AdaptiveWorkoutCard extends ConsumerWidget {
               vertical: AppSpacing.sm,
             ),
             decoration: BoxDecoration(
-              color: _getReadinessColor(readiness.status).withValues(alpha: 0.1),
+              color: _getReadinessColor(readiness.status).withOpacity(0.1),
               borderRadius: const BorderRadius.vertical(
                 top: Radius.circular(AppSpacing.cardRadius),
               ),
@@ -92,7 +92,7 @@ class AdaptiveWorkoutCard extends ConsumerWidget {
                 Container(
                   padding: const EdgeInsets.all(AppSpacing.sm),
                   decoration: BoxDecoration(
-                    color: isDark ? Colors.white10 : Colors.black.withValues(alpha: 0.05),
+                    color: isDark ? Colors.white10 : Colors.black.withOpacity(0.05),
                     borderRadius: BorderRadius.circular(AppSpacing.radiusSm),
                   ),
                   child: Row(

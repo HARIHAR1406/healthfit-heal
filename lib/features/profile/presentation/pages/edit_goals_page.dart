@@ -255,7 +255,7 @@ class _GoalHero extends StatelessWidget {
                 Text(
                   'Drag the sliders to personalise your daily targets. Changes are saved immediately.',
                   style: AppTypography.bodySmall.copyWith(
-                    color: AppColors.white.withValues(alpha: 0.85),
+                    color: AppColors.white.withOpacity(0.85),
                   ),
                 ),
               ],
@@ -304,12 +304,12 @@ class _GoalSliderCard extends StatelessWidget {
         color: isDark ? AppColors.cardDark : AppColors.white,
         borderRadius: BorderRadius.circular(AppSpacing.radiusXl),
         border: Border.all(
-          color: color.withValues(alpha: 0.15),
+          color: color.withOpacity(0.15),
           width: AppSpacing.borderThin,
         ),
         boxShadow: [
           BoxShadow(
-            color: color.withValues(alpha: 0.06),
+            color: color.withOpacity(0.06),
             blurRadius: 8,
             offset: const Offset(0, 2),
           ),
@@ -324,7 +324,7 @@ class _GoalSliderCard extends StatelessWidget {
                 width: 38,
                 height: 38,
                 decoration: BoxDecoration(
-                  color: color.withValues(alpha: 0.12),
+                  color: color.withOpacity(0.12),
                   borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
                 ),
                 child: Icon(icon, color: color, size: 20),
@@ -373,9 +373,9 @@ class _GoalSliderCard extends StatelessWidget {
           SliderTheme(
             data: SliderTheme.of(context).copyWith(
               activeTrackColor: color,
-              inactiveTrackColor: color.withValues(alpha: 0.15),
+              inactiveTrackColor: color.withOpacity(0.15),
               thumbColor: color,
-              overlayColor: color.withValues(alpha: 0.12),
+              overlayColor: color.withOpacity(0.12),
               trackHeight: 4,
             ),
             child: Slider(

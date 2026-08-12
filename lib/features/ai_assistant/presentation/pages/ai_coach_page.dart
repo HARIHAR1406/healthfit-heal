@@ -216,7 +216,7 @@ class _HowItWorks extends StatelessWidget {
                   width: 40,
                   height: 40,
                   decoration: BoxDecoration(
-                    color: step.color.withValues(alpha: 0.12),
+                    color: step.color.withOpacity(0.12),
                     shape: BoxShape.circle,
                   ),
                   child: Icon(step.icon, color: step.color, size: 20),

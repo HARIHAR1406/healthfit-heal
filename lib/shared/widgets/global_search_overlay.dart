@@ -97,7 +97,7 @@ class _GlobalSearchOverlayState extends ConsumerState<GlobalSearchOverlay>
                             borderRadius:
                                 BorderRadius.circular(AppSpacing.radiusXl),
                             border: Border.all(
-                              color: AppColors.primary.withValues(alpha: 0.3),
+                              color: AppColors.primary.withOpacity(0.3),
                               width: AppSpacing.borderMedium,
                             ),
                           ),
@@ -244,7 +244,7 @@ class _SearchResultTile extends StatelessWidget {
                 width: 44,
                 height: 44,
                 decoration: BoxDecoration(
-                  color: item.color.withValues(alpha: 0.12),
+                  color: item.color.withOpacity(0.12),
                   borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
                 ),
                 child: Icon(item.icon, color: item.color, size: 20),
@@ -310,7 +310,7 @@ class _EmptyResult extends StatelessWidget {
           Icon(Icons.search_off_rounded,
               size: 52,
               color: (isDark ? AppColors.textSecondaryDark : AppColors.textSecondaryLight)
-                  .withValues(alpha: 0.4)),
+                  .withOpacity(0.4)),
           const SizedBox(height: AppSpacing.md),
           Text(
             'No results for "$query"',

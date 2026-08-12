@@ -69,7 +69,7 @@ class FoodScanResultPage extends ConsumerWidget {
                     imageBytes,
                     fit: BoxFit.cover,
                     errorBuilder: (_, __, ___) => Container(
-                      color: AppColors.primary.withValues(alpha: 0.2),
+                      color: AppColors.primary.withOpacity(0.2),
                       child: const Icon(
                         Icons.restaurant_rounded,
                         size: 64,
@@ -85,7 +85,7 @@ class FoodScanResultPage extends ConsumerWidget {
                         end: Alignment.bottomCenter,
                         colors: [
                           Colors.transparent,
-                          Colors.black.withValues(alpha: 0.5),
+                          Colors.black.withOpacity(0.5),
                         ],
                       ),
                     ),

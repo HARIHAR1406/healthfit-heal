@@ -156,10 +156,10 @@ class _ExportCenterPageState extends ConsumerState<ExportCenterPage> {
           Container(
             padding: const EdgeInsets.all(AppSpacing.md),
             decoration: BoxDecoration(
-              color: AppColors.info.withValues(alpha: 0.08),
+              color: AppColors.info.withOpacity(0.08),
               borderRadius: BorderRadius.circular(AppSpacing.radiusLg),
               border:
-                  Border.all(color: AppColors.info.withValues(alpha: 0.2)),
+                  Border.all(color: AppColors.info.withOpacity(0.2)),
             ),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -219,7 +219,7 @@ class _ExportHeroBanner extends StatelessWidget {
         borderRadius: BorderRadius.circular(AppSpacing.radiusXl),
         boxShadow: [
           BoxShadow(
-            color: AppColors.primary.withValues(alpha: 0.15),
+            color: AppColors.primary.withOpacity(0.15),
             blurRadius: 20,
             offset: const Offset(0, 6),
           ),
@@ -242,7 +242,7 @@ class _ExportHeroBanner extends StatelessWidget {
                 Text(
                   'Generate detailed reports for period: $filterLabel',
                   style: AppTypography.bodySmall.copyWith(
-                    color: Colors.white.withValues(alpha: 0.75),
+                    color: Colors.white.withOpacity(0.75),
                   ),
                 ),
                 const SizedBox(height: AppSpacing.md),
@@ -264,7 +264,7 @@ class _ExportHeroBanner extends StatelessWidget {
           ),
           const SizedBox(width: AppSpacing.md),
           Icon(Icons.download_rounded,
-              size: 52, color: AppColors.primary.withValues(alpha: 0.5)),
+              size: 52, color: AppColors.primary.withOpacity(0.5)),
         ],
       ),
     );
@@ -281,7 +281,7 @@ class _FeaturePill extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       decoration: BoxDecoration(
-        color: Colors.white.withValues(alpha: 0.12),
+        color: Colors.white.withOpacity(0.12),
         borderRadius: BorderRadius.circular(AppSpacing.radiusXl),
       ),
       child: Row(
@@ -332,13 +332,13 @@ class _ScopeSelector extends StatelessWidget {
               color: isActive
                   ? AppColors.primary
                   : (isDark
-                      ? AppColors.primary.withValues(alpha: 0.1)
-                      : AppColors.primary.withValues(alpha: 0.06)),
+                      ? AppColors.primary.withOpacity(0.1)
+                      : AppColors.primary.withOpacity(0.06)),
               borderRadius: BorderRadius.circular(AppSpacing.radiusXl),
               border: Border.all(
                 color: isActive
                     ? AppColors.primary
-                    : AppColors.primary.withValues(alpha: 0.2),
+                    : AppColors.primary.withOpacity(0.2),
               ),
             ),
             child: Text(
@@ -430,9 +430,9 @@ class _StatusCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(AppSpacing.md),
       decoration: BoxDecoration(
-        color: color.withValues(alpha: 0.08),
+        color: color.withOpacity(0.08),
         borderRadius: BorderRadius.circular(AppSpacing.radiusXl),
-        border: Border.all(color: color.withValues(alpha: 0.25)),
+        border: Border.all(color: color.withOpacity(0.25)),
       ),
       child: Row(
         children: [

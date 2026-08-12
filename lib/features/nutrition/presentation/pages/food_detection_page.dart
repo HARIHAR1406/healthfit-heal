@@ -318,9 +318,9 @@ class _NoFoodBanner extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: AppSpacing.md),
       padding: const EdgeInsets.all(AppSpacing.md),
       decoration: BoxDecoration(
-        color: AppColors.warning.withValues(alpha: 0.08),
+        color: AppColors.warning.withOpacity(0.08),
         borderRadius: BorderRadius.circular(AppSpacing.cardRadius),
-        border: Border.all(color: AppColors.warning.withValues(alpha: 0.3)),
+        border: Border.all(color: AppColors.warning.withOpacity(0.3)),
       ),
       child: Row(
         children: [
@@ -429,7 +429,7 @@ class _AddManuallyButton extends ConsumerWidget {
       style: OutlinedButton.styleFrom(
         minimumSize: const Size(double.infinity, AppSpacing.buttonHeightMd),
         side: BorderSide(
-          color: AppColors.primary.withValues(alpha: 0.5),
+          color: AppColors.primary.withOpacity(0.5),
         ),
         foregroundColor: AppColors.primary,
         shape: RoundedRectangleBorder(
@@ -455,7 +455,7 @@ class _BottomBar extends ConsumerWidget {
         color: isDark ? AppColors.cardDark : AppColors.cardLight,
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: isDark ? 0.3 : 0.08),
+            color: Colors.black.withOpacity(isDark ? 0.3 : 0.08),
             blurRadius: 12,
             offset: const Offset(0, -3),
           ),

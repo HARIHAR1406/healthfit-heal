@@ -465,7 +465,7 @@ class _GenderSelector extends StatelessWidget {
           label: Text('${g.symbol} ${g.label}'),
           selected: isSelected,
           onSelected: (_) => onChanged(g),
-          selectedColor: AppColors.primary.withValues(alpha: 0.15),
+          selectedColor: AppColors.primary.withOpacity(0.15),
           backgroundColor:
               isDark ? AppColors.cardDark : const Color(0xFFF8FAFF),
           side: BorderSide(
@@ -514,7 +514,7 @@ class _ActivitySelector extends StatelessWidget {
             ),
             decoration: BoxDecoration(
               color: isSelected
-                  ? AppColors.primary.withValues(alpha: 0.1)
+                  ? AppColors.primary.withOpacity(0.1)
                   : (isDark ? AppColors.cardDark : const Color(0xFFF8FAFF)),
               borderRadius: BorderRadius.circular(AppSpacing.radiusLg),
               border: Border.all(

@@ -284,8 +284,8 @@ class _AIAreaChart extends StatelessWidget {
                 show: true,
                 gradient: LinearGradient(
                   colors: [
-                    color.withValues(alpha: 0.25),
-                    color.withValues(alpha: 0.02),
+                    color.withOpacity(0.25),
+                    color.withOpacity(0.02),
                   ],
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
@@ -527,13 +527,13 @@ class _QualityCard extends StatelessWidget {
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            AppColors.tertiary.withValues(alpha: 0.15),
-            AppColors.primary.withValues(alpha: 0.08),
+            AppColors.tertiary.withOpacity(0.15),
+            AppColors.primary.withOpacity(0.08),
           ],
         ),
         borderRadius: BorderRadius.circular(AppSpacing.radiusXl),
         border: Border.all(
-          color: AppColors.tertiary.withValues(alpha: 0.2),
+          color: AppColors.tertiary.withOpacity(0.2),
         ),
       ),
       child: Row(
@@ -621,10 +621,10 @@ class _WeeklyInsightsSection extends StatelessWidget {
             child: Container(
               padding: const EdgeInsets.all(AppSpacing.md),
               decoration: BoxDecoration(
-                color: insight.color.withValues(alpha: 0.08),
+                color: insight.color.withOpacity(0.08),
                 borderRadius: BorderRadius.circular(AppSpacing.radiusLg),
                 border: Border.all(
-                  color: insight.color.withValues(alpha: 0.2),
+                  color: insight.color.withOpacity(0.2),
                 ),
               ),
               child: Row(
@@ -633,7 +633,7 @@ class _WeeklyInsightsSection extends StatelessWidget {
                   Container(
                     padding: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
-                      color: insight.color.withValues(alpha: 0.15),
+                      color: insight.color.withOpacity(0.15),
                       shape: BoxShape.circle,
                     ),
                     child: Icon(Icons.lightbulb_rounded,
@@ -662,7 +662,7 @@ class _WeeklyInsightsSection extends StatelessWidget {
                                   horizontal: 6, vertical: 2),
                               decoration: BoxDecoration(
                                 color: insight.color
-                                    .withValues(alpha: 0.15),
+                                    .withOpacity(0.15),
                                 borderRadius: BorderRadius.circular(4),
                               ),
                               child: Text(
@@ -690,7 +690,7 @@ class _WeeklyInsightsSection extends StatelessWidget {
                         Text(
                           DateFormat('MMM d').format(insight.weekStart),
                           style: AppTypography.captionText.copyWith(
-                            color: insight.color.withValues(alpha: 0.7),
+                            color: insight.color.withOpacity(0.7),
                             fontSize: 10,
                           ),
                         ),

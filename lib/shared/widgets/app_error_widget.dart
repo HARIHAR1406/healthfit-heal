@@ -40,7 +40,7 @@ class AppErrorWidget extends StatelessWidget {
             width: 80,
             height: 80,
             decoration: BoxDecoration(
-              color: cs.errorContainer.withValues(alpha: 0.15),
+              color: cs.errorContainer.withOpacity(0.15),
               shape: BoxShape.circle,
             ),
             child: Icon(
@@ -66,7 +66,7 @@ class AppErrorWidget extends StatelessWidget {
           Text(
             message,
             style: AppTypography.bodyMedium.copyWith(
-              color: cs.onSurface.withValues(alpha: 0.7),
+              color: cs.onSurface.withOpacity(0.7),
             ),
             textAlign: TextAlign.center,
           ),

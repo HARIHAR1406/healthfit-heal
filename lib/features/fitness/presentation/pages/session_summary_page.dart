@@ -224,7 +224,7 @@ class SessionSummaryPage extends ConsumerWidget {
         color: isDark ? AppColors.cardDark : AppColors.cardLight,
         borderRadius: BorderRadius.circular(AppSpacing.radiusLg),
         border: Border.all(
-          color: AppColors.primary.withValues(alpha: 0.3),
+          color: AppColors.primary.withOpacity(0.3),
         ),
       ),
       child: Column(
@@ -242,7 +242,7 @@ class SessionSummaryPage extends ConsumerWidget {
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                 decoration: BoxDecoration(
-                  color: quality.score > 80 ? AppColors.success.withValues(alpha: 0.2) : AppColors.warning.withValues(alpha: 0.2),
+                  color: quality.score > 80 ? AppColors.success.withOpacity(0.2) : AppColors.warning.withOpacity(0.2),
                   borderRadius: BorderRadius.circular(AppSpacing.radiusSm),
                 ),
                 child: Text(

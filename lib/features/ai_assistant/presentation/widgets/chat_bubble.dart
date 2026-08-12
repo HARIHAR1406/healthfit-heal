@@ -166,7 +166,7 @@ class _BubbleContent extends StatelessWidget {
         vertical: AppSpacing.sm + 2,
       ),
       decoration: BoxDecoration(
-        color: message.isError ? AppColors.error.withValues(alpha: 0.12) : bgColor,
+        color: message.isError ? AppColors.error.withOpacity(0.12) : bgColor,
         borderRadius: BorderRadius.only(
           topLeft: const Radius.circular(AppSpacing.radiusLg),
           topRight: const Radius.circular(AppSpacing.radiusLg),
@@ -174,11 +174,11 @@ class _BubbleContent extends StatelessWidget {
           bottomRight: Radius.circular(isUser ? 4 : AppSpacing.radiusLg),
         ),
         border: message.isError
-            ? Border.all(color: AppColors.error.withValues(alpha: 0.4))
+            ? Border.all(color: AppColors.error.withOpacity(0.4))
             : null,
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: isDark ? 0.3 : 0.08),
+            color: Colors.black.withOpacity(isDark ? 0.3 : 0.08),
             blurRadius: 8,
             offset: const Offset(0, 2),
           ),
@@ -211,14 +211,14 @@ class _BubbleContent extends StatelessWidget {
               Text(
                 _formatTime(message.timestamp),
                 style: AppTypography.captionText.copyWith(
-                  color: textColor.withValues(alpha: 0.55),
+                  color: textColor.withOpacity(0.55),
                   fontSize: 10,
                 ),
               ),
               if (!isUser && message.isBookmarked) ...[
                 const SizedBox(width: 4),
                 Icon(Icons.bookmark_rounded,
-                    size: 12, color: textColor.withValues(alpha: 0.7)),
+                    size: 12, color: textColor.withOpacity(0.7)),
               ],
             ],
           ),
@@ -373,7 +373,7 @@ class _MarkdownContent extends StatelessWidget {
         width: double.infinity,
         padding: const EdgeInsets.all(AppSpacing.sm),
         decoration: BoxDecoration(
-          color: Colors.black.withValues(alpha: 0.2),
+          color: Colors.black.withOpacity(0.2),
           borderRadius: BorderRadius.circular(AppSpacing.radiusSm),
         ),
         child: Column(
@@ -385,7 +385,7 @@ class _MarkdownContent extends StatelessWidget {
                 child: Text(
                   block.language,
                   style: AppTypography.captionText.copyWith(
-                    color: textColor.withValues(alpha: 0.5),
+                    color: textColor.withOpacity(0.5),
                     fontFamily: 'monospace',
                   ),
                 ),
@@ -393,7 +393,7 @@ class _MarkdownContent extends StatelessWidget {
             SelectableText(
               block.code,
               style: AppTypography.bodySmall.copyWith(
-                color: textColor.withValues(alpha: 0.9),
+                color: textColor.withOpacity(0.9),
                 fontFamily: 'monospace',
                 height: 1.5,
               ),
@@ -457,7 +457,7 @@ class _BubbleActionsSheet extends StatelessWidget {
             width: 40,
             height: 4,
             decoration: BoxDecoration(
-              color: Colors.grey.withValues(alpha: 0.3),
+              color: Colors.grey.withOpacity(0.3),
               borderRadius: BorderRadius.circular(2),
             ),
           ),
@@ -540,7 +540,7 @@ class _SmallAIAvatar extends StatelessWidget {
         shape: BoxShape.circle,
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFF6C63FF).withValues(alpha: 0.4),
+            color: const Color(0xFF6C63FF).withOpacity(0.4),
             blurRadius: 8,
             offset: const Offset(0, 2),
           ),

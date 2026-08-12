@@ -177,7 +177,7 @@ class _ReminderHero extends StatelessWidget {
                           BorderRadius.circular(AppSpacing.radiusLg),
                       boxShadow: [
                         BoxShadow(
-                          color: const Color(0xFF00C896).withValues(alpha: 0.3),
+                          color: const Color(0xFF00C896).withOpacity(0.3),
                           blurRadius: 16,
                           offset: const Offset(0, 4),
                         ),
@@ -343,7 +343,7 @@ class _AddReminderTile extends StatelessWidget {
         color: isDark ? AppColors.cardDark : AppColors.white,
         borderRadius: BorderRadius.circular(AppSpacing.radiusXl),
         border: Border.all(
-          color: type.color.withValues(alpha: 0.15),
+          color: type.color.withOpacity(0.15),
           width: AppSpacing.borderThin,
         ),
       ),
@@ -352,10 +352,10 @@ class _AddReminderTile extends StatelessWidget {
           width: 44,
           height: 44,
           decoration: BoxDecoration(
-            color: type.color.withValues(alpha: 0.08),
+            color: type.color.withOpacity(0.08),
             borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
           ),
-          child: Icon(type.icon, color: type.color.withValues(alpha: 0.5), size: 22),
+          child: Icon(type.icon, color: type.color.withOpacity(0.5), size: 22),
         ),
         title: Text(
           type.label,
@@ -370,13 +370,13 @@ class _AddReminderTile extends StatelessWidget {
           'Tap to configure',
           style: AppTypography.captionText.copyWith(
             color: isDark
-                ? AppColors.textSecondaryDark.withValues(alpha: 0.6)
-                : AppColors.textSecondaryLight.withValues(alpha: 0.6),
+                ? AppColors.textSecondaryDark.withOpacity(0.6)
+                : AppColors.textSecondaryLight.withOpacity(0.6),
           ),
         ),
         trailing: Icon(
           Icons.add_circle_outline_rounded,
-          color: type.color.withValues(alpha: 0.6),
+          color: type.color.withOpacity(0.6),
         ),
         onTap: onAdd,
         shape: RoundedRectangleBorder(
@@ -469,7 +469,7 @@ class _ReminderEditSheetState extends State<_ReminderEditSheet> {
                     width: 40,
                     height: 40,
                     decoration: BoxDecoration(
-                      color: color.withValues(alpha: 0.15),
+                      color: color.withOpacity(0.15),
                       borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
                     ),
                     child: Icon(widget.type.icon, color: color, size: 20),
@@ -530,13 +530,13 @@ class _ReminderEditSheetState extends State<_ReminderEditSheet> {
                       padding: const EdgeInsets.symmetric(
                           horizontal: 12, vertical: 8),
                       decoration: BoxDecoration(
-                        color: isSelected ? color : color.withValues(alpha: 0.08),
+                        color: isSelected ? color : color.withOpacity(0.08),
                         borderRadius:
                             BorderRadius.circular(AppSpacing.radiusFull),
                         border: Border.all(
                           color: isSelected
                               ? color
-                              : color.withValues(alpha: 0.25),
+                              : color.withOpacity(0.25),
                         ),
                       ),
                       child: Text(
@@ -585,7 +585,7 @@ class _ReminderEditSheetState extends State<_ReminderEditSheet> {
                         decoration: BoxDecoration(
                           color: isSelected
                               ? color
-                              : color.withValues(alpha: 0.08),
+                              : color.withOpacity(0.08),
                           borderRadius:
                               BorderRadius.circular(AppSpacing.radiusMd),
                         ),

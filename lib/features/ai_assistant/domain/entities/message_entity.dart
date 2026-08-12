@@ -187,7 +187,7 @@ class MarkdownParser {
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 1),
             decoration: BoxDecoration(
-              color: Colors.grey.withValues(alpha: 0.15),
+              color: Colors.grey.withOpacity(0.15),
               borderRadius: BorderRadius.circular(4),
             ),
             child: Text(

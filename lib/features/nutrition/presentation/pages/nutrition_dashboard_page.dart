@@ -278,7 +278,7 @@ class _CalorieHeroCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(AppSpacing.radiusXxl),
         boxShadow: [
           BoxShadow(
-            color: AppColors.chartCoral.withValues(alpha: 0.3),
+            color: AppColors.chartCoral.withOpacity(0.3),
             blurRadius: 20,
             offset: const Offset(0, 8),
           ),
@@ -302,7 +302,7 @@ class _CalorieHeroCard extends StatelessWidget {
                 Text(
                   '✦  Calories',
                   style: AppTypography.overline.copyWith(
-                    color: AppColors.white.withValues(alpha: 0.8),
+                    color: AppColors.white.withOpacity(0.8),
                     letterSpacing: 0.8,
                   ),
                 ),
@@ -354,7 +354,7 @@ class _CalStat extends StatelessWidget {
           Text(
             label,
             style: AppTypography.bodySmall.copyWith(
-              color: AppColors.white.withValues(alpha: 0.8),
+              color: AppColors.white.withOpacity(0.8),
             ),
           ),
           Text(
@@ -390,7 +390,7 @@ class _WaterCard extends StatelessWidget {
         color: isDark ? AppColors.cardDark : AppColors.cardLight,
         borderRadius: BorderRadius.circular(AppSpacing.radiusXxl),
         border: Border.all(
-          color: AppColors.chartSky.withValues(alpha: 0.3),
+          color: AppColors.chartSky.withOpacity(0.3),
           width: AppSpacing.borderThin,
         ),
       ),
@@ -526,10 +526,10 @@ class _QuickActionTile extends StatelessWidget {
         padding: const EdgeInsets.symmetric(
             vertical: AppSpacing.sm, horizontal: AppSpacing.xs),
         decoration: BoxDecoration(
-          color: action.color.withValues(alpha: 0.1),
+          color: action.color.withOpacity(0.1),
           borderRadius: BorderRadius.circular(AppSpacing.radiusXl),
           border: Border.all(
-              color: action.color.withValues(alpha: 0.25)),
+              color: action.color.withOpacity(0.25)),
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -580,7 +580,7 @@ class _RefreshBanner extends StatelessWidget {
       padding: const EdgeInsets.symmetric(
           horizontal: AppSpacing.md, vertical: AppSpacing.xs),
       decoration: BoxDecoration(
-        color: AppColors.primary.withValues(alpha: 0.08),
+        color: AppColors.primary.withOpacity(0.08),
         borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
       ),
       child: Row(

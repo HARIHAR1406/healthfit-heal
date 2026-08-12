@@ -121,13 +121,13 @@ class _FilterChip extends StatelessWidget {
           color: isActive
               ? AppColors.primary
               : (isDark
-                  ? AppColors.primary.withValues(alpha: 0.12)
-                  : AppColors.primary.withValues(alpha: 0.08)),
+                  ? AppColors.primary.withOpacity(0.12)
+                  : AppColors.primary.withOpacity(0.08)),
           borderRadius: BorderRadius.circular(AppSpacing.radiusXl),
           border: Border.all(
             color: isActive
                 ? AppColors.primary
-                : AppColors.primary.withValues(alpha: 0.25),
+                : AppColors.primary.withOpacity(0.25),
             width: isActive ? 1.5 : 1,
           ),
         ),

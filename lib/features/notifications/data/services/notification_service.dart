@@ -1,5 +1,6 @@
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:flutter/foundation.dart';
+import 'package:timezone/timezone.dart' as tz;
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/utils/app_logger.dart';
@@ -200,7 +201,7 @@ class NotificationService {
       id,
       title,
       body,
-      TZDateTime.from(scheduledAt, local),
+      tz.TZDateTime.from(scheduledAt, tz.local),
       NotificationDetails(
         android: AndroidNotificationDetails(
           _channelId(category),
@@ -212,6 +213,8 @@ class NotificationService {
         ),
       ),
       androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
+      uiLocalNotificationDateInterpretation:
+          UILocalNotificationDateInterpretation.absoluteTime,
       payload: payload,
     );
     log.debug(
@@ -247,6 +250,8 @@ class NotificationService {
       ),
       androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
       matchDateTimeComponents: DateTimeComponents.time,
+      uiLocalNotificationDateInterpretation:
+          UILocalNotificationDateInterpretation.absoluteTime,
       payload: payload,
     );
     log.debug('NotificationService.scheduleDaily [$id] at $hour:$minute');
@@ -281,6 +286,8 @@ class NotificationService {
       ),
       androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
       matchDateTimeComponents: DateTimeComponents.dayOfWeekAndTime,
+      uiLocalNotificationDateInterpretation:
+          UILocalNotificationDateInterpretation.absoluteTime,
       payload: payload,
     );
     log.debug(
@@ -315,16 +322,17 @@ class NotificationService {
 
   // ── Helpers ────────────────────────────────────────────────────────────────
 
-  TZDateTime _nextInstanceOfTime(int hour, int minute) {
-    final now = TZDateTime.now(local);
-    var scheduled = TZDateTime(local, now.year, now.month, now.day, hour, minute);
+  tz.TZDateTime _nextInstanceOfTime(int hour, int minute) {
+    final now = tz.TZDateTime.now(tz.local);
+    var scheduled =
+        tz.TZDateTime(tz.local, now.year, now.month, now.day, hour, minute);
     if (scheduled.isBefore(now)) {
       scheduled = scheduled.add(const Duration(days: 1));
     }
     return scheduled;
   }
 
-  TZDateTime _nextInstanceOfDayAndTime(int weekday, int hour, int minute) {
+  tz.TZDateTime _nextInstanceOfDayAndTime(int weekday, int hour, int minute) {
     var scheduled = _nextInstanceOfTime(hour, minute);
     while (scheduled.weekday != weekday) {
       scheduled = scheduled.add(const Duration(days: 1));
@@ -338,8 +346,8 @@ class NotificationService {
         NotificationCategory.fitness => 'workout',
         NotificationCategory.nutrition => 'general',
         NotificationCategory.system => 'general',
-        NotificationCategory.reminder => 'general',
-        _ => 'general',
+        NotificationCategory.aiCoach => 'general',
+        NotificationCategory.achievement => 'general',
       };
 
   String _channelName(NotificationCategory category) => switch (category) {
@@ -356,8 +364,7 @@ class NotificationService {
         _ => Importance.defaultImportance,
       };
 
-  // ignore: undefined_prefixed_name
-  dynamic _channelColor(NotificationCategory category) {
+  Color? _channelColor(NotificationCategory category) {
     // Return null to use the app's default icon color
     return null;
   }

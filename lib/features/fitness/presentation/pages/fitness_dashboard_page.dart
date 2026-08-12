@@ -345,10 +345,10 @@ class _QuickTile extends StatelessWidget {
           padding: const EdgeInsets.symmetric(
               vertical: AppSpacing.sm, horizontal: AppSpacing.xs),
           decoration: BoxDecoration(
-            color: action.color.withValues(alpha: 0.1),
+            color: action.color.withOpacity(0.1),
             borderRadius: BorderRadius.circular(AppSpacing.radiusXl),
             border: Border.all(
-                color: action.color.withValues(alpha: 0.25)),
+                color: action.color.withOpacity(0.25)),
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -398,7 +398,7 @@ class _RefreshBanner extends StatelessWidget {
       padding: const EdgeInsets.symmetric(
           horizontal: AppSpacing.md, vertical: AppSpacing.xs),
       decoration: BoxDecoration(
-        color: AppColors.primary.withValues(alpha: 0.08),
+        color: AppColors.primary.withOpacity(0.08),
         borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
       ),
       child: Row(

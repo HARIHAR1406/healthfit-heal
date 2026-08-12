@@ -48,8 +48,8 @@ class HealthStatCard extends StatelessWidget {
             boxShadow: [
               BoxShadow(
                 color: isDark
-                    ? Colors.black.withValues(alpha: 0.2)
-                    : color.withValues(alpha: 0.05),
+                    ? Colors.black.withOpacity(0.2)
+                    : color.withOpacity(0.05),
                 blurRadius: 10,
                 offset: const Offset(0, 3),
               ),
@@ -64,7 +64,7 @@ class HealthStatCard extends StatelessWidget {
                 width: 38,
                 height: 38,
                 decoration: BoxDecoration(
-                  color: color.withValues(alpha: 0.12),
+                  color: color.withOpacity(0.12),
                   borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
                 ),
                 child: Icon(icon, color: color, size: AppSpacing.iconMd),

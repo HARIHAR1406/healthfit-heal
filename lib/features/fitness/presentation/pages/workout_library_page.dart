@@ -226,7 +226,7 @@ class _CategoryChip extends StatelessWidget {
             horizontal: AppSpacing.sm, vertical: AppSpacing.xs),
         decoration: BoxDecoration(
           color: isSelected
-              ? AppColors.primary.withValues(alpha: 0.12)
+              ? AppColors.primary.withOpacity(0.12)
               : isDark
                   ? AppColors.cardDark
                   : AppColors.cardLight,

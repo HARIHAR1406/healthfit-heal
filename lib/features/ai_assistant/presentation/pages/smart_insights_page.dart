@@ -42,7 +42,7 @@ class SmartInsightsPage extends ConsumerWidget {
                   padding: const EdgeInsets.symmetric(
                       horizontal: AppSpacing.sm, vertical: 3),
                   decoration: BoxDecoration(
-                    color: AppColors.error.withValues(alpha: 0.15),
+                    color: AppColors.error.withOpacity(0.15),
                     borderRadius:
                         BorderRadius.circular(AppSpacing.radiusXl),
                   ),
@@ -126,14 +126,14 @@ class _InsightTypeFilter extends ConsumerWidget {
                   horizontal: AppSpacing.md, vertical: AppSpacing.xs),
               decoration: BoxDecoration(
                 color: isActive
-                    ? color.withValues(alpha: 0.2)
+                    ? color.withOpacity(0.2)
                     : Colors.transparent,
                 borderRadius:
                     BorderRadius.circular(AppSpacing.radiusXl),
                 border: Border.all(
                   color: isActive
                       ? color
-                      : Colors.grey.withValues(alpha: 0.3),
+                      : Colors.grey.withOpacity(0.3),
                   width: isActive ? 1.5 : 1,
                 ),
               ),

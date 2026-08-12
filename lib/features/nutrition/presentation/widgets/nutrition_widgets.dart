@@ -44,8 +44,8 @@ class CalorieRingWidget extends StatelessWidget {
               value: fraction,
               strokeWidth: strokeWidth,
               backgroundColor: overGoal
-                  ? AppColors.error.withValues(alpha: 0.15)
-                  : AppColors.chartCoral.withValues(alpha: 0.12),
+                  ? AppColors.error.withOpacity(0.15)
+                  : AppColors.chartCoral.withOpacity(0.12),
               valueColor: AlwaysStoppedAnimation<Color>(
                 overGoal ? AppColors.error : AppColors.chartCoral,
               ),
@@ -300,7 +300,7 @@ class _MacroCircle extends StatelessWidget {
               CircularProgressIndicator(
                 value: fraction,
                 strokeWidth: 7,
-                backgroundColor: color.withValues(alpha: 0.12),
+                backgroundColor: color.withOpacity(0.12),
                 valueColor: AlwaysStoppedAnimation<Color>(color),
                 strokeCap: StrokeCap.round,
               ),
@@ -328,7 +328,7 @@ class _MacroCircle extends StatelessWidget {
         Text(
           '${goal.toStringAsFixed(0)}$unit',
           style: AppTypography.overline.copyWith(
-            color: color.withValues(alpha: 0.8),
+            color: color.withOpacity(0.8),
             fontWeight: FontWeight.w600,
           ),
         ),
@@ -366,7 +366,7 @@ class WaterProgressWidget extends StatelessWidget {
           CircularProgressIndicator(
             value: fraction,
             strokeWidth: 12,
-            backgroundColor: AppColors.chartSky.withValues(alpha: 0.12),
+            backgroundColor: AppColors.chartSky.withOpacity(0.12),
             valueColor: const AlwaysStoppedAnimation<Color>(AppColors.chartSky),
             strokeCap: StrokeCap.round,
           ),
@@ -426,9 +426,9 @@ class NutritionScoreBadge extends StatelessWidget {
       padding: const EdgeInsets.symmetric(
           horizontal: AppSpacing.md, vertical: AppSpacing.sm),
       decoration: BoxDecoration(
-        color: _color.withValues(alpha: 0.1),
+        color: _color.withOpacity(0.1),
         borderRadius: BorderRadius.circular(AppSpacing.radiusXl),
-        border: Border.all(color: _color.withValues(alpha: 0.3)),
+        border: Border.all(color: _color.withOpacity(0.3)),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -443,7 +443,7 @@ class NutritionScoreBadge extends StatelessWidget {
                   value: score / 100.0,
                   strokeWidth: 4,
                   backgroundColor:
-                      _color.withValues(alpha: 0.15),
+                      _color.withOpacity(0.15),
                   valueColor: AlwaysStoppedAnimation<Color>(_color),
                   strokeCap: StrokeCap.round,
                 ),

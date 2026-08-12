@@ -284,10 +284,10 @@ class _QuickActionCard extends StatelessWidget {
       onTap: action.onTap,
       child: Container(
         decoration: BoxDecoration(
-          color: action.color.withValues(alpha: isDark ? 0.15 : 0.08),
+          color: action.color.withOpacity(isDark ? 0.15 : 0.08),
           borderRadius: BorderRadius.circular(AppSpacing.radiusXl),
           border: Border.all(
-            color: action.color.withValues(alpha: 0.25),
+            color: action.color.withOpacity(0.25),
             width: AppSpacing.borderThin,
           ),
         ),
@@ -297,7 +297,7 @@ class _QuickActionCard extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(AppSpacing.sm),
               decoration: BoxDecoration(
-                color: action.color.withValues(alpha: 0.15),
+                color: action.color.withOpacity(0.15),
                 shape: BoxShape.circle,
               ),
               child: Icon(action.icon, color: action.color, size: 22),

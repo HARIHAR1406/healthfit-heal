@@ -59,7 +59,7 @@ class AISettingsPage extends ConsumerWidget {
                   child: Container(
                     padding: const EdgeInsets.all(AppSpacing.sm),
                     decoration: BoxDecoration(
-                      color: AppColors.primary.withValues(alpha: 0.08),
+                      color: AppColors.primary.withOpacity(0.08),
                       borderRadius:
                           BorderRadius.circular(AppSpacing.radiusMd),
                     ),
@@ -181,7 +181,7 @@ class AISettingsPage extends ConsumerWidget {
                 trailing: Container(
                   padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
                   decoration: BoxDecoration(
-                    color: Colors.orange.withValues(alpha: 0.15),
+                    color: Colors.orange.withOpacity(0.15),
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: Text('Soon',
@@ -254,7 +254,7 @@ class AISettingsPage extends ConsumerWidget {
           _SectionCard(
             isDark: isDark,
             title: '⚠️ Danger Zone',
-            borderColor: AppColors.error.withValues(alpha: 0.3),
+            borderColor: AppColors.error.withOpacity(0.3),
             children: [
               ListTile(
                 leading: const Icon(Icons.delete_forever_rounded,
@@ -349,8 +349,8 @@ class _SectionCard extends StatelessWidget {
             border: Border.all(
               color: borderColor ??
                   (isDark
-                      ? Colors.white.withValues(alpha: 0.06)
-                      : Colors.grey.withValues(alpha: 0.15)),
+                      ? Colors.white.withOpacity(0.06)
+                      : Colors.grey.withOpacity(0.15)),
             ),
           ),
           child: Column(children: children),
@@ -387,7 +387,7 @@ class _SwitchTile extends StatelessWidget {
       secondary: Container(
         padding: const EdgeInsets.all(AppSpacing.xs),
         decoration: BoxDecoration(
-          color: iconColor.withValues(alpha: 0.12),
+          color: iconColor.withOpacity(0.12),
           borderRadius: BorderRadius.circular(AppSpacing.radiusSm),
         ),
         child: Icon(icon, color: iconColor, size: 20),

@@ -309,7 +309,7 @@ class _SummaryPill extends StatelessWidget {
         color: isDark ? const Color(0xFF1A1F3A) : Colors.white,
         borderRadius: BorderRadius.circular(AppSpacing.radiusLg),
         border: Border.all(
-          color: color.withValues(alpha: 0.25),
+          color: color.withOpacity(0.25),
         ),
       ),
       child: Row(
@@ -412,7 +412,7 @@ class _ErrorView extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Icon(Icons.error_outline_rounded,
-              color: AppColors.error.withValues(alpha: 0.5), size: 48),
+              color: AppColors.error.withOpacity(0.5), size: 48),
           const SizedBox(height: AppSpacing.sm),
           Text(message, textAlign: TextAlign.center),
           const SizedBox(height: AppSpacing.md),

@@ -47,7 +47,7 @@ class HeroBanner extends ConsumerWidget {
           borderRadius: BorderRadius.circular(AppSpacing.radiusXxl),
           boxShadow: [
             BoxShadow(
-              color: AppColors.primary.withValues(alpha: 0.35),
+              color: AppColors.primary.withOpacity(0.35),
               blurRadius: 24,
               spreadRadius: 0,
               offset: const Offset(0, 8),
@@ -64,7 +64,7 @@ class HeroBanner extends ConsumerWidget {
                 right: -20,
                 child: _DecoCircle(
                   size: 150,
-                  color: AppColors.white.withValues(alpha: 0.06),
+                  color: AppColors.white.withOpacity(0.06),
                 ),
               ),
               Positioned(
@@ -72,7 +72,7 @@ class HeroBanner extends ConsumerWidget {
                 right: 60,
                 child: _DecoCircle(
                   size: 120,
-                  color: AppColors.white.withValues(alpha: 0.04),
+                  color: AppColors.white.withOpacity(0.04),
                 ),
               ),
               Positioned(
@@ -80,7 +80,7 @@ class HeroBanner extends ConsumerWidget {
                 right: 100,
                 child: _DecoCircle(
                   size: 60,
-                  color: AppColors.white.withValues(alpha: 0.06),
+                  color: AppColors.white.withOpacity(0.06),
                 ),
               ),
 
@@ -102,7 +102,7 @@ class HeroBanner extends ConsumerWidget {
                               vertical: AppSpacing.xxs,
                             ),
                             decoration: BoxDecoration(
-                              color: AppColors.white.withValues(alpha: 0.2),
+                              color: AppColors.white.withOpacity(0.2),
                               borderRadius: BorderRadius.circular(
                                 AppSpacing.radiusFull,
                               ),
@@ -134,7 +134,7 @@ class HeroBanner extends ConsumerWidget {
                           Text(
                             quote,
                             style: AppTypography.bodySmall.copyWith(
-                              color: AppColors.white.withValues(alpha: 0.85),
+                              color: AppColors.white.withOpacity(0.85),
                               height: 1.5,
                             ),
                             maxLines: 2,
@@ -212,7 +212,7 @@ class _LogActivityButton extends StatelessWidget {
                 vertical: AppSpacing.xs,
               ),
               decoration: BoxDecoration(
-                color: AppColors.white.withValues(alpha: 0.18),
+                color: AppColors.white.withOpacity(0.18),
                 borderRadius: BorderRadius.circular(AppSpacing.radiusFull),
               ),
               child: Row(
@@ -259,7 +259,7 @@ class _WellnessRing extends StatelessWidget {
           size: 92,
           strokeWidth: 7,
           color: AppColors.white,
-          trackColor: AppColors.white.withValues(alpha: 0.2),
+          trackColor: AppColors.white.withOpacity(0.2),
           centerWidget: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -274,7 +274,7 @@ class _WellnessRing extends StatelessWidget {
               Text(
                 '/100',
                 style: AppTypography.bodySmall.copyWith(
-                  color: AppColors.white.withValues(alpha: 0.7),
+                  color: AppColors.white.withOpacity(0.7),
                   fontSize: 10,
                 ),
               ),
@@ -288,7 +288,7 @@ class _WellnessRing extends StatelessWidget {
             vertical: 2,
           ),
           decoration: BoxDecoration(
-            color: AppColors.white.withValues(alpha: 0.2),
+            color: AppColors.white.withOpacity(0.2),
             borderRadius: BorderRadius.circular(AppSpacing.radiusFull),
           ),
           child: Text(

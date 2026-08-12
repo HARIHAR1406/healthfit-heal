@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:health_fit_heal/core/trust/domain/entities/nutrition_input.dart';
-import 'package:health_fit_heal/features/nutrition/domain/entities/detected_food.dart';
+import 'package:healthfit_heal/core/trust/domain/entities/nutrition_input.dart';
+import 'package:healthfit_heal/features/nutrition/domain/entities/detected_food.dart';
 
 /// Tests for the ConfirmedFoodItem → RawFoodInput conversion logic.
 ///

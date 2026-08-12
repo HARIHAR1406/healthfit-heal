@@ -36,7 +36,7 @@ abstract final class DarkTheme {
       // ── Cards ────────────────────────────────────────────────────────────
       cardTheme: AppTheme.buildCardTheme(colorScheme).copyWith(
         color: AppColors.cardDark,
-        shadowColor: AppColors.black.withValues(alpha: 0.3),
+        shadowColor: AppColors.black.withOpacity(0.3),
         surfaceTintColor: AppColors.transparent,
       ),
 
@@ -73,7 +73,7 @@ abstract final class DarkTheme {
       // ── Chips ─────────────────────────────────────────────────────────────
       chipTheme: AppTheme.buildChipTheme(colorScheme).copyWith(
         backgroundColor: AppColors.cardDark,
-        selectedColor: AppColors.primary.withValues(alpha: 0.25),
+        selectedColor: AppColors.primary.withOpacity(0.25),
         side: const BorderSide(color: AppColors.dividerDark),
       ),
 
@@ -92,7 +92,7 @@ abstract final class DarkTheme {
         }),
         trackColor: WidgetStateProperty.resolveWith((states) {
           if (states.contains(WidgetState.selected)) {
-            return AppColors.primary.withValues(alpha: 0.35);
+            return AppColors.primary.withOpacity(0.35);
           }
           return AppColors.dividerDark;
         }),

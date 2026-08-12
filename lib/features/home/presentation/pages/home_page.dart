@@ -220,7 +220,7 @@ class _RefreshBanner extends StatelessWidget {
         horizontal: AppSpacing.md,
         vertical: AppSpacing.xs,
       ),
-      color: AppColors.primary.withValues(alpha: 0.08),
+      color: AppColors.primary.withOpacity(0.08),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

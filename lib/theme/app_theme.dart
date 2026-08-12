@@ -155,10 +155,10 @@ abstract final class AppTheme {
           borderSide: BorderSide(color: cs.error, width: 2),
         ),
         hintStyle: AppTypography.bodyMedium.copyWith(
-          color: cs.onSurface.withValues(alpha: 0.4),
+          color: cs.onSurface.withOpacity(0.4),
         ),
         labelStyle: AppTypography.bodyMedium.copyWith(
-          color: cs.onSurface.withValues(alpha: 0.6),
+          color: cs.onSurface.withOpacity(0.6),
         ),
         floatingLabelStyle: AppTypography.bodySmall.copyWith(
           color: cs.primary,
@@ -171,13 +171,13 @@ abstract final class AppTheme {
   ) =>
       NavigationBarThemeData(
         backgroundColor: cs.surface,
-        indicatorColor: cs.primary.withValues(alpha: 0.15),
+        indicatorColor: cs.primary.withOpacity(0.15),
         iconTheme: WidgetStateProperty.resolveWith((states) {
           if (states.contains(WidgetState.selected)) {
             return IconThemeData(color: cs.primary, size: AppSpacing.iconMd);
           }
           return IconThemeData(
-            color: cs.onSurface.withValues(alpha: 0.6),
+            color: cs.onSurface.withOpacity(0.6),
             size: AppSpacing.iconMd,
           );
         }),
@@ -189,7 +189,7 @@ abstract final class AppTheme {
             );
           }
           return AppTypography.labelSmall.copyWith(
-            color: cs.onSurface.withValues(alpha: 0.6),
+            color: cs.onSurface.withOpacity(0.6),
           );
         }),
         elevation: 0,
@@ -214,7 +214,7 @@ abstract final class AppTheme {
           color: cs.onSurface,
         ),
         contentTextStyle: AppTypography.bodyMedium.copyWith(
-          color: cs.onSurface.withValues(alpha: 0.8),
+          color: cs.onSurface.withOpacity(0.8),
         ),
       );
 

@@ -135,7 +135,7 @@ class _ProgressSummaryCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(AppSpacing.radiusXxl),
         boxShadow: [
           BoxShadow(
-            color: AppColors.primary.withValues(alpha: 0.25),
+            color: AppColors.primary.withOpacity(0.25),
             blurRadius: 20,
             offset: const Offset(0, 8),
           ),
@@ -152,7 +152,7 @@ class _ProgressSummaryCard extends StatelessWidget {
                 CircularProgressIndicator(
                   value: fraction,
                   strokeWidth: 7,
-                  backgroundColor: AppColors.white.withValues(alpha: 0.2),
+                  backgroundColor: AppColors.white.withOpacity(0.2),
                   valueColor:
                       const AlwaysStoppedAnimation<Color>(AppColors.white),
                   strokeCap: StrokeCap.round,
@@ -182,7 +182,7 @@ class _ProgressSummaryCard extends StatelessWidget {
                 Text(
                   '${((fraction) * 100).round()}% complete — keep going!',
                   style: AppTypography.bodySmall.copyWith(
-                    color: AppColors.white.withValues(alpha: 0.8),
+                    color: AppColors.white.withOpacity(0.8),
                   ),
                 ),
               ],

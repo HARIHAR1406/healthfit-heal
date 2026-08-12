@@ -2,11 +2,11 @@ import 'dart:async';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../domain/entities/ai_insight_entity.dart';
-import '../../../domain/entities/conversation_entity.dart';
-import '../../../domain/entities/message_entity.dart';
-import '../../../domain/entities/suggested_prompt_entity.dart';
-import '../../../domain/repositories/ai_repository.dart';
+import '../../domain/entities/ai_insight_entity.dart';
+import '../../domain/entities/conversation_entity.dart';
+import '../../domain/entities/message_entity.dart';
+import '../../domain/entities/suggested_prompt_entity.dart';
+import '../../domain/repositories/ai_repository.dart';
 import 'ai_state.dart';
 
 // ══════════════════════════════════════════════════════════════════════════════

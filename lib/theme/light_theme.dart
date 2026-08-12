@@ -34,7 +34,7 @@ abstract final class LightTheme {
 
       // ── Cards ────────────────────────────────────────────────────────────
       cardTheme: AppTheme.buildCardTheme(colorScheme).copyWith(
-        shadowColor: AppColors.black.withValues(alpha: 0.06),
+        shadowColor: AppColors.black.withOpacity(0.06),
         surfaceTintColor: AppColors.transparent,
       ),
 
@@ -66,7 +66,7 @@ abstract final class LightTheme {
       // ── Chips ─────────────────────────────────────────────────────────────
       chipTheme: AppTheme.buildChipTheme(colorScheme).copyWith(
         backgroundColor: AppColors.surfaceLight,
-        selectedColor: AppColors.primary.withValues(alpha: 0.15),
+        selectedColor: AppColors.primary.withOpacity(0.15),
       ),
 
       // ── Divider ───────────────────────────────────────────────────────────
@@ -84,7 +84,7 @@ abstract final class LightTheme {
         }),
         trackColor: WidgetStateProperty.resolveWith((states) {
           if (states.contains(WidgetState.selected)) {
-            return AppColors.primary.withValues(alpha: 0.3);
+            return AppColors.primary.withOpacity(0.3);
           }
           return AppColors.dividerLight;
         }),

@@ -108,7 +108,7 @@ class _BottomNav extends StatelessWidget {
       backgroundColor:
           isDark ? AppColors.surfaceDark : AppColors.backgroundLight,
       surfaceTintColor: AppColors.primary,
-      indicatorColor: AppColors.primary.withValues(alpha: 0.15),
+      indicatorColor: AppColors.primary.withOpacity(0.15),
       height: AppSpacing.bottomNavHeight + AppSpacing.md,
       labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
       destinations: destinations

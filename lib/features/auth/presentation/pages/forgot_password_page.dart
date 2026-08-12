@@ -182,7 +182,7 @@ class _InputView extends StatelessWidget {
             width: 64,
             height: 64,
             decoration: BoxDecoration(
-              color: AppColors.primary.withValues(alpha: 0.12),
+              color: AppColors.primary.withOpacity(0.12),
               borderRadius: BorderRadius.circular(AppSpacing.radiusLg),
             ),
             child: const Icon(
@@ -306,10 +306,10 @@ class _SuccessView extends StatelessWidget {
                 width: 100,
                 height: 100,
                 decoration: BoxDecoration(
-                  color: AppColors.success.withValues(alpha: 0.12),
+                  color: AppColors.success.withOpacity(0.12),
                   shape: BoxShape.circle,
                   border: Border.all(
-                    color: AppColors.success.withValues(alpha: 0.3),
+                    color: AppColors.success.withOpacity(0.3),
                     width: 2,
                   ),
                 ),
@@ -398,9 +398,9 @@ class _ForgotErrorBanner extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.all(AppSpacing.md),
       decoration: BoxDecoration(
-        color: AppColors.error.withValues(alpha: 0.1),
+        color: AppColors.error.withOpacity(0.1),
         borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
-        border: Border.all(color: AppColors.error.withValues(alpha: 0.3)),
+        border: Border.all(color: AppColors.error.withOpacity(0.3)),
       ),
       child: Row(
         children: [

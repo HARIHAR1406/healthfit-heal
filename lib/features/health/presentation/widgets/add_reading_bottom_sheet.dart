@@ -281,7 +281,7 @@ class _AddReadingBottomSheetState
                       padding: const EdgeInsets.symmetric(vertical: 10),
                       decoration: BoxDecoration(
                         color: selected
-                            ? AppColors.primary.withValues(alpha: 0.12)
+                            ? AppColors.primary.withOpacity(0.12)
                             : Colors.transparent,
                         borderRadius:
                             BorderRadius.circular(AppSpacing.radiusMd),
@@ -389,7 +389,7 @@ class _Field extends StatelessWidget {
         filled: true,
         fillColor: isDark
             ? AppColors.cardDark
-            : AppColors.primary.withValues(alpha: 0.04),
+            : AppColors.primary.withOpacity(0.04),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
           borderSide: BorderSide.none,

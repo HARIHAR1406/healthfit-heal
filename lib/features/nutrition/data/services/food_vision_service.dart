@@ -1,6 +1,6 @@
 import 'dart:typed_data';
 
-import '../../../domain/entities/detected_food.dart';
+import '../../domain/entities/detected_food.dart';
 
 /// Options controlling how recognition is performed.
 class RecognitionOptions {

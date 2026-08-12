@@ -68,7 +68,7 @@ class _FoodDetailPageState extends ConsumerState<FoodDetailPage> {
                   gradient: LinearGradient(
                     colors: [
                       _categoryColor(food),
-                      _categoryColor(food).withValues(alpha: 0.7),
+                      _categoryColor(food).withOpacity(0.7),
                     ],
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
@@ -139,7 +139,7 @@ class _FoodDetailPageState extends ConsumerState<FoodDetailPage> {
                                 vertical: AppSpacing.xs),
                             decoration: BoxDecoration(
                               color:
-                                  AppColors.primary.withValues(alpha: 0.1),
+                                  AppColors.primary.withOpacity(0.1),
                               borderRadius: BorderRadius.circular(
                                   AppSpacing.radiusMd),
                             ),
@@ -484,9 +484,9 @@ class _BadgeChip extends StatelessWidget {
       padding: const EdgeInsets.symmetric(
           horizontal: AppSpacing.sm, vertical: AppSpacing.xxs),
       decoration: BoxDecoration(
-        color: color.withValues(alpha: 0.1),
+        color: color.withOpacity(0.1),
         borderRadius: BorderRadius.circular(AppSpacing.radiusFull),
-        border: Border.all(color: color.withValues(alpha: 0.3)),
+        border: Border.all(color: color.withOpacity(0.3)),
       ),
       child: Text(
         label,

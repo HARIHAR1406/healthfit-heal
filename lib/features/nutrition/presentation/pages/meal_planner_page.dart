@@ -92,10 +92,10 @@ class _PlannerBody extends ConsumerWidget {
             padding: const EdgeInsets.symmetric(
                 horizontal: AppSpacing.lg, vertical: AppSpacing.sm),
             decoration: BoxDecoration(
-              color: AppColors.chartCoral.withValues(alpha: 0.1),
+              color: AppColors.chartCoral.withOpacity(0.1),
               borderRadius: BorderRadius.circular(AppSpacing.radiusFull),
               border: Border.all(
-                  color: AppColors.chartCoral.withValues(alpha: 0.2)),
+                  color: AppColors.chartCoral.withOpacity(0.2)),
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -196,9 +196,9 @@ class _MacroBadge extends StatelessWidget {
       padding: const EdgeInsets.symmetric(
           horizontal: AppSpacing.sm, vertical: AppSpacing.xxs),
       decoration: BoxDecoration(
-        color: color.withValues(alpha: 0.1),
+        color: color.withOpacity(0.1),
         borderRadius: BorderRadius.circular(AppSpacing.radiusFull),
-        border: Border.all(color: color.withValues(alpha: 0.25)),
+        border: Border.all(color: color.withOpacity(0.25)),
       ),
       child: Text(
         '$label: ${value.toStringAsFixed(0)}g',

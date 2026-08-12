@@ -210,7 +210,7 @@ class _TabChip extends StatelessWidget {
         decoration: BoxDecoration(
           color: isActive
               ? AppColors.primary
-              : AppColors.primary.withValues(alpha: 0.1),
+              : AppColors.primary.withOpacity(0.1),
           borderRadius: BorderRadius.circular(AppSpacing.radiusXl),
         ),
         child: Text(

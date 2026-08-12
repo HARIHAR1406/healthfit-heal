@@ -151,7 +151,7 @@ class _AchievementsHeroHeader extends StatelessWidget {
                 Text(
                   'Level $level  ·  $pts pts',
                   style: AppTypography.bodySmall.copyWith(
-                    color: Colors.white.withValues(alpha: 0.7),
+                    color: Colors.white.withOpacity(0.7),
                   ),
                 ),
                 const SizedBox(height: AppSpacing.sm),
@@ -178,7 +178,7 @@ class _AchievementsHeroHeader extends StatelessWidget {
                     Text(
                       '${(progress * 100).round()}% to Level ${level + 1}',
                       style: AppTypography.captionText.copyWith(
-                        color: Colors.white.withValues(alpha: 0.5),
+                        color: Colors.white.withOpacity(0.5),
                         fontSize: 10,
                       ),
                     ),
@@ -230,7 +230,7 @@ class _HeaderPill extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       decoration: BoxDecoration(
-        color: Colors.white.withValues(alpha: 0.1),
+        color: Colors.white.withOpacity(0.1),
         borderRadius: BorderRadius.circular(100),
       ),
       child: Row(
@@ -241,7 +241,7 @@ class _HeaderPill extends StatelessWidget {
           Text(
             '$value $label',
             style: AppTypography.captionText.copyWith(
-              color: Colors.white.withValues(alpha: 0.9),
+              color: Colors.white.withOpacity(0.9),
               fontSize: 11,
               fontWeight: FontWeight.w600,
             ),
@@ -408,7 +408,7 @@ class _OverallGoalRateCard extends StatelessWidget {
         color: isDark ? const Color(0xFF1A1F3A) : Colors.white,
         borderRadius: BorderRadius.circular(AppSpacing.radiusXl),
         border: Border.all(
-          color: color.withValues(alpha: 0.3),
+          color: color.withOpacity(0.3),
         ),
       ),
       child: Row(
@@ -499,8 +499,8 @@ class _StreakSummaryCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(AppSpacing.radiusXl),
         border: Border.all(
           color: isDark
-              ? Colors.white.withValues(alpha: 0.06)
-              : Colors.grey.withValues(alpha: 0.1),
+              ? Colors.white.withOpacity(0.06)
+              : Colors.grey.withOpacity(0.1),
         ),
       ),
       child: Column(
@@ -604,8 +604,8 @@ class _RecordsTab extends StatelessWidget {
             borderRadius: BorderRadius.circular(AppSpacing.radiusXl),
             border: Border.all(
               color: isDark
-                  ? Colors.white.withValues(alpha: 0.06)
-                  : Colors.grey.withValues(alpha: 0.1),
+                  ? Colors.white.withOpacity(0.06)
+                  : Colors.grey.withOpacity(0.1),
             ),
           ),
           child: Column(
@@ -649,8 +649,8 @@ class _RecordsTab extends StatelessWidget {
                       height: 1,
                       indent: 72,
                       color: isDark
-                          ? Colors.white.withValues(alpha: 0.05)
-                          : Colors.grey.withValues(alpha: 0.08),
+                          ? Colors.white.withOpacity(0.05)
+                          : Colors.grey.withOpacity(0.08),
                     ),
                 ],
               );

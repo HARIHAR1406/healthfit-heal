@@ -179,7 +179,7 @@ class _SplashPageState extends ConsumerState<SplashPage>
                     Text(
                       'Your complete health companion',
                       style: AppTypography.bodyMedium.copyWith(
-                        color: AppColors.primary.withValues(alpha: 0.9),
+                        color: AppColors.primary.withOpacity(0.9),
                         letterSpacing: 0.2,
                       ),
                     ),

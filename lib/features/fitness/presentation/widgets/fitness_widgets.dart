@@ -87,7 +87,7 @@ class _Ring extends StatelessWidget {
           CircularProgressIndicator(
             value: fraction,
             strokeWidth: 7,
-            backgroundColor: color.withValues(alpha: 0.12),
+            backgroundColor: color.withOpacity(0.12),
             valueColor: AlwaysStoppedAnimation<Color>(color),
             strokeCap: StrokeCap.round,
           ),
@@ -122,7 +122,7 @@ class TodayActivityCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(AppSpacing.radiusXxl),
         boxShadow: [
           BoxShadow(
-            color: AppColors.primary.withValues(alpha: 0.3),
+            color: AppColors.primary.withOpacity(0.3),
             blurRadius: 20,
             offset: const Offset(0, 8),
           ),
@@ -138,7 +138,7 @@ class TodayActivityCard extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(
                     horizontal: AppSpacing.sm, vertical: 3),
                 decoration: BoxDecoration(
-                  color: AppColors.white.withValues(alpha: 0.2),
+                  color: AppColors.white.withOpacity(0.2),
                   borderRadius:
                       BorderRadius.circular(AppSpacing.radiusFull),
                 ),
@@ -154,7 +154,7 @@ class TodayActivityCard extends StatelessWidget {
               Text(
                 '${activity.workoutsCompleted} workout${activity.workoutsCompleted == 1 ? '' : 's'}',
                 style: AppTypography.bodySmall.copyWith(
-                  color: AppColors.white.withValues(alpha: 0.85),
+                  color: AppColors.white.withOpacity(0.85),
                 ),
               ),
             ],
@@ -230,7 +230,7 @@ class _WhiteRing extends StatelessWidget {
               CircularProgressIndicator(
                 value: fraction,
                 strokeWidth: 7,
-                backgroundColor: AppColors.white.withValues(alpha: 0.2),
+                backgroundColor: AppColors.white.withOpacity(0.2),
                 valueColor: const AlwaysStoppedAnimation<Color>(AppColors.white),
                 strokeCap: StrokeCap.round,
               ),
@@ -249,7 +249,7 @@ class _WhiteRing extends StatelessWidget {
         Text(
           label,
           style: AppTypography.overline.copyWith(
-            color: AppColors.white.withValues(alpha: 0.8),
+            color: AppColors.white.withOpacity(0.8),
             fontSize: 9,
           ),
         ),
@@ -316,10 +316,10 @@ class WorkoutStreakCard extends StatelessWidget {
             padding: const EdgeInsets.symmetric(
                 horizontal: AppSpacing.sm, vertical: AppSpacing.xxs),
             decoration: BoxDecoration(
-              color: AppColors.warning.withValues(alpha: 0.12),
+              color: AppColors.warning.withOpacity(0.12),
               borderRadius: BorderRadius.circular(AppSpacing.radiusFull),
               border: Border.all(
-                  color: AppColors.warning.withValues(alpha: 0.3)),
+                  color: AppColors.warning.withOpacity(0.3)),
             ),
             child: Text(
               current > 0 ? 'Active' : 'Start!',
@@ -381,13 +381,13 @@ class ExerciseTile extends StatelessWidget {
       padding: const EdgeInsets.all(AppSpacing.md),
       decoration: BoxDecoration(
         color: isCurrent
-            ? AppColors.primary.withValues(alpha: 0.08)
+            ? AppColors.primary.withOpacity(0.08)
             : isDark
                 ? AppColors.cardDark
                 : AppColors.cardLight,
         borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
         border: Border.all(
-          color: accent.withValues(alpha: isCurrent ? 0.6 : 0.3),
+          color: accent.withOpacity(isCurrent ? 0.6 : 0.3),
           width: isCurrent ? 1.5 : AppSpacing.borderThin,
         ),
       ),
@@ -398,7 +398,7 @@ class ExerciseTile extends StatelessWidget {
             width: 32,
             height: 32,
             decoration: BoxDecoration(
-              color: accent.withValues(alpha: 0.12),
+              color: accent.withOpacity(0.12),
               shape: BoxShape.circle,
             ),
             child: Center(

@@ -92,7 +92,7 @@ class _HealthActionTileState extends State<HealthActionTile>
                   width: 40,
                   height: 40,
                   decoration: BoxDecoration(
-                    color: widget.color.withValues(alpha: 0.12),
+                    color: widget.color.withOpacity(0.12),
                     borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
                   ),
                   child: Icon(
@@ -205,7 +205,7 @@ class MedicalRecordTile extends StatelessWidget {
                 width: 44,
                 height: 44,
                 decoration: BoxDecoration(
-                  color: _color.withValues(alpha: 0.12),
+                  color: _color.withOpacity(0.12),
                   borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
                 ),
                 child: Icon(_icon, color: _color, size: AppSpacing.iconMd),
@@ -250,7 +250,7 @@ class MedicalRecordTile extends StatelessWidget {
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 6, vertical: 1),
                                 decoration: BoxDecoration(
-                                  color: _color.withValues(alpha: 0.08),
+                                  color: _color.withOpacity(0.08),
                                   borderRadius: BorderRadius.circular(
                                       AppSpacing.radiusFull),
                                 ),

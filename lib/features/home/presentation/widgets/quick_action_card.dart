@@ -96,8 +96,8 @@ class _QuickActionCardState extends State<QuickActionCard>
               boxShadow: [
                 BoxShadow(
                   color: isDark
-                      ? Colors.black.withValues(alpha: 0.2)
-                      : color.withValues(alpha: 0.06),
+                      ? Colors.black.withOpacity(0.2)
+                      : color.withOpacity(0.06),
                   blurRadius: 10,
                   offset: const Offset(0, 4),
                 ),
@@ -114,8 +114,8 @@ class _QuickActionCardState extends State<QuickActionCard>
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       colors: [
-                        color.withValues(alpha: 0.2),
-                        color.withValues(alpha: 0.08),
+                        color.withOpacity(0.2),
+                        color.withOpacity(0.08),
                       ],
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
@@ -162,7 +162,7 @@ class _QuickActionCardState extends State<QuickActionCard>
                     width: 24,
                     height: 24,
                     decoration: BoxDecoration(
-                      color: color.withValues(alpha: 0.12),
+                      color: color.withOpacity(0.12),
                       shape: BoxShape.circle,
                     ),
                     child: Icon(

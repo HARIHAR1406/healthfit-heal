@@ -251,8 +251,8 @@ class _RadarScoreRow extends StatelessWidget {
         borderRadius: BorderRadius.circular(AppSpacing.radiusXl),
         border: Border.all(
           color: isDark
-              ? Colors.white.withValues(alpha: 0.06)
-              : Colors.grey.withValues(alpha: 0.08),
+              ? Colors.white.withOpacity(0.06)
+              : Colors.grey.withOpacity(0.08),
         ),
       ),
       child: Row(
@@ -451,7 +451,7 @@ class _LineChartWidget extends StatelessWidget {
         belowBarData: showArea && i == 0
             ? BarAreaData(
                 show: true,
-                color: color.withValues(alpha: 0.12),
+                color: color.withOpacity(0.12),
               )
             : BarAreaData(show: false),
       );
@@ -460,7 +460,7 @@ class _LineChartWidget extends StatelessWidget {
     final textColor =
         isDark ? AppColors.textSecondaryDark : AppColors.textSecondaryLight;
     final gridColor = (isDark ? Colors.white : Colors.grey)
-        .withValues(alpha: 0.08);
+        .withOpacity(0.08);
 
     return Padding(
       padding: EdgeInsets.fromLTRB(
@@ -580,7 +580,7 @@ class _BPChartWidget extends StatelessWidget {
             drawVerticalLine: false,
             getDrawingHorizontalLine: (_) => FlLine(
               color: (isDark ? Colors.white : Colors.grey)
-                  .withValues(alpha: 0.08),
+                  .withOpacity(0.08),
               strokeWidth: 1,
             ),
           ),
@@ -650,7 +650,7 @@ class _BPChartWidget extends StatelessWidget {
               dotData: const FlDotData(show: false),
               belowBarData: BarAreaData(
                 show: true,
-                color: AppColors.secondary.withValues(alpha: 0.08),
+                color: AppColors.secondary.withOpacity(0.08),
               ),
             ),
             LineChartBarData(
@@ -663,7 +663,7 @@ class _BPChartWidget extends StatelessWidget {
               dotData: const FlDotData(show: false),
               belowBarData: BarAreaData(
                 show: true,
-                color: AppColors.primary.withValues(alpha: 0.08),
+                color: AppColors.primary.withOpacity(0.08),
               ),
             ),
           ],

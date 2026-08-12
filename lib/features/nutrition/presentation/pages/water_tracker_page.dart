@@ -129,11 +129,11 @@ class _WaterBody extends ConsumerWidget {
                   padding: const EdgeInsets.symmetric(
                       horizontal: AppSpacing.md, vertical: AppSpacing.xs),
                   decoration: BoxDecoration(
-                    color: AppColors.success.withValues(alpha: 0.1),
+                    color: AppColors.success.withOpacity(0.1),
                     borderRadius:
                         BorderRadius.circular(AppSpacing.radiusFull),
                     border: Border.all(
-                        color: AppColors.success.withValues(alpha: 0.3)),
+                        color: AppColors.success.withOpacity(0.3)),
                   ),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
@@ -210,11 +210,11 @@ class _WaterBody extends ConsumerWidget {
                   padding: const EdgeInsets.symmetric(
                       horizontal: AppSpacing.lg, vertical: AppSpacing.sm),
                   decoration: BoxDecoration(
-                    color: AppColors.chartSky.withValues(alpha: 0.1),
+                    color: AppColors.chartSky.withOpacity(0.1),
                     borderRadius:
                         BorderRadius.circular(AppSpacing.radiusFull),
                     border: Border.all(
-                        color: AppColors.chartSky.withValues(alpha: 0.3)),
+                        color: AppColors.chartSky.withOpacity(0.3)),
                   ),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
@@ -281,7 +281,7 @@ class _WaterBody extends ConsumerWidget {
               onDismissed: (_) =>
                   ref.read(waterTrackerProvider.notifier).removeEntry(e.id),
               background: Container(
-                color: AppColors.error.withValues(alpha: 0.15),
+                color: AppColors.error.withOpacity(0.15),
                 alignment: Alignment.centerRight,
                 padding: const EdgeInsets.only(right: AppSpacing.lg),
                 child: const Icon(Icons.delete_rounded,
@@ -296,10 +296,10 @@ class _WaterBody extends ConsumerWidget {
         Container(
           padding: const EdgeInsets.all(AppSpacing.md),
           decoration: BoxDecoration(
-            color: AppColors.primary.withValues(alpha: 0.06),
+            color: AppColors.primary.withOpacity(0.06),
             borderRadius: BorderRadius.circular(AppSpacing.radiusXl),
             border: Border.all(
-                color: AppColors.primary.withValues(alpha: 0.15)),
+                color: AppColors.primary.withOpacity(0.15)),
           ),
           child: Row(
             children: [

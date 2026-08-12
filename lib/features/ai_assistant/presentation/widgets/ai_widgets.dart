@@ -68,7 +68,7 @@ class _AIAvatarState extends State<AIAvatar>
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 border: Border.all(
-                  color: const Color(0xFF6C63FF).withValues(alpha: 0.3),
+                  color: const Color(0xFF6C63FF).withOpacity(0.3),
                   width: 2,
                 ),
               ),
@@ -88,7 +88,7 @@ class _AIAvatarState extends State<AIAvatar>
             shape: BoxShape.circle,
             boxShadow: [
               BoxShadow(
-                color: const Color(0xFF6C63FF).withValues(alpha: 0.45),
+                color: const Color(0xFF6C63FF).withOpacity(0.45),
                 blurRadius: 20,
                 offset: const Offset(0, 6),
               ),
@@ -252,10 +252,10 @@ class SuggestionChip extends StatelessWidget {
           vertical: compact ? AppSpacing.xs : AppSpacing.sm,
         ),
         decoration: BoxDecoration(
-          color: prompt.color.withValues(alpha: 0.12),
+          color: prompt.color.withOpacity(0.12),
           borderRadius: BorderRadius.circular(AppSpacing.radiusXl),
           border: Border.all(
-            color: prompt.color.withValues(alpha: 0.3),
+            color: prompt.color.withOpacity(0.3),
             width: AppSpacing.borderThin,
           ),
         ),
@@ -423,8 +423,8 @@ class _ChatComposerState extends ConsumerState<ChatComposer> {
   Widget build(BuildContext context) {
     final bgColor = widget.isDark ? const Color(0xFF151929) : Colors.white;
     final borderColor = widget.isDark
-        ? Colors.white.withValues(alpha: 0.1)
-        : Colors.grey.withValues(alpha: 0.2);
+        ? Colors.white.withOpacity(0.1)
+        : Colors.grey.withOpacity(0.2);
 
     return Container(
       padding: const EdgeInsets.fromLTRB(
@@ -433,7 +433,7 @@ class _ChatComposerState extends ConsumerState<ChatComposer> {
         color: bgColor,
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: widget.isDark ? 0.3 : 0.08),
+            color: Colors.black.withOpacity(widget.isDark ? 0.3 : 0.08),
             blurRadius: 12,
             offset: const Offset(0, -2),
           ),
@@ -455,8 +455,8 @@ class _ChatComposerState extends ConsumerState<ChatComposer> {
               tooltip: 'Voice input (coming soon)',
               style: IconButton.styleFrom(
                 backgroundColor: widget.isDark
-                    ? Colors.white.withValues(alpha: 0.08)
-                    : Colors.grey.withValues(alpha: 0.1),
+                    ? Colors.white.withOpacity(0.08)
+                    : Colors.grey.withOpacity(0.1),
                 shape: RoundedRectangleBorder(
                   borderRadius:
                       BorderRadius.circular(AppSpacing.radiusMd),
@@ -526,7 +526,7 @@ class _ChatComposerState extends ConsumerState<ChatComposer> {
                       ),
                 style: IconButton.styleFrom(
                   backgroundColor: _hasText && !widget.isLoading
-                      ? AppColors.primary.withValues(alpha: 0.12)
+                      ? AppColors.primary.withOpacity(0.12)
                       : Colors.transparent,
                   shape: RoundedRectangleBorder(
                     borderRadius:
@@ -575,13 +575,13 @@ class CategoryChipRow extends StatelessWidget {
                 label: Text('${cat.emoji} ${cat.label}'),
                 selected: isActive,
                 onSelected: (_) => onCategorySelected(cat),
-                selectedColor: cat.color.withValues(alpha: 0.2),
+                selectedColor: cat.color.withOpacity(0.2),
                 backgroundColor: Colors.transparent,
                 checkmarkColor: cat.color,
                 side: BorderSide(
                   color: isActive
                       ? cat.color
-                      : Colors.grey.withValues(alpha: 0.3),
+                      : Colors.grey.withOpacity(0.3),
                   width: isActive ? 1.5 : 1,
                 ),
                 labelStyle: AppTypography.labelSmall.copyWith(

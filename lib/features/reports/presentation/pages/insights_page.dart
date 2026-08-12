@@ -299,7 +299,7 @@ class _BannerStat extends StatelessWidget {
         Text(
           label,
           style: AppTypography.captionText.copyWith(
-            color: Colors.white.withValues(alpha: 0.6),
+            color: Colors.white.withOpacity(0.6),
             fontSize: 11,
           ),
         ),
@@ -366,7 +366,7 @@ class _ErrorView extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Icon(Icons.error_outline_rounded,
-              color: AppColors.error.withValues(alpha: 0.5), size: 48),
+              color: AppColors.error.withOpacity(0.5), size: 48),
           const SizedBox(height: AppSpacing.sm),
           Text(message, textAlign: TextAlign.center),
           const SizedBox(height: AppSpacing.md),

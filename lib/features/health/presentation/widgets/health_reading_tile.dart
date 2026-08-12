@@ -80,7 +80,7 @@ class HealthReadingTile extends StatelessWidget {
                   height: 40,
                   margin: const EdgeInsets.only(right: AppSpacing.sm),
                   decoration: BoxDecoration(
-                    color: iconColor.withValues(alpha: 0.1),
+                    color: iconColor.withOpacity(0.1),
                     shape: BoxShape.circle,
                   ),
                   child: Icon(iconData, color: iconColor, size: AppSpacing.iconSm),

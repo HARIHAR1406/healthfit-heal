@@ -127,8 +127,8 @@ class _IllustrationSection extends StatelessWidget {
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  data.gradientColors[0].withValues(alpha: 0.15),
-                  data.gradientColors[1].withValues(alpha: 0.05),
+                  data.gradientColors[0].withOpacity(0.15),
+                  data.gradientColors[1].withOpacity(0.05),
                 ],
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
@@ -142,7 +142,7 @@ class _IllustrationSection extends StatelessWidget {
             right: -40,
             child: _DecorativeCircle(
               size: 200,
-              color: data.gradientColors[1].withValues(alpha: 0.08),
+              color: data.gradientColors[1].withOpacity(0.08),
             ),
           ),
           Positioned(
@@ -150,7 +150,7 @@ class _IllustrationSection extends StatelessWidget {
             left: -30,
             child: _DecorativeCircle(
               size: 140,
-              color: data.gradientColors[0].withValues(alpha: 0.06),
+              color: data.gradientColors[0].withOpacity(0.06),
             ),
           ),
 
@@ -168,7 +168,7 @@ class _IllustrationSection extends StatelessWidget {
                 shape: BoxShape.circle,
                 boxShadow: [
                   BoxShadow(
-                    color: data.gradientColors[1].withValues(alpha: 0.4),
+                    color: data.gradientColors[1].withOpacity(0.4),
                     blurRadius: 40,
                     spreadRadius: 8,
                     offset: const Offset(0, 16),

@@ -43,7 +43,7 @@ class ProfileAvatar extends StatelessWidget {
               ),
               boxShadow: [
                 BoxShadow(
-                  color: AppColors.primary.withValues(alpha: 0.35),
+                  color: AppColors.primary.withOpacity(0.35),
                   blurRadius: 20,
                   offset: const Offset(0, 6),
                 ),
@@ -137,7 +137,7 @@ class ProfileStatChip extends StatelessWidget {
         color: isDark ? AppColors.cardDark : AppColors.white,
         borderRadius: BorderRadius.circular(AppSpacing.radiusXl),
         border: Border.all(
-          color: color.withValues(alpha: 0.2),
+          color: color.withOpacity(0.2),
           width: AppSpacing.borderThin,
         ),
       ),
@@ -167,7 +167,7 @@ class ProfileStatChip extends StatelessWidget {
                 TextSpan(
                   text: ' $unit',
                   style: AppTypography.captionText.copyWith(
-                    color: color.withValues(alpha: 0.8),
+                    color: color.withOpacity(0.8),
                     fontSize: 10,
                   ),
                 ),
@@ -238,7 +238,7 @@ class SettingsSectionCard extends StatelessWidget {
             boxShadow: [
               BoxShadow(
                 color: (isDark ? Colors.black : Colors.grey)
-                    .withValues(alpha: 0.06),
+                    .withOpacity(0.06),
                 blurRadius: 8,
                 offset: const Offset(0, 2),
               ),
@@ -261,8 +261,8 @@ class SettingsSectionCard extends StatelessWidget {
         indent: AppSpacing.md,
         endIndent: AppSpacing.md,
         color: isDark
-            ? AppColors.dividerDark.withValues(alpha: 0.4)
-            : AppColors.dividerLight.withValues(alpha: 0.6),
+            ? AppColors.dividerDark.withOpacity(0.4)
+            : AppColors.dividerLight.withOpacity(0.6),
       ));
       result.add(children[i]);
     }
@@ -325,7 +325,7 @@ class SettingsTile extends StatelessWidget {
                 width: 36,
                 height: 36,
                 decoration: BoxDecoration(
-                  color: color.withValues(alpha: 0.12),
+                  color: color.withOpacity(0.12),
                   borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
                 ),
                 child: Icon(icon, color: color, size: 18),
@@ -487,7 +487,7 @@ class GoalProgressRow extends StatelessWidget {
               builder: (_, v, __) => LinearProgressIndicator(
                 value: v,
                 minHeight: 6,
-                backgroundColor: color.withValues(alpha: 0.12),
+                backgroundColor: color.withOpacity(0.12),
                 valueColor: AlwaysStoppedAnimation(color),
               ),
             ),

@@ -315,7 +315,7 @@ class _ProgressHeader extends StatelessWidget {
             child: LinearProgressIndicator(
               value: session.overallProgress,
               minHeight: 6,
-              backgroundColor: AppColors.primary.withValues(alpha: 0.12),
+              backgroundColor: AppColors.primary.withOpacity(0.12),
               valueColor: const AlwaysStoppedAnimation<Color>(AppColors.primary),
             ),
           ),
@@ -355,7 +355,7 @@ class _ExerciseCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(AppSpacing.radiusXxl),
           boxShadow: [
             BoxShadow(
-              color: AppColors.primary.withValues(alpha: 0.3),
+              color: AppColors.primary.withOpacity(0.3),
               blurRadius: 20,
               offset: const Offset(0, 8),
             ),
@@ -379,7 +379,7 @@ class _ExerciseCard extends StatelessWidget {
               exercise.targetMuscles.join(' · '),
               textAlign: TextAlign.center,
               style: AppTypography.bodySmall.copyWith(
-                color: AppColors.white.withValues(alpha: 0.8),
+                color: AppColors.white.withOpacity(0.8),
               ),
             ),
             const SizedBox(height: AppSpacing.xl),
@@ -416,14 +416,14 @@ class _ExerciseCard extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(AppSpacing.sm),
                 decoration: BoxDecoration(
-                  color: AppColors.white.withValues(alpha: 0.15),
+                  color: AppColors.white.withOpacity(0.15),
                   borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
                 ),
                 child: Text(
                   exercise.instructions!,
                   textAlign: TextAlign.center,
                   style: AppTypography.bodySmall.copyWith(
-                    color: AppColors.white.withValues(alpha: 0.9),
+                    color: AppColors.white.withOpacity(0.9),
                     height: 1.5,
                   ),
                 ),
@@ -455,7 +455,7 @@ class _SessionStat extends StatelessWidget {
         Text(
           label,
           style: AppTypography.overline.copyWith(
-            color: AppColors.white.withValues(alpha: 0.75),
+            color: AppColors.white.withOpacity(0.75),
           ),
         ),
       ],
@@ -571,17 +571,17 @@ class _CircleButton extends StatelessWidget {
           shape: BoxShape.circle,
           color: filled
               ? color
-              : color.withValues(alpha: onTap != null ? 0.12 : 0.04),
+              : color.withOpacity(onTap != null ? 0.12 : 0.04),
           border: filled
               ? null
               : Border.all(
-                  color: color.withValues(alpha: onTap != null ? 0.3 : 0.1)),
+                  color: color.withOpacity(onTap != null ? 0.3 : 0.1)),
         ),
         child: Icon(
           icon,
           color: filled
               ? AppColors.white
-              : color.withValues(alpha: onTap != null ? 1.0 : 0.3),
+              : color.withOpacity(onTap != null ? 1.0 : 0.3),
           size: size * 0.45,
         ),
       ),
@@ -603,7 +603,7 @@ class _RestOverlay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: AppColors.backgroundDark.withValues(alpha: 0.85),
+      color: AppColors.backgroundDark.withOpacity(0.85),
       child: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -611,7 +611,7 @@ class _RestOverlay extends StatelessWidget {
             Text(
               'Rest',
               style: AppTypography.headlineSmall.copyWith(
-                color: AppColors.white.withValues(alpha: 0.7),
+                color: AppColors.white.withOpacity(0.7),
                 fontWeight: FontWeight.w600,
               ),
             ),
@@ -629,7 +629,7 @@ class _RestOverlay extends StatelessWidget {
                     child: CircularProgressIndicator(
                       value: value,
                       strokeWidth: 8,
-                      backgroundColor: AppColors.white.withValues(alpha: 0.1),
+                      backgroundColor: AppColors.white.withOpacity(0.1),
                       valueColor: const AlwaysStoppedAnimation<Color>(
                           AppColors.chartSky),
                       strokeCap: StrokeCap.round,
@@ -650,7 +650,7 @@ class _RestOverlay extends StatelessWidget {
             Text(
               'seconds remaining',
               style: AppTypography.bodyMedium.copyWith(
-                color: AppColors.white.withValues(alpha: 0.6),
+                color: AppColors.white.withOpacity(0.6),
               ),
             ),
           ],
@@ -668,7 +668,7 @@ class _PausedOverlay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: AppColors.backgroundDark.withValues(alpha: 0.75),
+      color: AppColors.backgroundDark.withOpacity(0.75),
       child: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,

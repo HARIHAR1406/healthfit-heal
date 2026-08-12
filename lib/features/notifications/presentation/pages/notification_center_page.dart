@@ -301,7 +301,7 @@ class _NotifHeader extends StatelessWidget {
                           BorderRadius.circular(AppSpacing.radiusLg),
                       boxShadow: [
                         BoxShadow(
-                          color: const Color(0xFF6C63FF).withValues(alpha: 0.3),
+                          color: const Color(0xFF6C63FF).withOpacity(0.3),
                           blurRadius: 16,
                           offset: const Offset(0, 4),
                         ),

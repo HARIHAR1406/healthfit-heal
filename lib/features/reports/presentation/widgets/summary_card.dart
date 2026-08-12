@@ -71,12 +71,12 @@ class SummaryCard extends StatelessWidget {
           color: isDark ? const Color(0xFF1A1F3A) : Colors.white,
           borderRadius: BorderRadius.circular(AppSpacing.radiusXl),
           border: Border.all(
-            color: color.withValues(alpha: 0.2),
+            color: color.withOpacity(0.2),
             width: AppSpacing.borderThin,
           ),
           boxShadow: [
             BoxShadow(
-              color: color.withValues(alpha: isDark ? 0.12 : 0.08),
+              color: color.withOpacity(isDark ? 0.12 : 0.08),
               blurRadius: 12,
               offset: const Offset(0, 4),
             ),
@@ -91,7 +91,7 @@ class SummaryCard extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.all(AppSpacing.xs),
                   decoration: BoxDecoration(
-                    color: color.withValues(alpha: 0.12),
+                    color: color.withOpacity(0.12),
                     borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
                   ),
                   child: Icon(icon, color: color, size: 18),
@@ -155,8 +155,8 @@ class SummaryCard extends StatelessWidget {
                 subtitle!,
                 style: AppTypography.captionText.copyWith(
                   color: isDark
-                      ? AppColors.textSecondaryDark.withValues(alpha: 0.7)
-                      : AppColors.textSecondaryLight.withValues(alpha: 0.7),
+                      ? AppColors.textSecondaryDark.withOpacity(0.7)
+                      : AppColors.textSecondaryLight.withOpacity(0.7),
                 ),
               ),
             ],
@@ -198,7 +198,7 @@ class _TrendBadge extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 3),
       decoration: BoxDecoration(
-        color: color.withValues(alpha: 0.12),
+        color: color.withOpacity(0.12),
         borderRadius: BorderRadius.circular(AppSpacing.radiusSm),
       ),
       child: Row(
@@ -310,7 +310,7 @@ class AnalyticsCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(AppSpacing.radiusXl),
           boxShadow: [
             BoxShadow(
-              color: gradientColors.first.withValues(alpha: 0.35),
+              color: gradientColors.first.withOpacity(0.35),
               blurRadius: 16,
               offset: const Offset(0, 6),
             ),
@@ -328,7 +328,7 @@ class AnalyticsCard extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(
                         horizontal: 8, vertical: 4),
                     decoration: BoxDecoration(
-                      color: Colors.white.withValues(alpha: 0.25),
+                      color: Colors.white.withOpacity(0.25),
                       borderRadius:
                           BorderRadius.circular(AppSpacing.radiusXl),
                     ),
@@ -354,7 +354,7 @@ class AnalyticsCard extends StatelessWidget {
             Text(
               subtitle,
               style: AppTypography.bodySmall.copyWith(
-                color: Colors.white.withValues(alpha: 0.85),
+                color: Colors.white.withOpacity(0.85),
               ),
             ),
             const SizedBox(height: AppSpacing.md),
@@ -419,8 +419,8 @@ class ComparisonWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(AppSpacing.radiusXl),
         border: Border.all(
           color: isDark
-              ? Colors.white.withValues(alpha: 0.06)
-              : Colors.grey.withValues(alpha: 0.1),
+              ? Colors.white.withOpacity(0.06)
+              : Colors.grey.withOpacity(0.1),
         ),
       ),
       child: Column(
@@ -466,7 +466,7 @@ class ComparisonWidget extends StatelessWidget {
             value: previous,
             maxVal: maxVal,
             unit: unit,
-            color: color.withValues(alpha: 0.4),
+            color: color.withOpacity(0.4),
             isDark: isDark,
           ),
         ],
@@ -517,7 +517,7 @@ class _ComparisonBar extends StatelessWidget {
               curve: Curves.easeOutCubic,
               builder: (_, v, __) => LinearProgressIndicator(
                 value: v,
-                backgroundColor: color.withValues(alpha: 0.1),
+                backgroundColor: color.withOpacity(0.1),
                 valueColor: AlwaysStoppedAnimation(color),
                 minHeight: 10,
               ),

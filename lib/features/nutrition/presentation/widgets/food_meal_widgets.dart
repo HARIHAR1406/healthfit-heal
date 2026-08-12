@@ -57,7 +57,7 @@ class FoodCard extends StatelessWidget {
                 width: 44,
                 height: 44,
                 decoration: BoxDecoration(
-                  color: _categoryColor.withValues(alpha: 0.1),
+                  color: _categoryColor.withOpacity(0.1),
                   borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
                 ),
                 child: Center(
@@ -109,7 +109,7 @@ class FoodCard extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(
                         horizontal: AppSpacing.xs, vertical: 3),
                     decoration: BoxDecoration(
-                      color: AppColors.chartCoral.withValues(alpha: 0.1),
+                      color: AppColors.chartCoral.withOpacity(0.1),
                       borderRadius:
                           BorderRadius.circular(AppSpacing.radiusFull),
                     ),
@@ -235,7 +235,7 @@ class _MacroPill extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
       decoration: BoxDecoration(
-        color: color.withValues(alpha: 0.08),
+        color: color.withOpacity(0.08),
         borderRadius: BorderRadius.circular(AppSpacing.radiusFull),
       ),
       child: Text(
@@ -279,7 +279,7 @@ class MealCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(AppSpacing.radiusXxl),
         border: Border.all(
           color: isExpanded
-              ? AppColors.primary.withValues(alpha: 0.4)
+              ? AppColors.primary.withOpacity(0.4)
               : isDark
                   ? AppColors.dividerDark
                   : AppColors.dividerLight,
@@ -328,7 +328,7 @@ class MealCard extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(
                         horizontal: AppSpacing.xs, vertical: 3),
                     decoration: BoxDecoration(
-                      color: AppColors.chartCoral.withValues(alpha: 0.1),
+                      color: AppColors.chartCoral.withOpacity(0.1),
                       borderRadius:
                           BorderRadius.circular(AppSpacing.radiusFull),
                     ),
@@ -420,7 +420,7 @@ class _FoodEntryTile extends StatelessWidget {
       direction: DismissDirection.endToStart,
       onDismissed: (_) => onRemove(),
       background: Container(
-        color: AppColors.error.withValues(alpha: 0.15),
+        color: AppColors.error.withOpacity(0.15),
         alignment: Alignment.centerRight,
         padding: const EdgeInsets.only(right: AppSpacing.lg),
         child: const Icon(Icons.delete_rounded, color: AppColors.error),

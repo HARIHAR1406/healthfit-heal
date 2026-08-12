@@ -172,10 +172,10 @@ class _DetectedFoodCardState extends State<DetectedFoodCard> {
   }
 
   Color _borderColor(BuildContext context, double? confidence) {
-    if (confidence == null) return AppColors.dividerLight.withValues(alpha: 0.5);
-    if (confidence >= 0.80) return AppColors.success.withValues(alpha: 0.6);
-    if (confidence >= 0.50) return AppColors.warning.withValues(alpha: 0.6);
-    return AppColors.error.withValues(alpha: 0.6);
+    if (confidence == null) return AppColors.dividerLight.withOpacity(0.5);
+    if (confidence >= 0.80) return AppColors.success.withOpacity(0.6);
+    if (confidence >= 0.50) return AppColors.warning.withOpacity(0.6);
+    return AppColors.error.withOpacity(0.6);
   }
 
   String _formatQty(double qty) {
@@ -201,9 +201,9 @@ class _ConfidenceBadge extends StatelessWidget {
         vertical: 3,
       ),
       decoration: BoxDecoration(
-        color: color.withValues(alpha: 0.15),
+        color: color.withOpacity(0.15),
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: color.withValues(alpha: 0.4)),
+        border: Border.all(color: color.withOpacity(0.4)),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -220,7 +220,7 @@ class _ConfidenceBadge extends StatelessWidget {
           Text(
             '  ${(confidence * 100).toStringAsFixed(0)}%',
             style: AppTypography.labelSmall.copyWith(
-              color: color.withValues(alpha: 0.8),
+              color: color.withOpacity(0.8),
             ),
           ),
         ],
@@ -244,9 +244,9 @@ class _ManualBadge extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: AppSpacing.sm, vertical: 3),
       decoration: BoxDecoration(
-        color: AppColors.tertiary.withValues(alpha: 0.12),
+        color: AppColors.tertiary.withOpacity(0.12),
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: AppColors.tertiary.withValues(alpha: 0.4)),
+        border: Border.all(color: AppColors.tertiary.withOpacity(0.4)),
       ),
       child: Text(
         'Manual',
@@ -370,7 +370,7 @@ class _QuantityField extends StatelessWidget {
           isDense: true,
           filled: true,
           fillColor: isDark
-              ? AppColors.surfaceDark.withValues(alpha: 0.5)
+              ? AppColors.surfaceDark.withOpacity(0.5)
               : AppColors.surfaceLight,
           contentPadding: const EdgeInsets.symmetric(
             horizontal: AppSpacing.sm,
@@ -421,7 +421,7 @@ class _UnitPicker extends StatelessWidget {
           isDense: true,
           filled: true,
           fillColor: isDark
-              ? AppColors.surfaceDark.withValues(alpha: 0.5)
+              ? AppColors.surfaceDark.withOpacity(0.5)
               : AppColors.surfaceLight,
           contentPadding: const EdgeInsets.symmetric(
             horizontal: AppSpacing.sm,
@@ -463,9 +463,9 @@ class _QuantityWarning extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(AppSpacing.xs),
       decoration: BoxDecoration(
-        color: AppColors.warning.withValues(alpha: 0.08),
+        color: AppColors.warning.withOpacity(0.08),
         borderRadius: BorderRadius.circular(6),
-        border: Border.all(color: AppColors.warning.withValues(alpha: 0.3)),
+        border: Border.all(color: AppColors.warning.withOpacity(0.3)),
       ),
       child: Row(
         children: [
@@ -524,10 +524,10 @@ class _AlternativeSuggestions extends StatelessWidget {
                     onPressed: () => onSelect(alt),
                     visualDensity: VisualDensity.compact,
                     side: BorderSide(
-                      color: AppColors.tertiary.withValues(alpha: 0.4),
+                      color: AppColors.tertiary.withOpacity(0.4),
                     ),
                     backgroundColor:
-                        AppColors.tertiary.withValues(alpha: 0.08),
+                        AppColors.tertiary.withOpacity(0.08),
                   ))
               .toList(),
         ),

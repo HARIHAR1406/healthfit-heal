@@ -66,7 +66,7 @@ class WorkoutDetailPage extends ConsumerWidget {
                     child: Icon(
                       Icons.fitness_center_rounded,
                       size: 100,
-                      color: AppColors.white.withValues(alpha: 0.2),
+                      color: AppColors.white.withOpacity(0.2),
                     ),
                   ),
                 ),
@@ -248,9 +248,9 @@ class _MetaBadge extends StatelessWidget {
       padding: const EdgeInsets.symmetric(
           horizontal: AppSpacing.sm, vertical: AppSpacing.xxs),
       decoration: BoxDecoration(
-        color: AppColors.primary.withValues(alpha: 0.08),
+        color: AppColors.primary.withOpacity(0.08),
         borderRadius: BorderRadius.circular(AppSpacing.radiusFull),
-        border: Border.all(color: AppColors.primary.withValues(alpha: 0.2)),
+        border: Border.all(color: AppColors.primary.withOpacity(0.2)),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -277,10 +277,10 @@ class _MuscleChip extends StatelessWidget {
       padding: const EdgeInsets.symmetric(
           horizontal: AppSpacing.sm, vertical: AppSpacing.xxs),
       decoration: BoxDecoration(
-        color: AppColors.chartIndigo.withValues(alpha: 0.08),
+        color: AppColors.chartIndigo.withOpacity(0.08),
         borderRadius: BorderRadius.circular(AppSpacing.radiusFull),
         border: Border.all(
-            color: AppColors.chartIndigo.withValues(alpha: 0.25)),
+            color: AppColors.chartIndigo.withOpacity(0.25)),
       ),
       child: Text(
         muscle,

@@ -60,7 +60,7 @@ class _Badge extends StatelessWidget {
         border: Border.all(color: AppColors.white, width: 1.5),
         boxShadow: [
           BoxShadow(
-            color: AppColors.error.withValues(alpha: 0.4),
+            color: AppColors.error.withOpacity(0.4),
             blurRadius: 6,
             offset: const Offset(0, 2),
           ),
@@ -123,19 +123,19 @@ class NotificationCard extends StatelessWidget {
         decoration: BoxDecoration(
           color: isUnread
               ? (isDark
-                  ? cat.color.withValues(alpha: 0.08)
-                  : cat.color.withValues(alpha: 0.06))
+                  ? cat.color.withOpacity(0.08)
+                  : cat.color.withOpacity(0.06))
               : (isDark ? AppColors.cardDark : AppColors.white),
           borderRadius: BorderRadius.circular(AppSpacing.radiusXl),
           border: Border.all(
             color: isUnread
-                ? cat.color.withValues(alpha: 0.25)
-                : AppColors.dividerLight.withValues(alpha: 0.5),
+                ? cat.color.withOpacity(0.25)
+                : AppColors.dividerLight.withOpacity(0.5),
             width: AppSpacing.borderThin,
           ),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withValues(alpha: 0.04),
+              color: Colors.black.withOpacity(0.04),
               blurRadius: 8,
               offset: const Offset(0, 2),
             ),
@@ -253,7 +253,7 @@ class _CategoryIcon extends StatelessWidget {
       width: 44,
       height: 44,
       decoration: BoxDecoration(
-        color: category.color.withValues(alpha: 0.15),
+        color: category.color.withOpacity(0.15),
         borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
       ),
       child: Icon(category.icon, color: category.color, size: 22),
@@ -270,7 +270,7 @@ class _CategoryChip extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
       decoration: BoxDecoration(
-        color: category.color.withValues(alpha: 0.12),
+        color: category.color.withOpacity(0.12),
         borderRadius: BorderRadius.circular(AppSpacing.radiusFull),
       ),
       child: Text(
@@ -374,7 +374,7 @@ class _FilterChip extends StatelessWidget {
                     : AppColors.white,
             borderRadius: BorderRadius.circular(AppSpacing.radiusFull),
             border: Border.all(
-              color: isSelected ? color : color.withValues(alpha: 0.3),
+              color: isSelected ? color : color.withOpacity(0.3),
               width: AppSpacing.borderThin,
             ),
           ),
@@ -398,8 +398,8 @@ class _FilterChip extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 1),
                   decoration: BoxDecoration(
                     color: isSelected
-                        ? AppColors.white.withValues(alpha: 0.3)
-                        : color.withValues(alpha: 0.15),
+                        ? AppColors.white.withOpacity(0.3)
+                        : color.withOpacity(0.15),
                     borderRadius: BorderRadius.circular(AppSpacing.radiusFull),
                   ),
                   child: Text(
@@ -455,15 +455,15 @@ class ReminderCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(AppSpacing.radiusXl),
         border: Border.all(
           color: isActive
-              ? color.withValues(alpha: 0.25)
+              ? color.withOpacity(0.25)
               : AppColors.dividerLight,
           width: AppSpacing.borderThin,
         ),
         boxShadow: [
           BoxShadow(
             color: isActive
-                ? color.withValues(alpha: 0.06)
-                : Colors.black.withValues(alpha: 0.03),
+                ? color.withOpacity(0.06)
+                : Colors.black.withOpacity(0.03),
             blurRadius: 8,
             offset: const Offset(0, 2),
           ),
@@ -483,8 +483,8 @@ class ReminderCard extends StatelessWidget {
                   height: 48,
                   decoration: BoxDecoration(
                     color: isActive
-                        ? color.withValues(alpha: 0.15)
-                        : AppColors.dividerLight.withValues(alpha: 0.5),
+                        ? color.withOpacity(0.15)
+                        : AppColors.dividerLight.withOpacity(0.5),
                     borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
                   ),
                   child: Icon(
@@ -515,12 +515,12 @@ class ReminderCard extends StatelessWidget {
                       Row(
                         children: [
                           Icon(Icons.access_time_rounded,
-                              size: 12, color: color.withValues(alpha: 0.7)),
+                              size: 12, color: color.withOpacity(0.7)),
                           const SizedBox(width: 3),
                           Text(
                             reminder.timeLabel,
                             style: AppTypography.captionText.copyWith(
-                              color: color.withValues(alpha: 0.9),
+                              color: color.withOpacity(0.9),
                               fontWeight: FontWeight.w700,
                             ),
                           ),
@@ -543,7 +543,7 @@ class ReminderCard extends StatelessWidget {
                               Icon(Icons.snooze_rounded,
                                   size: 11,
                                   color: AppColors.warning
-                                      .withValues(alpha: 0.8)),
+                                      .withOpacity(0.8)),
                               const SizedBox(width: 3),
                               Text(
                                 'Snoozed',
@@ -680,12 +680,12 @@ class ReminderStatisticsCard extends StatelessWidget {
       padding: const EdgeInsets.all(AppSpacing.lg),
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: [color.withValues(alpha: 0.15), color.withValues(alpha: 0.05)],
+          colors: [color.withOpacity(0.15), color.withOpacity(0.05)],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
         borderRadius: BorderRadius.circular(AppSpacing.radiusXxl),
-        border: Border.all(color: color.withValues(alpha: 0.2)),
+        border: Border.all(color: color.withOpacity(0.2)),
       ),
       child: Column(
         children: [
@@ -705,7 +705,7 @@ class ReminderStatisticsCard extends StatelessWidget {
                       builder: (_, v, __) => CircularProgressIndicator(
                         value: v,
                         strokeWidth: 7,
-                        backgroundColor: color.withValues(alpha: 0.15),
+                        backgroundColor: color.withOpacity(0.15),
                         valueColor: AlwaysStoppedAnimation(color),
                       ),
                     ),
@@ -785,7 +785,7 @@ class _StatPill extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
       decoration: BoxDecoration(
-        color: color.withValues(alpha: 0.12),
+        color: color.withOpacity(0.12),
         borderRadius: BorderRadius.circular(AppSpacing.radiusFull),
       ),
       child: Text(label,
@@ -810,7 +810,7 @@ class _StatsBox extends StatelessWidget {
         padding: const EdgeInsets.symmetric(
             vertical: AppSpacing.sm, horizontal: AppSpacing.xs),
         decoration: BoxDecoration(
-          color: color.withValues(alpha: 0.1),
+          color: color.withOpacity(0.1),
           borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
         ),
         child: Column(
@@ -895,7 +895,7 @@ class _TimelineTile extends StatelessWidget {
                     shape: BoxShape.circle,
                     boxShadow: [
                       BoxShadow(
-                        color: color.withValues(alpha: 0.4),
+                        color: color.withOpacity(0.4),
                         blurRadius: 6,
                       ),
                     ],
@@ -926,7 +926,7 @@ class _TimelineTile extends StatelessWidget {
                   color: isDark ? AppColors.cardDark : AppColors.white,
                   borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
                   border: Border.all(
-                      color: color.withValues(alpha: 0.15),
+                      color: color.withOpacity(0.15),
                       width: AppSpacing.borderThin),
                 ),
                 child: Row(
@@ -956,7 +956,7 @@ class _TimelineTile extends StatelessWidget {
                     Container(
                       padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 2),
                       decoration: BoxDecoration(
-                        color: color.withValues(alpha: 0.12),
+                        color: color.withOpacity(0.12),
                         borderRadius: BorderRadius.circular(AppSpacing.radiusFull),
                       ),
                       child: Text(
@@ -1022,7 +1022,7 @@ class NotificationEmptyState extends StatelessWidget {
                 color: (isDark
                         ? AppColors.textSecondaryDark
                         : AppColors.textSecondaryLight)
-                    .withValues(alpha: 0.4),
+                    .withOpacity(0.4),
               ),
             ),
             const SizedBox(height: AppSpacing.md),
@@ -1101,7 +1101,7 @@ class TimePickerTile extends StatelessWidget {
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
               decoration: BoxDecoration(
-                color: color.withValues(alpha: 0.12),
+                color: color.withOpacity(0.12),
                 borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
               ),
               child: Text(
@@ -1158,10 +1158,10 @@ class DaysOfWeekSelector extends StatelessWidget {
             width: 36,
             height: 36,
             decoration: BoxDecoration(
-              color: isActive ? color : color.withValues(alpha: 0.08),
+              color: isActive ? color : color.withOpacity(0.08),
               shape: BoxShape.circle,
               border: Border.all(
-                  color: isActive ? color : color.withValues(alpha: 0.25),
+                  color: isActive ? color : color.withOpacity(0.25),
                   width: 1.5),
             ),
             child: Center(

@@ -171,12 +171,12 @@ class _IdleBody extends ConsumerWidget {
                   shape: BoxShape.circle,
                   gradient: RadialGradient(
                     colors: [
-                      AppColors.primary.withValues(alpha: 0.2),
-                      AppColors.primary.withValues(alpha: 0.05),
+                      AppColors.primary.withOpacity(0.2),
+                      AppColors.primary.withOpacity(0.05),
                     ],
                   ),
                   border: Border.all(
-                    color: AppColors.primary.withValues(alpha: 0.3),
+                    color: AppColors.primary.withOpacity(0.3),
                     width: 2,
                   ),
                 ),
@@ -254,10 +254,10 @@ class _IdleBody extends ConsumerWidget {
                   vertical: 4,
                 ),
                 decoration: BoxDecoration(
-                  color: AppColors.info.withValues(alpha: 0.1),
+                  color: AppColors.info.withOpacity(0.1),
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(
-                    color: AppColors.info.withValues(alpha: 0.3),
+                    color: AppColors.info.withOpacity(0.3),
                   ),
                 ),
                 child: Row(
@@ -355,7 +355,7 @@ class _TipsCard extends StatelessWidget {
       padding: const EdgeInsets.all(AppSpacing.sm),
       decoration: BoxDecoration(
         color: isDark
-            ? AppColors.surfaceDark.withValues(alpha: 0.5)
+            ? AppColors.surfaceDark.withOpacity(0.5)
             : AppColors.surfaceLight,
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
@@ -460,7 +460,7 @@ class _ErrorBody extends ConsumerWidget {
                   ? Icons.no_photography_outlined
                   : Icons.error_outline_rounded,
               size: 64,
-              color: AppColors.error.withValues(alpha: 0.7),
+              color: AppColors.error.withOpacity(0.7),
             ),
             const SizedBox(height: AppSpacing.md),
             Text(

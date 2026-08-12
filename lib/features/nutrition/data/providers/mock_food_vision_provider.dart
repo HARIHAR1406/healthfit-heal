@@ -1,8 +1,8 @@
 import 'dart:typed_data';
 
 import '../../../../../core/utils/app_logger.dart';
-import '../../../domain/entities/detected_food.dart';
-import '../food_vision_service.dart';
+import '../../domain/entities/detected_food.dart';
+import '../services/food_vision_service.dart';
 
 /// Mock food vision provider for offline development and testing.
 ///

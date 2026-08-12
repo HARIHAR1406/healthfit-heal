@@ -58,7 +58,7 @@ class WorkoutHistoryTile extends StatelessWidget {
                 width: 44,
                 height: 44,
                 decoration: BoxDecoration(
-                  color: _categoryColor.withValues(alpha: 0.12),
+                  color: _categoryColor.withOpacity(0.12),
                   borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
                 ),
                 child: Icon(
@@ -184,7 +184,7 @@ class FitnessStatTile extends StatelessWidget {
             width: 36,
             height: 36,
             decoration: BoxDecoration(
-              color: color.withValues(alpha: 0.12),
+              color: color.withOpacity(0.12),
               borderRadius: BorderRadius.circular(AppSpacing.radiusSm),
             ),
             child: Icon(icon, color: color, size: AppSpacing.iconSm),
@@ -259,7 +259,7 @@ class AchievementBadge extends StatelessWidget {
           borderRadius: BorderRadius.circular(AppSpacing.radiusXl),
           border: Border.all(
             color: isUnlocked
-                ? AppColors.primary.withValues(alpha: 0.4)
+                ? AppColors.primary.withOpacity(0.4)
                 : isDark
                     ? AppColors.dividerDark
                     : AppColors.dividerLight,
@@ -275,9 +275,9 @@ class AchievementBadge extends StatelessWidget {
               height: 52,
               decoration: BoxDecoration(
                 color: isUnlocked
-                    ? AppColors.primary.withValues(alpha: 0.1)
+                    ? AppColors.primary.withOpacity(0.1)
                     : (isDark ? AppColors.dividerDark : AppColors.dividerLight)
-                        .withValues(alpha: 0.5),
+                        .withOpacity(0.5),
                 shape: BoxShape.circle,
               ),
               child: Center(
@@ -332,7 +332,7 @@ class AchievementBadge extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(
                       horizontal: 6, vertical: 2),
                   decoration: BoxDecoration(
-                    color: AppColors.primary.withValues(alpha: 0.12),
+                    color: AppColors.primary.withOpacity(0.12),
                     borderRadius:
                         BorderRadius.circular(AppSpacing.radiusFull),
                   ),

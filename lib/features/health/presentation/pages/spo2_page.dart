@@ -186,10 +186,10 @@ class _InfoCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(AppSpacing.md),
       decoration: BoxDecoration(
-        color: AppColors.chartSky.withValues(alpha: 0.07),
+        color: AppColors.chartSky.withOpacity(0.07),
         borderRadius: BorderRadius.circular(AppSpacing.radiusXl),
         border:
-            Border.all(color: AppColors.chartSky.withValues(alpha: 0.25)),
+            Border.all(color: AppColors.chartSky.withOpacity(0.25)),
       ),
       child: Row(
         children: [

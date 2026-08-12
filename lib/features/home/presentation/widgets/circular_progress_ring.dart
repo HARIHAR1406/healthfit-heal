@@ -87,7 +87,7 @@ class _CircularProgressRingState extends State<CircularProgressRing>
             strokeWidth: widget.strokeWidth,
             color: widget.color,
             trackColor: widget.trackColor ??
-                widget.color.withValues(alpha: 0.12),
+                widget.color.withOpacity(0.12),
           ),
           child: Center(child: widget.centerWidget),
         ),

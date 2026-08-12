@@ -2,17 +2,17 @@ import 'dart:typed_data';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:health_fit_heal/core/trust/domain/entities/meal_nutrition_result.dart';
-import 'package:health_fit_heal/core/trust/domain/entities/nutrition_input.dart';
-import 'package:health_fit_heal/core/trust/domain/entities/trusted_recommendation.dart';
-import 'package:health_fit_heal/core/trust/recommendation/recommendation_context.dart';
-import 'package:health_fit_heal/core/trust/recommendation/recommendation_failure.dart';
-import 'package:health_fit_heal/core/trust/recommendation/recommendation_safety_layer.dart';
-import 'package:health_fit_heal/features/nutrition/data/services/food_vision_service.dart';
-import 'package:health_fit_heal/features/nutrition/data/services/image_processing_service.dart';
-import 'package:health_fit_heal/features/nutrition/domain/entities/detected_food.dart';
-import 'package:health_fit_heal/features/nutrition/presentation/providers/food_scanner_notifier.dart';
-import 'package:health_fit_heal/features/nutrition/presentation/providers/food_scanner_state.dart';
+import 'package:healthfit_heal/core/trust/domain/entities/meal_nutrition_result.dart';
+import 'package:healthfit_heal/core/trust/domain/entities/nutrition_input.dart';
+import 'package:healthfit_heal/core/trust/domain/entities/trusted_recommendation.dart';
+import 'package:healthfit_heal/core/trust/recommendation/recommendation_context.dart';
+import 'package:healthfit_heal/core/trust/recommendation/recommendation_failure.dart';
+import 'package:healthfit_heal/core/trust/recommendation/recommendation_safety_layer.dart';
+import 'package:healthfit_heal/features/nutrition/data/services/food_vision_service.dart';
+import 'package:healthfit_heal/features/nutrition/data/services/image_processing_service.dart';
+import 'package:healthfit_heal/features/nutrition/domain/entities/detected_food.dart';
+import 'package:healthfit_heal/features/nutrition/presentation/providers/food_scanner_notifier.dart';
+import 'package:healthfit_heal/features/nutrition/presentation/providers/food_scanner_state.dart';
 
 class MockFoodVisionService implements FoodVisionService {
   late RecognitionResult nextResult;

@@ -267,7 +267,7 @@ class _ThemeSelector extends StatelessWidget {
                 width: 36,
                 height: 36,
                 decoration: BoxDecoration(
-                  color: AppColors.primary.withValues(alpha: 0.12),
+                  color: AppColors.primary.withOpacity(0.12),
                   borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
                 ),
                 child: const Icon(Icons.contrast_rounded,
@@ -300,7 +300,7 @@ class _ThemeSelector extends StatelessWidget {
                       decoration: BoxDecoration(
                         color: selected
                             ? AppColors.primary
-                            : AppColors.primary.withValues(alpha: 0.08),
+                            : AppColors.primary.withOpacity(0.08),
                         borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
                       ),
                       child: Column(
@@ -361,7 +361,7 @@ class _UnitSelector extends StatelessWidget {
             width: 36,
             height: 36,
             decoration: BoxDecoration(
-              color: AppColors.primary.withValues(alpha: 0.12),
+              color: AppColors.primary.withOpacity(0.12),
               borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
             ),
             child: const Icon(Icons.straighten_rounded,
