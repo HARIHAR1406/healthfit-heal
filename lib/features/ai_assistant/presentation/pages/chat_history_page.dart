@@ -398,3 +398,4 @@ class _EmptyHistory extends StatelessWidget {
     );
   }
 }
+

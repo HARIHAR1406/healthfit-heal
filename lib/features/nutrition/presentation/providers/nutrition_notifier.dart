@@ -256,3 +256,4 @@ class WeightTrackerNotifier extends StateNotifier<WeightState> {
     }
   }
 }
+

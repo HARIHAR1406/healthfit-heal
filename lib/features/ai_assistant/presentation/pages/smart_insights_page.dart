@@ -221,3 +221,4 @@ class _InsightList extends ConsumerWidget {
     );
   }
 }
+

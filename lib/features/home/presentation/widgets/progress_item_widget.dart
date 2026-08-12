@@ -155,3 +155,4 @@ class TodayProgressSection extends StatelessWidget {
     );
   }
 }
+

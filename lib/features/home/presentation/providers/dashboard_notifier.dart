@@ -57,3 +57,4 @@ class DashboardNotifier extends StateNotifier<DashboardState> {
     }
   }
 }
+

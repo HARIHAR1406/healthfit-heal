@@ -136,3 +136,4 @@ class MealNutritionResult {
       'calories=${totalCalories.toStringAsFixed(0)}, '
       'status=${status.name})';
 }
+

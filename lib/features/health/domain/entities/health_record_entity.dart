@@ -64,3 +64,4 @@ class HealthHistoryItem {
   final DateTime timestamp;
   final String? note;
 }
+

@@ -162,3 +162,4 @@ final isAnyReportLoadingProvider = Provider<bool>((ref) {
       nutrition is NutritionReportLoading ||
       ai is AIReportLoading;
 });
+

@@ -132,3 +132,4 @@ final class MealPlannerError extends MealPlannerState {
   const MealPlannerError({required this.message});
   final String message;
 }
+

@@ -87,3 +87,4 @@ abstract final class AppSpacing {
   static const double borderMedium = 1.5;
   static const double borderThick = 2;
 }
+

@@ -349,7 +349,7 @@ class _AddFoodSheetState extends ConsumerState<_AddFoodSheet> {
     );
   }
 
-  void _showServingsDialog(BuildContext context, WidgetRef ref, food) {
+  void _showServingsDialog(BuildContext context, WidgetRef ref, FoodEntity food) {
     double servings = 1.0;
     showDialog(
       context: context,
@@ -419,3 +419,4 @@ class _AddFoodSheetState extends ConsumerState<_AddFoodSheet> {
     );
   }
 }
+

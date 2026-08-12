@@ -597,3 +597,4 @@ class CategoryChipRow extends StatelessWidget {
     );
   }
 }
+

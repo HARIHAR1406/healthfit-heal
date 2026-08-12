@@ -120,3 +120,4 @@ class SettingsNotifier extends StateNotifier<AppSettings> {
     ));
   }
 }
+

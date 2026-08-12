@@ -51,3 +51,4 @@ class ConnectivityInterceptor extends Interceptor {
     handler.next(options);
   }
 }
+

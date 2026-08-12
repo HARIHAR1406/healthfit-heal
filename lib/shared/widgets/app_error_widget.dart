@@ -116,3 +116,4 @@ class AppInlineError extends StatelessWidget {
     );
   }
 }
+

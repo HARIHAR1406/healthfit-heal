@@ -211,3 +211,4 @@ class AuthRepositoryImpl implements AuthRepository {
     await _local.clearAll();
   }
 }
+

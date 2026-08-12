@@ -76,3 +76,4 @@ class AchievementEntity {
   double get progressFraction =>
       (progressCurrent / progressTarget).clamp(0.0, 1.0);
 }
+

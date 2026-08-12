@@ -113,3 +113,4 @@ class ConversationEntity {
         messageCount: messageCount ?? this.messageCount,
       );
 }
+

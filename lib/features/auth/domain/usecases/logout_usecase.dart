@@ -9,3 +9,4 @@ class LogoutUseCase {
   /// Executes the logout operation.
   Future<void> call() => _repository.logout();
 }
+

@@ -124,3 +124,4 @@ class WorkoutEntity {
   final double rating;
   final int totalRatings;
 }
+

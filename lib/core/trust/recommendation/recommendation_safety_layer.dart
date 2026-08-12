@@ -366,3 +366,4 @@ final class Failure<S, F> extends Result<S, F> {
   const Failure(this.failure);
   final F failure;
 }
+

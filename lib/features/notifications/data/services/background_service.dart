@@ -192,3 +192,4 @@ class BackgroundService {
     return const TaskSuccess('goal_progress_refresh');
   }
 }
+

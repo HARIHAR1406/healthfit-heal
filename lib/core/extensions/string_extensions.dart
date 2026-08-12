@@ -109,3 +109,4 @@ extension NullableStringExtensions on String? {
   /// Returns the value or a fallback string.
   String orDefault([String fallback = '']) => this ?? fallback;
 }
+

@@ -191,7 +191,7 @@ class TodayActivityCard extends StatelessWidget {
                 value: '${(activity.stepsTaken / 1000).toStringAsFixed(1)}k',
                 unit: '',
                 fraction: activity.stepsFraction,
-                icon: Icons.footprint,
+                icon: Icons.directions_walk_rounded,
               ),
             ],
           ),
@@ -468,3 +468,4 @@ class ExerciseTile extends StatelessWidget {
     );
   }
 }
+

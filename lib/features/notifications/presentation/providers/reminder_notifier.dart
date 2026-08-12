@@ -167,3 +167,4 @@ class ReminderHistoryNotifier extends StateNotifier<ReminderHistoryState> {
 
   void reset() => state = const ReminderHistoryInitial();
 }
+

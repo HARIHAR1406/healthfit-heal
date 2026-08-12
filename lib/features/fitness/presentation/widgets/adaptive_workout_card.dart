@@ -29,7 +29,7 @@ class AdaptiveWorkoutCard extends ConsumerWidget {
       color: isDark ? AppColors.cardDark : AppColors.cardLight,
       elevation: 2,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(AppSpacing.cardRadius),
+        borderRadius: BorderRadius.circular(AppSpacing.radiusLg),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -42,8 +42,8 @@ class AdaptiveWorkoutCard extends ConsumerWidget {
             ),
             decoration: BoxDecoration(
               color: _getReadinessColor(readiness.status).withOpacity(0.1),
-              borderRadius: const BorderRadius.vertical(
-                top: Radius.circular(AppSpacing.cardRadius),
+              borderRadius: BorderRadius.vertical(
+                top: Radius.circular(AppSpacing.radiusLg),
               ),
             ),
             child: Row(
@@ -145,3 +145,4 @@ class AdaptiveWorkoutCard extends ConsumerWidget {
     };
   }
 }
+

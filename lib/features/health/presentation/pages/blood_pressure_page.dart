@@ -144,7 +144,7 @@ class _LatestCard extends StatelessWidget {
   final int sys;
   final int dia;
   final int? pulse;
-  final dynamic status;
+  final BloodPressureStatus status;
   final bool isDark;
 
   @override
@@ -236,3 +236,4 @@ class _LatestCard extends StatelessWidget {
     );
   }
 }
+

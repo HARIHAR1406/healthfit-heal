@@ -215,3 +215,4 @@ class RecentActivitySection extends StatelessWidget {
     );
   }
 }
+

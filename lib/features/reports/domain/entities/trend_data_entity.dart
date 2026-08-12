@@ -171,3 +171,4 @@ class PersonalRecord {
   final DateTime achievedAt;
   final String emoji;
 }
+

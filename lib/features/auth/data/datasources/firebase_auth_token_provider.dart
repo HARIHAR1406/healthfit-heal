@@ -76,3 +76,4 @@ class SecureStorageTokenProvider implements TokenProvider {
   @override
   Future<void> clearTokens() => _storage.deleteAll();
 }
+

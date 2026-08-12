@@ -98,3 +98,4 @@ final postWorkoutAnalysisProvider = Provider((ref) {
     'adaptation': adaptation,
   };
 });
+

@@ -410,3 +410,4 @@ class _QuietHoursTile extends StatelessWidget {
     );
   }
 }
+

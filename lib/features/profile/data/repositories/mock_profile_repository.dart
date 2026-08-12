@@ -77,3 +77,4 @@ class MockProfileRepository implements ProfileRepository {
     return true;
   }
 }
+

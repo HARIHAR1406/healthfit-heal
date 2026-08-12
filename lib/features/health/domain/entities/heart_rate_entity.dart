@@ -71,3 +71,4 @@ class HeartRateEntity {
     return HealthMetricStatus.critical;
   }
 }
+

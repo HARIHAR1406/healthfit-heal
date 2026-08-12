@@ -233,3 +233,4 @@ abstract final class AppTheme {
         labelStyle: AppTypography.labelMedium,
       );
 }
+

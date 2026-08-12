@@ -13,3 +13,4 @@ abstract interface class MedicationRepository {
   });
   Future<List<DoseLogEntry>> getLogs({DateTime? from, DateTime? to});
 }
+

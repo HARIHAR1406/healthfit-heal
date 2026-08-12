@@ -156,3 +156,4 @@ class SyncResult {
   final bool success;
   final String? error;
 }
+

@@ -33,3 +33,4 @@ class WorkoutAdaptation {
   final AdjustmentType adjustmentType;
   final String reasoning;
 }
+

@@ -120,3 +120,4 @@ class AIReportEntity {
   final String mostUsedCoach;
   final String topTopic;
 }
+

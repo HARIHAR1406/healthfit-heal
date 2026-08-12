@@ -83,3 +83,4 @@ final wellnessScoreProvider = Provider<int>(
   (ref) => ref.watch(dashboardDataProvider)?.wellnessScore ?? 0,
   name: 'wellnessScoreProvider',
 );
+

@@ -265,7 +265,7 @@ class HealthConnectService {
         endTime: end,
         types: _readTypes,
       );
-      return Health.removeDuplicates(dataPoints);
+      return _health.removeDuplicates(dataPoints);
     } catch (e) {
       log.error('HealthConnect: readAll failed', error: e);
       return [];
@@ -285,7 +285,7 @@ class HealthConnectService {
         endTime: end,
         types: [type],
       );
-      return Health.removeDuplicates(points);
+      return _health.removeDuplicates(points);
     } catch (e) {
       log.error(
         'HealthConnect: readType(${type.name}) failed',
@@ -295,3 +295,4 @@ class HealthConnectService {
     }
   }
 }
+

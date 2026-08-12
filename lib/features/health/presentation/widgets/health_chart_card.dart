@@ -321,3 +321,4 @@ class HealthBarChart extends StatelessWidget {
     );
   }
 }
+

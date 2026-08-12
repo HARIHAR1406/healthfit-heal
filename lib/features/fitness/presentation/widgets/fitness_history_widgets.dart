@@ -352,3 +352,4 @@ class AchievementBadge extends StatelessWidget {
     );
   }
 }
+

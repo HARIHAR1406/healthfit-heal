@@ -134,3 +134,4 @@ class AchievementStatisticsEntity {
 
   int get activeDaysDelta => activeDaysThisMonth - activeDaysLastMonth;
 }
+

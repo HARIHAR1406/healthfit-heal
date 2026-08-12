@@ -64,3 +64,4 @@ class AuthTokenEntity {
   String toString() =>
       'AuthTokenEntity(type: $tokenType, expired: $isExpired)';
 }
+

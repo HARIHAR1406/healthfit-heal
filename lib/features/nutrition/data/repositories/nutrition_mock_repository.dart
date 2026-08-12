@@ -845,3 +845,4 @@ List<FoodEntity> _buildFoodDatabase() {
     ),
   ];
 }
+

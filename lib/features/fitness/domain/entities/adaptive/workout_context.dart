@@ -34,3 +34,4 @@ class WorkoutContext {
   /// Determines if the user has enough history to make informed adaptations.
   bool get hasSufficientHistory => recentHistory.length >= 3;
 }
+

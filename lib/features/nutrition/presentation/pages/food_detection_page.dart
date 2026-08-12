@@ -254,7 +254,7 @@ class _ImageThumbnail extends StatelessWidget {
         0,
       ),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(AppSpacing.cardRadius),
+        borderRadius: BorderRadius.circular(AppSpacing.radiusLg),
         border: Border.all(
           color: isDark ? AppColors.dividerDark : AppColors.dividerLight,
         ),
@@ -319,7 +319,7 @@ class _NoFoodBanner extends StatelessWidget {
       padding: const EdgeInsets.all(AppSpacing.md),
       decoration: BoxDecoration(
         color: AppColors.warning.withOpacity(0.08),
-        borderRadius: BorderRadius.circular(AppSpacing.cardRadius),
+        borderRadius: BorderRadius.circular(AppSpacing.radiusLg),
         border: Border.all(color: AppColors.warning.withOpacity(0.3)),
       ),
       child: Row(
@@ -600,3 +600,4 @@ class _ErrorBody extends ConsumerWidget {
     );
   }
 }
+

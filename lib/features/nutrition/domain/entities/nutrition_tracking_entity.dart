@@ -113,3 +113,4 @@ class NutritionAnalyticsEntity {
 
   final double caloriesGoal;
 }
+

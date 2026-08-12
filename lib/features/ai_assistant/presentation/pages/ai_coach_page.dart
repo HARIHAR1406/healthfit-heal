@@ -254,3 +254,4 @@ class _HowItWorks extends StatelessWidget {
     );
   }
 }
+

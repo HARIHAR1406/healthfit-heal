@@ -160,3 +160,4 @@ class MockMedicationRepository implements MedicationRepository {
     return List.from(_logs);
   }
 }
+

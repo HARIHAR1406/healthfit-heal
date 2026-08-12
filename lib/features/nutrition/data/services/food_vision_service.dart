@@ -76,3 +76,4 @@ abstract interface class FoodVisionService {
   /// Whether this is a mock/stub implementation.
   bool get isMock;
 }
+

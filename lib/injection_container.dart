@@ -95,7 +95,9 @@ abstract final class InjectionContainer {
     // ── Crashlytics routing into AppLogger ─────────────────────────────────
     final crashlytics = FirebaseCrashlyticsService.instance;
     log.setCrashlyticsCallback((error, stackTrace, {required fatal}) {
-      crashlytics.recordError(error, stackTrace, fatal: fatal);
+      if (error != null) {
+        crashlytics.recordError(error, stackTrace, fatal: fatal);
+      }
     });
 
     log.info('IC: Crashlytics → AppLogger wired');
@@ -163,3 +165,4 @@ abstract final class InjectionContainer {
     log.info('IC: HealthConnectSyncService initialized');
   }
 }
+

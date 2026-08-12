@@ -123,9 +123,9 @@ Never diagnose medical conditions.
         options: Options(responseType: ResponseType.stream),
       );
 
-      response.data!.stream.transform(utf8.decoder).listen(
+      response.data!.stream.cast<List<int>>().transform(utf8.decoder).listen(
         (chunk) {
-          for (final line in chunk.split('\n')) {
+          for (final line in (chunk as String).split('\n')) {
             if (!line.startsWith('data: ')) continue;
             final data = line.substring(6).trim();
             if (data == '[DONE]') {
@@ -270,8 +270,8 @@ Never diagnose medical conditions.
   String _coachAddendum(CoachType type) => switch (type) {
         CoachType.fitness => ' Focus on workout plans and exercise.',
         CoachType.nutrition => ' Focus on nutrition and meal planning.',
-        CoachType.wellness => ' Focus on mental wellness and sleep.',
-        CoachType.medical =>
+        CoachType.lifestyle => ' Focus on mental wellness and sleep.',
+        CoachType.health =>
           ' Always recommend consulting a doctor. General health education only.',
         _ => '',
       };
@@ -308,3 +308,4 @@ final openAIProviderProvider = Provider<AIRepository>(
   (_) => OpenAIProvider(),
   name: 'openAIProviderProvider',
 );
+

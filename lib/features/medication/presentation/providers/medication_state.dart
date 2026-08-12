@@ -52,3 +52,4 @@ final class DoseLogError extends DoseLogState {
   const DoseLogError(this.message);
   final String message;
 }
+

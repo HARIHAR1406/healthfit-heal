@@ -100,3 +100,4 @@ enum SessionStatus {
   /// Access token expired; a refresh attempt should be made.
   tokenExpired,
 }
+

@@ -542,3 +542,4 @@ class _ComparisonBar extends StatelessWidget {
     );
   }
 }
+

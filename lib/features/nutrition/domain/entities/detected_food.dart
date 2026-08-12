@@ -222,7 +222,7 @@ class DetectedFood {
       id: id,
       name: name ?? this.name,
       confidenceScore: newConfidence,
-      status: _statusFromConfidence(newConfidence),
+      status: statusFromConfidence(newConfidence),
       providerName: providerName,
       estimatedQuantity: estimatedQuantity ?? this.estimatedQuantity,
       estimatedUnit: estimatedUnit ?? this.estimatedUnit,
@@ -234,7 +234,7 @@ class DetectedFood {
     );
   }
 
-  static RecognitionStatus _statusFromConfidence(double score) {
+  static RecognitionStatus statusFromConfidence(double score) {
     if (score >= 0.80) return RecognitionStatus.identified;
     if (score >= 0.50) return RecognitionStatus.uncertain;
     if (score > 0) return RecognitionStatus.lowConfidence;
@@ -416,3 +416,4 @@ class FoodImageInfo {
 }
 
 enum ImageSource { camera, gallery }
+

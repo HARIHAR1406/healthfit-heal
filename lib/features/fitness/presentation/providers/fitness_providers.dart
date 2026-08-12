@@ -151,3 +151,4 @@ final analyticsPeriodProvider = StateProvider<AnalyticsPeriod>(
   (_) => AnalyticsPeriod.week,
   name: 'analyticsPeriodProvider',
 );
+

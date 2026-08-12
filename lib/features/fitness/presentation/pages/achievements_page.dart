@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../design_system/colors/app_colors.dart';
 import '../../../../design_system/spacing/app_spacing.dart';
 import '../../../../design_system/typography/app_typography.dart';
+import '../../domain/entities/achievement_entity.dart';
 import '../providers/fitness_providers.dart';
 import '../widgets/fitness_history_widgets.dart';
 
@@ -198,7 +199,7 @@ class _ProgressSummaryCard extends StatelessWidget {
 
 class _InProgressTile extends StatelessWidget {
   const _InProgressTile({required this.achievement, required this.isDark});
-  final dynamic achievement;
+  final AchievementEntity achievement;
   final bool isDark;
 
   @override
@@ -275,3 +276,4 @@ class _InProgressTile extends StatelessWidget {
     );
   }
 }
+

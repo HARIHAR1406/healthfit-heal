@@ -157,3 +157,4 @@ final healthConnectPermissionsProvider = FutureProvider<bool>(
   (ref) => ref.watch(healthConnectServiceProvider).hasPermissions(),
   name: 'healthConnectPermissionsProvider',
 );
+

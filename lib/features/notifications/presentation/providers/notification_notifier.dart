@@ -152,3 +152,4 @@ class NotificationNotifier extends StateNotifier<NotificationState> {
 
   void reset() => state = const NotificationInitial();
 }
+

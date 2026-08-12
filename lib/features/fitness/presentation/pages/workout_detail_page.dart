@@ -292,3 +292,4 @@ class _MuscleChip extends StatelessWidget {
     );
   }
 }
+

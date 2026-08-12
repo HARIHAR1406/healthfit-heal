@@ -524,3 +524,4 @@ void showGlobalSearch(BuildContext context) {
     ),
   );
 }
+

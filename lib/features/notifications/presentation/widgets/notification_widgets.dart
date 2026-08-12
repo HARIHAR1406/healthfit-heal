@@ -1179,3 +1179,4 @@ class DaysOfWeekSelector extends StatelessWidget {
     );
   }
 }
+

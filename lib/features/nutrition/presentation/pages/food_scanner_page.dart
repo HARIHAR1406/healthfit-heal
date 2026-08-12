@@ -456,7 +456,7 @@ class _ErrorBody extends ConsumerWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(
-              type.isPermissionError
+              type == ScannerErrorType.permissionDenied
                   ? Icons.no_photography_outlined
                   : Icons.error_outline_rounded,
               size: 64,
@@ -464,7 +464,7 @@ class _ErrorBody extends ConsumerWidget {
             ),
             const SizedBox(height: AppSpacing.md),
             Text(
-              type.isPermissionError ? 'Permission Required' : 'Something went wrong',
+              type == ScannerErrorType.permissionDenied ? 'Permission Required' : 'Something went wrong',
               style: AppTypography.titleLarge.copyWith(
                 color: textColor,
                 fontWeight: FontWeight.w700,
@@ -511,3 +511,4 @@ class _ErrorBody extends ConsumerWidget {
     );
   }
 }
+

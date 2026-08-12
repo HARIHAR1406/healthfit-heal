@@ -100,3 +100,4 @@ class HealthClassification {
       'value=$value $unit, '
       'level=${level.name})';
 }
+

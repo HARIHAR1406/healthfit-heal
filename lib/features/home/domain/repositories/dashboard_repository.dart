@@ -11,3 +11,4 @@ abstract interface class DashboardRepository {
   /// Refreshes dashboard data (typically pull-to-refresh).
   Future<DashboardEntity> refresh();
 }
+

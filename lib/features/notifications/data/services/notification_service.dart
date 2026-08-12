@@ -385,3 +385,4 @@ final notificationServiceProvider = Provider<NotificationService>(
   (_) => NotificationService.instance,
   name: 'notificationServiceProvider',
 );
+

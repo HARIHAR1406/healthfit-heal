@@ -458,3 +458,4 @@ abstract final class PromptTemplates {
         _ => popular.take(6).toList(),
       };
 }
+

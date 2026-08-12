@@ -89,3 +89,4 @@ class HiveService {
     log.warning('HiveService: all boxes cleared.');
   }
 }
+

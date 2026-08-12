@@ -77,3 +77,4 @@ class HealthMetricEntity {
   /// Optional trend indicator, e.g. "+3 from yesterday".
   final String? trend;
 }
+

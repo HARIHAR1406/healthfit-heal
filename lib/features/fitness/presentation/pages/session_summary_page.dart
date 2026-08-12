@@ -9,6 +9,8 @@ import '../../../../design_system/typography/app_typography.dart';
 import '../../domain/entities/workout_session_entity.dart';
 import '../providers/fitness_providers.dart';
 import '../providers/adaptive_workout_providers.dart';
+import '../providers/fitness_state.dart';
+import '../../domain/entities/workout_analysis_engine.dart';
 
 /// Post-workout summary shown when a session finishes.
 class SessionSummaryPage extends ConsumerWidget {
@@ -215,8 +217,8 @@ class SessionSummaryPage extends ConsumerWidget {
     final analysis = ref.watch(postWorkoutAnalysisProvider);
     if (analysis == null) return const SizedBox.shrink();
 
-    final quality = analysis['quality'] as dynamic;
-    final adaptation = analysis['adaptation'] as dynamic;
+    final quality = analysis['quality'] as WorkoutQuality;
+    final adaptation = analysis['adaptation'] as WorkoutAdaptation;
 
     return Container(
       padding: const EdgeInsets.all(AppSpacing.lg),
@@ -307,3 +309,4 @@ class _SummaryStat extends StatelessWidget {
     );
   }
 }
+

@@ -187,3 +187,4 @@ void unawaited(Future<void> future) {
     log.trace('SyncManager unawaited error', error: e);
   });
 }
+

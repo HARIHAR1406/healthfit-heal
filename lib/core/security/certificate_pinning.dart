@@ -103,3 +103,4 @@ class CertificatePinningInterceptor extends Interceptor {
     return isPinned;
   }
 }
+

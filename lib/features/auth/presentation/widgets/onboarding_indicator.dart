@@ -55,3 +55,4 @@ class OnboardingIndicator extends StatelessWidget {
     );
   }
 }
+

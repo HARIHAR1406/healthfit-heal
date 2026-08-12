@@ -143,3 +143,4 @@ class AppButton extends StatelessWidget {
         AppButtonVariant.outlined || AppButtonVariant.text => cs.primary,
       };
 }
+

@@ -7,6 +7,7 @@ import '../../../../design_system/spacing/app_spacing.dart';
 import '../../../../design_system/typography/app_typography.dart';
 import '../../domain/entities/food_entity.dart';
 import '../../domain/entities/meal_entity.dart';
+import 'nutrition_widgets.dart';
 
 // ── Food Card ─────────────────────────────────────────────────────────────────
 
@@ -554,3 +555,4 @@ class GoalCard extends StatelessWidget {
     );
   }
 }
+

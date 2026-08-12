@@ -86,3 +86,4 @@ class BloodPressureEntity {
     return BloodPressureStatus.normal;
   }
 }
+

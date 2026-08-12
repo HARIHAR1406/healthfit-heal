@@ -105,3 +105,4 @@ class HealthStatusChip extends StatelessWidget {
     );
   }
 }
+

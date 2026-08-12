@@ -179,3 +179,4 @@ class TrustedRecommendation {
       'warnings=${safetyWarnings.length}, '
       'hasAi=$hasAiExplanation)';
 }
+

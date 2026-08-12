@@ -348,3 +348,4 @@ typedef BulletBlock = _BulletBlock;
 typedef NumberedBlock = _NumberedBlock;
 typedef CodeBlock = _CodeBlock;
 typedef HeadingBlock = _HeadingBlock;
+

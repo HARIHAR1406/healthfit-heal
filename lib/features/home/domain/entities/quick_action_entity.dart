@@ -26,3 +26,4 @@ class QuickActionEntity {
   /// GoRouter path this action navigates to.
   final String route;
 }
+

@@ -82,3 +82,4 @@ final remoteConfigServiceProvider = Provider<RemoteConfigService>(
   (_) => RemoteConfigService.instance,
   name: 'remoteConfigServiceProvider',
 );
+

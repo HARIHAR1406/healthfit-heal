@@ -307,3 +307,4 @@ class MockNotificationRepository implements NotificationRepository {
     ];
   }
 }
+

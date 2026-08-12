@@ -297,3 +297,4 @@ class MedicalRecordTile extends StatelessWidget {
     );
   }
 }
+

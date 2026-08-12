@@ -7,6 +7,7 @@ import '../domain/repositories/trusted_nutrition_repository.dart';
 import '../validation/nutrition_input_validator.dart';
 import '../validation/nutrition_validation_result.dart';
 import 'calculation_result.dart';
+import '../../../features/nutrition/domain/entities/food_entity.dart';
 
 /// Deterministic nutrition calculation engine.
 ///
@@ -280,3 +281,4 @@ class NutritionCalculationEngine {
         .reduce((a, b) => a.confidenceScore < b.confidenceScore ? a : b);
   }
 }
+

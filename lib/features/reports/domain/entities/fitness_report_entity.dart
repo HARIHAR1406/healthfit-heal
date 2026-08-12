@@ -113,3 +113,4 @@ enum WorkoutCategory {
   final String label;
   final Color color;
 }
+

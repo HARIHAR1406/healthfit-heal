@@ -194,3 +194,4 @@ class SafetyFlag {
 
   bool get isCritical => level == SafetyFlagLevel.critical;
 }
+

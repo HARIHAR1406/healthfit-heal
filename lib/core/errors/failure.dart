@@ -119,3 +119,4 @@ final class UnknownFailure extends Failure {
     super.code = 'UNKNOWN',
   });
 }
+

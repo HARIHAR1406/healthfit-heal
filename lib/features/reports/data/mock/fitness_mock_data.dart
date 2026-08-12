@@ -169,3 +169,4 @@ class FitnessMockData {
     return result;
   }
 }
+

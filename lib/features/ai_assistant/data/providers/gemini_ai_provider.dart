@@ -146,12 +146,14 @@ Response style:
         options: Options(responseType: ResponseType.stream),
       );
 
-      final stream = response.data!.stream.transform(utf8.decoder);
+      final stream = response.data!.stream
+          .cast<List<int>>()
+          .transform(utf8.decoder);
 
       stream.listen(
         (chunk) {
           // SSE format: "data: {...json...}\n\n"
-          for (final line in chunk.split('\n')) {
+          for (final line in (chunk as String).split('\n')) {
             if (line.startsWith('data: ')) {
               try {
                 final jsonStr = line.substring(6).trim();
@@ -306,9 +308,9 @@ Response style:
           '\n\nFocus on: workout plans, exercise form, fitness goals.',
         CoachType.nutrition =>
           '\n\nFocus on: meal planning, macros, healthy eating habits.',
-        CoachType.wellness =>
+        CoachType.lifestyle =>
           '\n\nFocus on: mental health, stress management, sleep quality.',
-        CoachType.medical =>
+        CoachType.health =>
           '\n\nAlways remind users to consult their doctor. Provide general health education only.',
         CoachType.general => '',
         _ => '',
@@ -358,3 +360,4 @@ final geminiAIProviderProvider = Provider<AIRepository>(
   (_) => GeminiAIProvider(),
   name: 'geminiAIProviderProvider',
 );
+

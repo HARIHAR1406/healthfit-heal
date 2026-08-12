@@ -228,3 +228,4 @@ final storageServiceProvider = Provider<StorageService>(
   (_) => FirebaseStorageService(),
   name: 'storageServiceProvider',
 );
+

@@ -763,3 +763,4 @@ class _GoalCompletionCard extends StatelessWidget {
     );
   }
 }
+

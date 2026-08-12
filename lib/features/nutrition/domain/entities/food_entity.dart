@@ -143,3 +143,4 @@ class FoodEntity {
         barcode: barcode,
       );
 }
+

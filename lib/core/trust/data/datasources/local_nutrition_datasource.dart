@@ -546,3 +546,4 @@ abstract final class _SeedFoodAccessor {
     ),
   ];
 }
+

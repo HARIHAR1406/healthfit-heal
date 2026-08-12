@@ -11,3 +11,4 @@ class CheckAuthStatusUseCase {
   /// Returns true if a valid session is found.
   Future<bool> call() => _repository.isAuthenticated();
 }
+

@@ -380,3 +380,4 @@ enum _PickStatus { success, cancelled, error }
 
 /// Alias so callers don't need to import image_picker directly.
 
+

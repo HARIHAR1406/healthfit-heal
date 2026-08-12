@@ -319,3 +319,4 @@ class _RangeRow extends StatelessWidget {
     );
   }
 }
+

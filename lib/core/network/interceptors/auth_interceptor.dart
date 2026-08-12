@@ -95,3 +95,4 @@ class AuthInterceptor extends Interceptor {
   bool _isAuthEndpoint(String path) =>
       _authPaths.any((p) => path.contains(p));
 }
+

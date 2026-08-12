@@ -70,3 +70,4 @@ abstract interface class AuthRepository {
   /// Clears all cached authentication data.
   Future<void> clearAuthData();
 }
+

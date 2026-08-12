@@ -261,3 +261,4 @@ class _DifficultyBadge extends StatelessWidget {
     );
   }
 }
+

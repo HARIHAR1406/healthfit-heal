@@ -123,3 +123,4 @@ class BatchValidationResult {
 
   int get totalCount => successes.length + failures.length;
 }
+

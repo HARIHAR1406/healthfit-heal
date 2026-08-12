@@ -147,3 +147,4 @@ class HealthRuleEngine {
         requiresProfessionalConsultation: false,
       );
 }
+

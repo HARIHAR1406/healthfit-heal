@@ -401,3 +401,4 @@ class FoodScannerNotifier extends StateNotifier<FoodScannerState> {
     return 'Meal Nutrition (${items.length} items)';
   }
 }
+

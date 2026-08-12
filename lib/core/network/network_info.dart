@@ -56,3 +56,4 @@ final isOnlineProvider = StreamProvider<bool>(
   (ref) => ref.watch(networkInfoProvider).onConnectivityChanged,
   name: 'isOnlineProvider',
 );
+

@@ -108,3 +108,4 @@ final class EmptyMealFailure extends RecommendationFailure {
           code: 'EMPTY_MEAL',
         );
 }
+

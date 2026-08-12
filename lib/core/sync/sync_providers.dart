@@ -50,3 +50,4 @@ final failedSyncCountProvider = Provider<int>(
   (ref) => ref.watch(syncQueueProvider).failedCount,
   name: 'failedSyncCountProvider',
 );
+

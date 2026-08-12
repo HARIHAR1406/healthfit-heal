@@ -131,3 +131,4 @@ final filteredMedicalRecordsProvider = Provider<List<HealthRecordEntity>>(
   },
   name: 'filteredMedicalRecordsProvider',
 );
+

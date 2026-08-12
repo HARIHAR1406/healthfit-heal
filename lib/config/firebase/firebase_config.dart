@@ -147,3 +147,4 @@ abstract final class FirebaseConfig {
     log.info('Performance: monitoring enabled=${!kDebugMode}');
   }
 }
+

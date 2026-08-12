@@ -62,3 +62,4 @@ abstract class NutritionRepository {
 
   Future<NutritionAnalyticsEntity> getAnalytics();
 }
+

@@ -554,3 +554,4 @@ class _SmallAIAvatar extends StatelessWidget {
     );
   }
 }
+

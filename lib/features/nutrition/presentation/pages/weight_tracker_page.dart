@@ -485,3 +485,4 @@ class _WeightEntryTile extends StatelessWidget {
     );
   }
 }
+

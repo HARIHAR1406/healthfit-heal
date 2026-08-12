@@ -140,3 +140,4 @@ final nutritionPeriodProvider = StateProvider<NutritionPeriod>(
 // ── Quick-add water amounts (ml) ──────────────────────────────────────────────
 
 const kWaterQuickAmounts = [150, 200, 250, 350, 500];
+

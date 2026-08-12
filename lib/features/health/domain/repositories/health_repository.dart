@@ -31,3 +31,4 @@ abstract interface class HealthRepository {
     required int percentage,
   });
 }
+

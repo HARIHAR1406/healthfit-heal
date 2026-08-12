@@ -577,3 +577,4 @@ class _ActivitySelector extends StatelessWidget {
     );
   }
 }
+

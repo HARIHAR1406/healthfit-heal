@@ -78,3 +78,4 @@ final nutritionCacheCountProvider = FutureProvider<int>(
   },
   name: 'nutritionCacheCountProvider',
 );
+

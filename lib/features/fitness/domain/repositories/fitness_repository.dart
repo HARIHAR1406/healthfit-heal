@@ -39,3 +39,4 @@ abstract class FitnessRepository {
 
   Future<List<AchievementEntity>> getAchievements();
 }
+

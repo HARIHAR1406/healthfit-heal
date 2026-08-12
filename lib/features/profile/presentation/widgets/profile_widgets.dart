@@ -513,3 +513,4 @@ class GoalProgressRow extends StatelessWidget {
     return v.toStringAsFixed(1);
   }
 }
+

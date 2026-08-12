@@ -73,3 +73,4 @@ abstract class ReportsRepository {
   Future<List<PersonalRecord>> getPersonalRecords();
 }
 
+

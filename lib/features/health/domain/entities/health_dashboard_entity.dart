@@ -50,3 +50,4 @@ class HealthDashboardEntity {
       bloodPressure.latestReading.status.isCritical ||
       spo2.status != Spo2Status.normal;
 }
+

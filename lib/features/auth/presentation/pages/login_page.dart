@@ -424,3 +424,4 @@ class _AuthNavRow extends StatelessWidget {
     );
   }
 }
+

@@ -221,7 +221,6 @@ class FirebaseAuthDatasource {
       phoneNumber: firebaseUser.phoneNumber,
       avatarUrl: firebaseUser.photoURL,
       isEmailVerified: firebaseUser.emailVerified,
-      provider: _resolveProvider(firebaseUser),
     );
 
     final tokenModel = AuthTokenModel(
@@ -289,3 +288,4 @@ void unawaited(Future<void> future) {
     log.warning('unawaited error', error: e);
   });
 }
+

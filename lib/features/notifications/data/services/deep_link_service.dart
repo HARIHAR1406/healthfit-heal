@@ -83,3 +83,4 @@ class DeepLinkService {
   String extractChannelId(RemoteMessage message) =>
       (message.data['channel_id'] as String?) ?? 'general';
 }
+

@@ -149,3 +149,4 @@ class FirebaseAnalyticsService {
   FirebaseAnalyticsObserver get observer =>
       FirebaseAnalyticsObserver(analytics: _analytics);
 }
+

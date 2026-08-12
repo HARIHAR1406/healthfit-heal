@@ -295,7 +295,7 @@ Rules:
               .toList() ??
           [];
 
-      final status = DetectedFood._statusFromConfidence(confidence);
+      final status = DetectedFood.statusFromConfidence(confidence);
 
       return DetectedFood(
         id: 'gemini_${name.toLowerCase().replaceAll(' ', '_')}_'
@@ -370,3 +370,4 @@ Rules:
     return dio;
   }
 }
+

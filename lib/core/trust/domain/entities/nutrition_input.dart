@@ -122,3 +122,4 @@ class RawFoodInput {
   String toString() =>
       'RawFoodInput(food=$foodName, serving=$servingSizeG, qty=$quantity)';
 }
+

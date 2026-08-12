@@ -44,3 +44,4 @@ abstract class StorageService {
   /// Returns a signed download URL for a storage path (if private).
   Future<String> getDownloadUrl(String storagePath);
 }
+

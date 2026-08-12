@@ -257,3 +257,4 @@ class AiAssistantPlaceholderPage extends StatelessWidget {
     );
   }
 }
+

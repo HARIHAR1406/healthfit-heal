@@ -333,7 +333,7 @@ class _ExerciseCard extends StatelessWidget {
     required this.currentSet,
     required this.isDark,
   });
-  final dynamic exercise;
+  final ExerciseEntity exercise;
   final int currentSet;
   final bool isDark;
 
@@ -700,3 +700,4 @@ class _PausedOverlay extends StatelessWidget {
     );
   }
 }
+

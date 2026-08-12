@@ -384,3 +384,4 @@ class ActiveMinutesChart extends StatelessWidget {
     );
   }
 }
+

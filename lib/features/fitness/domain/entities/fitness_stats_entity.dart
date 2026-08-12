@@ -98,3 +98,4 @@ class DailyActivityEntity {
       (distanceKm / distanceGoalKm).clamp(0.0, 1.0);
   double get stepsFraction => (stepsTaken / stepsGoal).clamp(0.0, 1.0);
 }
+

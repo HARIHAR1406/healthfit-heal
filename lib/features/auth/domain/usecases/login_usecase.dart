@@ -25,3 +25,4 @@ class LoginUseCase {
         rememberMe: rememberMe,
       );
 }
+

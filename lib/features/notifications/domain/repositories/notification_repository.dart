@@ -29,3 +29,4 @@ abstract interface class NotificationRepository {
   /// Insert a new notification (called from [NotificationService]).
   Future<NotificationEntity> add(NotificationEntity notification);
 }
+

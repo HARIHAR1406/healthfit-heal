@@ -81,3 +81,4 @@ class WorkoutSessionEntity {
 }
 
 enum SessionStatus { idle, active, paused, finished }
+

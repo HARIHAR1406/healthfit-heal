@@ -184,3 +184,4 @@ class InsightsReport {
     return map;
   }
 }
+

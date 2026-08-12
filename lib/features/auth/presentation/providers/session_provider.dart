@@ -32,3 +32,4 @@ final onboardingCompletedProvider = Provider<bool>(
   },
   name: 'onboardingCompletedProvider',
 );
+

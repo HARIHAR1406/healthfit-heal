@@ -130,3 +130,4 @@ class HealthMockData {
     return (avg * 100).clamp(0.0, 100.0);
   }
 }
+

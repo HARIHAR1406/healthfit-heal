@@ -172,3 +172,4 @@ class MedicationSummary {
   final List<MedicationEntity> medications;
   final List<DoseLogEntry> recentLogs;
 }
+

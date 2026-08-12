@@ -12,3 +12,4 @@ class GetCurrentUserUseCase {
   /// Returns the current [UserEntity] or null.
   Future<UserEntity?> call() => _repository.getCurrentUser();
 }
+

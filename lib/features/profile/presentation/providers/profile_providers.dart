@@ -74,3 +74,4 @@ final isProfileBusyProvider = Provider<bool>((ref) {
   final state = ref.watch(profileNotifierProvider);
   return state is ProfileLoading || state is ProfileSaving;
 });
+

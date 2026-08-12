@@ -84,3 +84,4 @@ abstract final class ApiConstants {
   static String withId(String path, String id) =>
       path.replaceFirst('{id}', id);
 }
+

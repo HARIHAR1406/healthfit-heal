@@ -41,3 +41,4 @@ class ProgressItemEntity {
     return current.toStringAsFixed(1);
   }
 }
+

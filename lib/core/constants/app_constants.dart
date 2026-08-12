@@ -68,3 +68,4 @@ abstract final class AppConstants {
   static const String privacyPolicyUrl = 'https://healthfitheal.com/privacy';
   static const String termsOfServiceUrl = 'https://healthfitheal.com/terms';
 }
+

@@ -172,7 +172,7 @@ class MockReportsRepository implements ReportsRepository {
 
     double avg(List list) => list.isEmpty
         ? 0
-        : list.fold(0.0, (s, p) => s + (p as dynamic).value) / list.length;
+        : list.fold(0.0, (s, p) => s + (p as DataPoint).value) / list.length;
 
     final avgCal = avg(calSeries);
     final avgWater = avg(waterSeries);
@@ -312,4 +312,5 @@ class MockReportsRepository implements ReportsRepository {
   Future<List<PersonalRecord>> getPersonalRecords() =>
       _delayed(AchievementMockData.personalRecords());
 }
+
 

@@ -254,3 +254,4 @@ final historySearchQueryProvider = StateProvider<String>(
   (_) => '',
   name: 'historySearchQueryProvider',
 );
+

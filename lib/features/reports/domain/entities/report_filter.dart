@@ -107,3 +107,4 @@ class ActiveFilter {
   @override
   int get hashCode => Object.hash(filter, customRange);
 }
+

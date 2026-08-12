@@ -41,3 +41,4 @@ class ActivityItemEntity {
     return '${diff.inDays}d ago';
   }
 }
+

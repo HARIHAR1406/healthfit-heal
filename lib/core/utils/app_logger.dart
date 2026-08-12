@@ -174,3 +174,4 @@ class AppLogger {
 
 /// Convenience top-level logger instance.
 final log = AppLogger.instance;
+

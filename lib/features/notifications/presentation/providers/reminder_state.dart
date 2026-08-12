@@ -85,3 +85,4 @@ final class ReminderHistoryError extends ReminderHistoryState {
   const ReminderHistoryError(this.message);
   final String message;
 }
+

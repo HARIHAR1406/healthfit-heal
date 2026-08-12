@@ -175,3 +175,4 @@ abstract final class AppTypography {
     height: 1.6,
   );
 }
+

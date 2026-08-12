@@ -450,3 +450,4 @@ class VoiceNotifier extends StateNotifier<VoiceState> {
 
   void reset() => state = const VoiceState();
 }
+

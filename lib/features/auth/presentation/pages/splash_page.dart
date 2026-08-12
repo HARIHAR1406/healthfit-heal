@@ -256,3 +256,4 @@ class _PulsingDotsState extends State<_PulsingDots>
     );
   }
 }
+

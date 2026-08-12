@@ -87,3 +87,4 @@ class UserEntity {
   String toString() =>
       'UserEntity(id: $id, email: $email, fullName: $fullName)';
 }
+

@@ -36,3 +36,4 @@ class ExerciseRecommendationEngine {
     return sorted.take(maxExercises).toList();
   }
 }
+

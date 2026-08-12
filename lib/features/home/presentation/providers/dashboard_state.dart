@@ -51,3 +51,4 @@ extension DashboardStateX on DashboardState {
   String? get errorMessage =>
       this is DashboardError ? (this as DashboardError).message : null;
 }
+

@@ -154,3 +154,4 @@ final personalRecordsProvider =
   final state = ref.watch(achievementsNotifierProvider);
   return state is AchievementsLoaded ? state.personalRecords : [];
 });
+

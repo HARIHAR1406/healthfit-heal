@@ -92,3 +92,4 @@ class FirebaseCrashlyticsService {
     _crashlytics.crash();
   }
 }
+

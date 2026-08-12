@@ -404,3 +404,4 @@ class _FilterBarDelegate extends SliverPersistentHeaderDelegate {
   @override
   Widget build(BuildContext _, double __, bool ___) => child;
 }
+

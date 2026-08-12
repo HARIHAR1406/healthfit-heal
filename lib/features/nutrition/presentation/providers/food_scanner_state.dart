@@ -269,3 +269,4 @@ extension FoodScannerStateX on FoodScannerState {
       this is FoodScannerConfirming ||
       this is FoodScannerResult;
 }
+

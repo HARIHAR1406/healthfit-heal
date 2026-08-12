@@ -305,3 +305,4 @@ class UserProfileEntity {
         bio: bio ?? this.bio,
       );
 }
+

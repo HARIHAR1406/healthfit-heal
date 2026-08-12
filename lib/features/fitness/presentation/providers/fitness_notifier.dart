@@ -4,8 +4,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/utils/app_logger.dart';
 import '../../data/repositories/fitness_mock_repository.dart';
+import '../../domain/entities/fitness_stats_entity.dart';
 import '../../domain/entities/workout_entity.dart';
 import '../../domain/entities/workout_session_entity.dart';
+import '../../domain/entities/daily_activity_entity.dart';
+import '../../domain/entities/achievement_entity.dart';
 import '../../domain/repositories/fitness_repository.dart';
 import 'fitness_state.dart';
 
@@ -49,11 +52,11 @@ class FitnessNotifier extends StateNotifier<FitnessState> {
         _repo.getAchievements(),
       ]);
       state = FitnessLoaded(
-        stats: results[0] as dynamic,
-        todayActivity: results[1] as dynamic,
-        workouts: results[2] as dynamic,
-        history: results[3] as dynamic,
-        achievements: results[4] as dynamic,
+        stats: results[0] as FitnessStatsEntity,
+        todayActivity: results[1] as DailyActivityEntity,
+        workouts: results[2] as List<WorkoutEntity>,
+        history: results[3] as List<WorkoutHistoryEntry>,
+        achievements: results[4] as List<AchievementEntity>,
       );
     } catch (e, st) {
       log.error('FitnessNotifier: load failed', error: e, stackTrace: st);
@@ -331,3 +334,4 @@ class WorkoutHistoryNotifier extends StateNotifier<HistoryState> {
 }
 
 typedef VoidCallback = void Function();
+

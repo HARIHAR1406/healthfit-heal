@@ -67,3 +67,4 @@ class SuggestedPromptEntity {
   final String? description;
   final bool isPopular;
 }
+

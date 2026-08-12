@@ -119,3 +119,4 @@ class TermsCheckbox extends StatelessWidget {
     );
   }
 }
+

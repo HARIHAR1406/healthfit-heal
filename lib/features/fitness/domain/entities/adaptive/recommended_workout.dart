@@ -22,3 +22,4 @@ class RecommendedWorkout {
   /// Example: "Focuses on lower body to balance your recent upper body sessions."
   final String primaryReasoning;
 }
+

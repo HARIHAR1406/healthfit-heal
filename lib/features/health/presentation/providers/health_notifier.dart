@@ -161,3 +161,4 @@ class BmiCalculatorNotifier extends StateNotifier<BmiCalculatorState> {
 
   void reset() => state = const BmiCalculatorState();
 }
+

@@ -54,3 +54,4 @@ class AuthTokenModel extends AuthTokenEntity {
     );
   }
 }
+

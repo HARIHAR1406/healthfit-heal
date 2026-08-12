@@ -679,3 +679,4 @@ class NutritionScoreChart extends StatelessWidget {
     );
   }
 }
+

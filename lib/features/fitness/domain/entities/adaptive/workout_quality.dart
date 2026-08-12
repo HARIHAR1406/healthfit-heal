@@ -16,3 +16,4 @@ class WorkoutQuality {
   /// Example: ["Excellent exercise completion", "Rested longer than planned"]
   final List<String> factors;
 }
+

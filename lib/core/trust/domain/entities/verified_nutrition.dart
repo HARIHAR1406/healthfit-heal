@@ -117,3 +117,4 @@ class VerifiedNutrition {
     return Set.unmodifiable(fields);
   }
 }
+

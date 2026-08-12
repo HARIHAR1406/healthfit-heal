@@ -5,6 +5,7 @@ import '../../../../design_system/colors/app_colors.dart';
 import '../../../../design_system/spacing/app_spacing.dart';
 import '../../../../design_system/typography/app_typography.dart';
 import '../../../home/presentation/widgets/circular_progress_ring.dart';
+import '../../domain/entities/spo2_entity.dart';
 import '../providers/health_providers.dart';
 import '../widgets/add_reading_bottom_sheet.dart';
 import '../widgets/health_reading_tile.dart';
@@ -125,7 +126,7 @@ class _Spo2RingCard extends StatelessWidget {
     required this.isDark,
   });
   final int percentage;
-  final dynamic status;
+  final Spo2Status status;
   final bool isDark;
 
   @override
@@ -275,3 +276,4 @@ class _Row extends StatelessWidget {
     );
   }
 }
+

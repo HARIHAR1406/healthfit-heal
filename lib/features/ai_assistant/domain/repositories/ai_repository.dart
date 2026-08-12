@@ -72,3 +72,4 @@ abstract class AIRepository {
   /// Marks an insight as read.
   Future<void> markInsightRead(String insightId);
 }
+

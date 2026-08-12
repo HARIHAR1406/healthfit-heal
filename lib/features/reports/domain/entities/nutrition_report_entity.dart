@@ -139,3 +139,4 @@ const Color kCarbsColor = Color(0xFFFF9800);
 const Color kFatColor = Color(0xFFFF6B6B);
 const Color kFiberColor = Color(0xFF00C896);
 const Color kWaterColor = Color(0xFF00B4D8);
+

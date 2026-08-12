@@ -8,6 +8,7 @@ import '../providers/nutrition_providers.dart';
 import '../providers/nutrition_state.dart';
 import '../widgets/nutrition_chart_widgets.dart';
 import '../widgets/nutrition_widgets.dart';
+import '../widgets/food_meal_widgets.dart';
 
 /// Nutrition analytics with 5 fl_chart visualisations.
 class NutritionAnalyticsPage extends ConsumerWidget {
@@ -220,3 +221,4 @@ class _AnalyticsBody extends StatelessWidget {
     );
   }
 }
+

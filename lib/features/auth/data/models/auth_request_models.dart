@@ -68,3 +68,4 @@ class GoogleSignInRequestModel {
         if (deviceId != null) 'device_id': deviceId,
       };
 }
+

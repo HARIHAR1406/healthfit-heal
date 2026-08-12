@@ -64,3 +64,4 @@ class HealthRule {
       'HealthRule(id=$id, metric=$metricType, '
       'range=[$minValue, $maxValue), level=${level.name})';
 }
+

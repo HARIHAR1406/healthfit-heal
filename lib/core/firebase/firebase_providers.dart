@@ -60,3 +60,4 @@ final featureReportsProvider = Provider<bool>(
   (ref) => ref.watch(remoteConfigProvider).featureReports,
   name: 'featureReportsProvider',
 );
+

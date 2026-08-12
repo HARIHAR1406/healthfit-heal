@@ -67,7 +67,7 @@ class _DetectedFoodCardState extends State<DetectedFoodCard> {
     return Card(
       margin: const EdgeInsets.only(bottom: AppSpacing.sm),
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(AppSpacing.cardRadius),
+        borderRadius: BorderRadius.circular(AppSpacing.radiusLg),
         side: BorderSide(
           color: _borderColor(context, confidence),
           width: 1.2,
@@ -691,3 +691,4 @@ class _AddFoodManuallySheetState extends State<AddFoodManuallySheet> {
     });
   }
 }
+

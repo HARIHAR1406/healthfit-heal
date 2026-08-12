@@ -706,3 +706,4 @@ class _WeeklyInsightsSection extends StatelessWidget {
     );
   }
 }
+

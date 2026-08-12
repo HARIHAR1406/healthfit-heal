@@ -6,6 +6,7 @@ import '../../domain/entities/health_insight_entity.dart';
 import '../../domain/entities/report_filter.dart';
 import '../../domain/entities/trend_data_entity.dart';
 import '../../domain/repositories/reports_repository.dart';
+import '../../domain/entities/achievement_statistics_entity.dart';
 import 'analytics_state.dart';
 
 final _log = Logger();
@@ -206,3 +207,4 @@ class AchievementsNotifier extends StateNotifier<AchievementsState> {
 
   void reset() => state = const AchievementsInitial();
 }
+

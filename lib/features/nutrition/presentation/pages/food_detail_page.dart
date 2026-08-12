@@ -6,6 +6,7 @@ import '../../../../design_system/spacing/app_spacing.dart';
 import '../../../../design_system/typography/app_typography.dart';
 import '../../domain/entities/food_entity.dart';
 import '../providers/nutrition_providers.dart';
+import '../providers/nutrition_notifier.dart';
 
 /// Full nutrition facts + serving calculator for a single food item.
 class FoodDetailPage extends ConsumerStatefulWidget {
@@ -498,3 +499,4 @@ class _BadgeChip extends StatelessWidget {
     );
   }
 }
+

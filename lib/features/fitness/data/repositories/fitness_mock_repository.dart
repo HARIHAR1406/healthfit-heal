@@ -779,3 +779,4 @@ List<WorkoutHistoryEntry> _buildHistory() {
     ),
   ];
 }
+

@@ -28,7 +28,7 @@ abstract final class AppIcons {
   static const IconData nutrition = Icons.restaurant_rounded;
   static const IconData meditation = Icons.self_improvement_rounded;
   static const IconData timer = Icons.timer_rounded;
-  static const IconData stopwatch = Icons.stopwatch_rounded;
+  static const IconData stopwatch = Icons.timer_rounded;
   static const IconData bloodPressure = Icons.bloodtype_rounded;
   static const IconData oxygen = Icons.air_rounded;
   static const IconData temperature = Icons.thermostat_rounded;
@@ -101,3 +101,4 @@ abstract final class AppIcons {
   // static const String googleSvg = 'assets/icons/google.svg';
   // static const String appleSvg = 'assets/icons/apple.svg';
 }
+

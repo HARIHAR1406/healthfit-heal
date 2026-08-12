@@ -55,3 +55,4 @@ class DashboardEntity {
   /// Wellness fraction for progress widgets (0.0 – 1.0).
   double get wellnessFraction => wellnessScore / 100.0;
 }
+

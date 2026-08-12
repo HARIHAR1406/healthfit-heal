@@ -57,3 +57,4 @@ final class SettingsSaving extends SettingsState {
   const SettingsSaving(this.settings);
   final AppSettings settings;
 }
+

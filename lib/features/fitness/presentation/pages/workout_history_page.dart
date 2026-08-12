@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 import '../../../../design_system/colors/app_colors.dart';
 import '../../../../design_system/spacing/app_spacing.dart';
 import '../../../../design_system/typography/app_typography.dart';
+import '../../domain/entities/fitness_stats_entity.dart';
 import '../providers/fitness_providers.dart';
 import '../providers/fitness_state.dart';
 import '../widgets/fitness_history_widgets.dart';
@@ -21,7 +22,7 @@ class WorkoutHistoryPage extends ConsumerWidget {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     // Group by date
-    final grouped = <String, List<dynamic>>{};
+    final grouped = <String, List<WorkoutHistoryEntry>>{};
     for (final e in filtered) {
       final key = DateFormat('EEEE, dd MMM yyyy').format(e.completedAt);
       grouped.putIfAbsent(key, () => []).add(e);
@@ -238,3 +239,4 @@ class _EmptyState extends StatelessWidget {
     );
   }
 }
+

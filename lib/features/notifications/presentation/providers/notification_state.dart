@@ -75,3 +75,4 @@ final class SettingsSaving extends SettingsSaveState {
 final class SettingsSaved extends SettingsSaveState {
   const SettingsSaved();
 }
+

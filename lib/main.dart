@@ -92,3 +92,4 @@ ThemeMode _resolveThemeMode(AppThemePreference pref) {
     AppThemePreference.system => ThemeMode.system,
   };
 }
+

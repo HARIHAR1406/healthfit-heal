@@ -53,3 +53,4 @@ abstract interface class TrustedNutritionRepository {
   /// Returns the number of records available in the local cache.
   Future<int> getCachedCount();
 }
+

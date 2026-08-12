@@ -20,3 +20,4 @@ abstract interface class ProfileRepository {
   /// Delete the user account — returns true on success.
   Future<bool> deleteAccount();
 }
+

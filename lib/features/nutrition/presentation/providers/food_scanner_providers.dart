@@ -99,3 +99,4 @@ final visionProviderNameProvider = Provider<String>(
   (ref) => ref.watch(foodVisionServiceProvider).providerName,
   name: 'visionProviderNameProvider',
 );
+

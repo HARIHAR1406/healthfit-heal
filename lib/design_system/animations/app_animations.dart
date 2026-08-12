@@ -48,3 +48,4 @@ abstract final class AppAnimations {
   static const Duration staggerMedium = Duration(milliseconds: 80);
   static const Duration staggerLarge = Duration(milliseconds: 120);
 }
+

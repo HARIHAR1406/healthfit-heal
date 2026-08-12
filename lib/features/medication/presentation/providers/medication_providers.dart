@@ -113,3 +113,4 @@ final todayAdherenceProvider = Provider<(int, int)>((ref) {
   }
   return (0, 0);
 });
+

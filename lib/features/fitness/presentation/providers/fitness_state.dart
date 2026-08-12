@@ -121,3 +121,4 @@ final class HistoryError extends HistoryState {
   const HistoryError({required this.message});
   final String message;
 }
+

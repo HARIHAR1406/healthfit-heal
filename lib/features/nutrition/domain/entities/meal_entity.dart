@@ -151,3 +151,4 @@ class NutritionGoals {
   final int waterGoalMl;
   final double sodiumGoalMg;
 }
+

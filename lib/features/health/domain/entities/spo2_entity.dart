@@ -64,3 +64,4 @@ class Spo2Entity {
     return Spo2Status.criticallyLow;
   }
 }
+

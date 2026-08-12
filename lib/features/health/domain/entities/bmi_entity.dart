@@ -111,3 +111,4 @@ class BmiEntity {
     return 703 * weightLb / (heightInches * heightInches);
   }
 }
+

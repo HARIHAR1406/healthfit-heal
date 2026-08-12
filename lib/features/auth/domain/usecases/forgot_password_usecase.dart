@@ -12,3 +12,4 @@ class ForgotPasswordUseCase {
         email: email.trim().toLowerCase(),
       );
 }
+

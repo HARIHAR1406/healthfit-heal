@@ -129,3 +129,4 @@ final reminderStatisticsProvider = Provider<ReminderStatistics?>((ref) {
 final backgroundTaskProvider = Provider<BackgroundService>((_) {
   return BackgroundService.instance;
 });
+

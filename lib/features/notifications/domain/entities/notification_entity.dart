@@ -173,3 +173,4 @@ class NotificationSettings {
         categoryToggles: categoryToggles ?? this.categoryToggles,
       );
 }
+

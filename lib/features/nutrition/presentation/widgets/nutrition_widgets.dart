@@ -547,3 +547,4 @@ class MealCalorieRow extends StatelessWidget {
     );
   }
 }
+

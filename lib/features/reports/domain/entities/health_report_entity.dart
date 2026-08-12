@@ -182,3 +182,4 @@ enum BmiCategory {
     return BmiCategory.obese;
   }
 }
+

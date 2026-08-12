@@ -229,3 +229,4 @@ class ReminderStatistics {
   final int bestStreak;
   final Map<ReminderType, int> byType;
 }
+

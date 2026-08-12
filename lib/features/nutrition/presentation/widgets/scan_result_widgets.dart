@@ -35,7 +35,7 @@ class MealNutritionSummaryCard extends StatelessWidget {
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
-        borderRadius: BorderRadius.circular(AppSpacing.cardRadius),
+        borderRadius: BorderRadius.circular(AppSpacing.radiusLg),
         boxShadow: [
           BoxShadow(
             color: AppColors.primary.withOpacity(0.3),
@@ -193,7 +193,7 @@ class FoodNutritionTile extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: AppSpacing.sm),
       color: isDark ? AppColors.cardDark : AppColors.cardLight,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(AppSpacing.cardRadius),
+        borderRadius: BorderRadius.circular(AppSpacing.radiusLg),
       ),
       child: ExpansionTile(
         tilePadding: const EdgeInsets.symmetric(
@@ -426,7 +426,7 @@ class UnresolvableFoodsWarning extends StatelessWidget {
       padding: const EdgeInsets.all(AppSpacing.md),
       decoration: BoxDecoration(
         color: AppColors.warning.withOpacity(0.08),
-        borderRadius: BorderRadius.circular(AppSpacing.cardRadius),
+        borderRadius: BorderRadius.circular(AppSpacing.radiusLg),
         border: Border.all(color: AppColors.warning.withOpacity(0.3)),
       ),
       child: Column(
@@ -499,7 +499,7 @@ class RecommendationCard extends StatelessWidget {
       padding: const EdgeInsets.all(AppSpacing.md),
       decoration: BoxDecoration(
         color: isDark ? AppColors.cardDark : AppColors.cardLight,
-        borderRadius: BorderRadius.circular(AppSpacing.cardRadius),
+        borderRadius: BorderRadius.circular(AppSpacing.radiusLg),
         border: Border.all(
           color: hasCritical
               ? AppColors.warning.withOpacity(0.4)
@@ -842,3 +842,4 @@ String _formatValue(double? value) {
   if (value == null) return '—';
   return value.toStringAsFixed(0);
 }
+

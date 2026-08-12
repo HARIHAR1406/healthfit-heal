@@ -200,3 +200,4 @@ class FirebaseAuthRepositoryImpl implements AuthRepository {
     await _local.clearAll();
   }
 }
+

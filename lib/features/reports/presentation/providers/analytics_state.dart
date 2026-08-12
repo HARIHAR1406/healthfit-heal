@@ -218,3 +218,4 @@ final class AchievementsError extends AchievementsState {
   const AchievementsError(this.message);
   final String message;
 }
+

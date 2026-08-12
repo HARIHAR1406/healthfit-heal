@@ -145,3 +145,4 @@ final class UnknownException extends AppException {
     super.stackTrace,
   });
 }
+

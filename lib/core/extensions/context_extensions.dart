@@ -124,3 +124,4 @@ extension ContextExtensions on BuildContext {
   Color get surfaceColor => colorScheme.surface;
   Color get onSurfaceColor => colorScheme.onSurface;
 }
+

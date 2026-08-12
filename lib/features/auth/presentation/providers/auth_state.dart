@@ -68,3 +68,4 @@ extension AuthStateX on AuthState {
   String? get errorMessage =>
       this is AuthError ? (this as AuthError).message : null;
 }
+

@@ -603,3 +603,4 @@ class _RefreshBanner extends StatelessWidget {
     );
   }
 }
+

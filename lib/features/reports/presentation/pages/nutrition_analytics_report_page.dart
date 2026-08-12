@@ -785,3 +785,4 @@ class _MealConsistencyChart extends StatelessWidget {
     );
   }
 }
+

@@ -197,3 +197,4 @@ class DataSourceInfo {
       'status=${verificationStatus.name}, '
       'confidence=$confidenceLabel)';
 }
+

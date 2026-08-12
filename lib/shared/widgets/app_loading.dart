@@ -174,3 +174,4 @@ class AppLoadingPage extends StatelessWidget {
     );
   }
 }
+
