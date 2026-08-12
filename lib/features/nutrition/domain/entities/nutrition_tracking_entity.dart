@@ -9,6 +9,22 @@ class WaterIntakeEntry {
   final String id;
   final int amountMl;
   final DateTime loggedAt;
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'amountMl': amountMl,
+      'loggedAt': loggedAt.toIso8601String(),
+    };
+  }
+
+  factory WaterIntakeEntry.fromMap(Map<String, dynamic> map) {
+    return WaterIntakeEntry(
+      id: map['id'] as String? ?? '',
+      amountMl: (map['amountMl'] as num?)?.toInt() ?? 0,
+      loggedAt: DateTime.parse(map['loggedAt'] as String),
+    );
+  }
 }
 
 /// Full water tracking state for a day.
@@ -27,6 +43,22 @@ class WaterTrackerEntity {
   int get remainingMl => (goalMl - totalMl).clamp(0, goalMl);
   double get fraction => (totalMl / goalMl).clamp(0.0, 1.0);
   bool get goalMet => totalMl >= goalMl;
+
+  Map<String, dynamic> toMap() {
+    return {
+      'date': date.toIso8601String(),
+      'entries': entries.map((e) => e.toMap()).toList(),
+      'goalMl': goalMl,
+    };
+  }
+
+  factory WaterTrackerEntity.fromMap(Map<String, dynamic> map) {
+    return WaterTrackerEntity(
+      date: DateTime.parse(map['date'] as String),
+      entries: List<WaterIntakeEntry>.from((map['entries'] as List? ?? []).map((x) => WaterIntakeEntry.fromMap(x as Map<String, dynamic>))),
+      goalMl: (map['goalMl'] as num?)?.toInt() ?? 2500,
+    );
+  }
 }
 
 /// A single weight measurement.
@@ -42,6 +74,24 @@ class WeightEntry {
   final double weightKg;
   final DateTime measuredAt;
   final String? notes;
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'weightKg': weightKg,
+      'measuredAt': measuredAt.toIso8601String(),
+      'notes': notes,
+    };
+  }
+
+  factory WeightEntry.fromMap(Map<String, dynamic> map) {
+    return WeightEntry(
+      id: map['id'] as String? ?? '',
+      weightKg: (map['weightKg'] as num?)?.toDouble() ?? 0.0,
+      measuredAt: DateTime.parse(map['measuredAt'] as String),
+      notes: map['notes'] as String?,
+    );
+  }
 }
 
 /// Weight tracking entity.
@@ -85,6 +135,22 @@ class WeightTrackerEntity {
     if (diff == 0) return 1.0;
     return ((start - current) / diff).clamp(0.0, 1.0);
   }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'entries': entries.map((e) => e.toMap()).toList(),
+      'goalKg': goalKg,
+      'heightCm': heightCm,
+    };
+  }
+
+  factory WeightTrackerEntity.fromMap(Map<String, dynamic> map) {
+    return WeightTrackerEntity(
+      entries: List<WeightEntry>.from((map['entries'] as List? ?? []).map((x) => WeightEntry.fromMap(x as Map<String, dynamic>))),
+      goalKg: (map['goalKg'] as num?)?.toDouble() ?? 70.0,
+      heightCm: (map['heightCm'] as num?)?.toDouble() ?? 170.0,
+    );
+  }
 }
 
 /// Weekly nutrition analytics.
@@ -108,9 +174,34 @@ class NutritionAnalyticsEntity {
   final List<double> weeklyWaterMl;
   final List<int> weeklyScores;
 
-  /// 30 values for month view.
   final List<double> monthlyCalories;
 
   final double caloriesGoal;
+
+  Map<String, dynamic> toMap() {
+    return {
+      'weeklyCalories': weeklyCalories,
+      'weeklyProtein': weeklyProtein,
+      'weeklyCarbs': weeklyCarbs,
+      'weeklyFat': weeklyFat,
+      'weeklyWaterMl': weeklyWaterMl,
+      'weeklyScores': weeklyScores,
+      'monthlyCalories': monthlyCalories,
+      'caloriesGoal': caloriesGoal,
+    };
+  }
+
+  factory NutritionAnalyticsEntity.fromMap(Map<String, dynamic> map) {
+    return NutritionAnalyticsEntity(
+      weeklyCalories: List<double>.from((map['weeklyCalories'] as List? ?? []).map((x) => (x as num).toDouble())),
+      weeklyProtein: List<double>.from((map['weeklyProtein'] as List? ?? []).map((x) => (x as num).toDouble())),
+      weeklyCarbs: List<double>.from((map['weeklyCarbs'] as List? ?? []).map((x) => (x as num).toDouble())),
+      weeklyFat: List<double>.from((map['weeklyFat'] as List? ?? []).map((x) => (x as num).toDouble())),
+      weeklyWaterMl: List<double>.from((map['weeklyWaterMl'] as List? ?? []).map((x) => (x as num).toDouble())),
+      weeklyScores: List<int>.from((map['weeklyScores'] as List? ?? []).map((x) => (x as num).toInt())),
+      monthlyCalories: List<double>.from((map['monthlyCalories'] as List? ?? []).map((x) => (x as num).toDouble())),
+      caloriesGoal: (map['caloriesGoal'] as num?)?.toDouble() ?? 2000.0,
+    );
+  }
 }
 

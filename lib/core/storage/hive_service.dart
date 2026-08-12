@@ -37,6 +37,8 @@ class HiveService {
     await Future.wait([
       Hive.openBox<dynamic>(AppConstants.hiveSettingsBox),
       Hive.openBox<dynamic>(AppConstants.hiveCacheBox),
+      Hive.openBox<String>(AppConstants.hiveFitnessBox),
+      Hive.openBox<String>(AppConstants.hiveNutritionBox),
     ]);
 
     _initialised = true;
@@ -65,6 +67,8 @@ class HiveService {
 
   Box<dynamic> get settingsBox => Hive.box<dynamic>(AppConstants.hiveSettingsBox);
   Box<dynamic> get cacheBox => Hive.box<dynamic>(AppConstants.hiveCacheBox);
+  Box<String> get fitnessBox => Hive.box<String>(AppConstants.hiveFitnessBox);
+  Box<String> get nutritionBox => Hive.box<String>(AppConstants.hiveNutritionBox);
 
   // ── Lifecycle ─────────────────────────────────────────────────────────────
 
@@ -81,6 +85,8 @@ class HiveService {
     for (final boxName in [
       AppConstants.hiveSettingsBox,
       AppConstants.hiveCacheBox,
+      AppConstants.hiveFitnessBox,
+      AppConstants.hiveNutritionBox,
     ]) {
       if (Hive.isBoxOpen(boxName)) {
         await Hive.box<dynamic>(boxName).clear();

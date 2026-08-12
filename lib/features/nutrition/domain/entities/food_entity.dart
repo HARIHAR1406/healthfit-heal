@@ -48,6 +48,42 @@ class NutritionFacts {
         calcium: calcium,
         iron: iron,
       );
+
+  Map<String, dynamic> toMap() {
+    return {
+      'calories': calories,
+      'proteinG': proteinG,
+      'carbsG': carbsG,
+      'fatG': fatG,
+      'fiberG': fiberG,
+      'sugarG': sugarG,
+      'sodiumMg': sodiumMg,
+      'saturatedFatG': saturatedFatG,
+      'cholesterolMg': cholesterolMg,
+      'vitaminC': vitaminC,
+      'vitaminD': vitaminD,
+      'calcium': calcium,
+      'iron': iron,
+    };
+  }
+
+  factory NutritionFacts.fromMap(Map<String, dynamic> map) {
+    return NutritionFacts(
+      calories: (map['calories'] as num?)?.toDouble() ?? 0.0,
+      proteinG: (map['proteinG'] as num?)?.toDouble() ?? 0.0,
+      carbsG: (map['carbsG'] as num?)?.toDouble() ?? 0.0,
+      fatG: (map['fatG'] as num?)?.toDouble() ?? 0.0,
+      fiberG: (map['fiberG'] as num?)?.toDouble() ?? 0.0,
+      sugarG: (map['sugarG'] as num?)?.toDouble() ?? 0.0,
+      sodiumMg: (map['sodiumMg'] as num?)?.toDouble() ?? 0.0,
+      saturatedFatG: (map['saturatedFatG'] as num?)?.toDouble() ?? 0.0,
+      cholesterolMg: (map['cholesterolMg'] as num?)?.toDouble() ?? 0.0,
+      vitaminC: (map['vitaminC'] as num?)?.toDouble() ?? 0.0,
+      vitaminD: (map['vitaminD'] as num?)?.toDouble() ?? 0.0,
+      calcium: (map['calcium'] as num?)?.toDouble() ?? 0.0,
+      iron: (map['iron'] as num?)?.toDouble() ?? 0.0,
+    );
+  }
 }
 
 /// Food category.
@@ -142,5 +178,40 @@ class FoodEntity {
         ingredients: ingredients,
         barcode: barcode,
       );
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'name': name,
+      'brand': brand,
+      'category': category.name,
+      'servingSize': servingSize,
+      'servingUnit': servingUnit,
+      'nutritionPer100g': nutritionPer100g.toMap(),
+      'isFavorite': isFavorite,
+      'isRecent': isRecent,
+      'ingredients': ingredients,
+      'barcode': barcode,
+    };
+  }
+
+  factory FoodEntity.fromMap(Map<String, dynamic> map) {
+    return FoodEntity(
+      id: map['id'] as String? ?? '',
+      name: map['name'] as String? ?? '',
+      brand: map['brand'] as String? ?? '',
+      category: FoodCategory.values.firstWhere(
+        (e) => e.name == (map['category'] as String?),
+        orElse: () => FoodCategory.all,
+      ),
+      servingSize: (map['servingSize'] as num?)?.toDouble() ?? 100.0,
+      servingUnit: map['servingUnit'] as String? ?? 'g',
+      nutritionPer100g: NutritionFacts.fromMap(map['nutritionPer100g'] as Map<String, dynamic>? ?? {}),
+      isFavorite: map['isFavorite'] as bool? ?? false,
+      isRecent: map['isRecent'] as bool? ?? false,
+      ingredients: map['ingredients'] as String?,
+      barcode: map['barcode'] as String?,
+    );
+  }
 }
 

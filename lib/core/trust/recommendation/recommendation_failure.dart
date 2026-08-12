@@ -30,7 +30,7 @@ final class UnknownFoodFailure extends RecommendationFailure {
 
 /// Nutrition data was found but confidence is too low for a recommendation.
 final class LowConfidenceFailure extends RecommendationFailure {
-  const LowConfidenceFailure({
+  LowConfidenceFailure({
     required this.foodName,
     required this.confidenceScore,
   }) : super(
@@ -67,7 +67,7 @@ final class DataSourceUnavailableFailure extends RecommendationFailure {
 
 /// No foods could be calculated (all items unresolvable).
 final class AllItemsUnresolvableFailure extends RecommendationFailure {
-  const AllItemsUnresolvableFailure({required this.itemNames})
+  AllItemsUnresolvableFailure({required this.itemNames})
       : super(
           message: 'None of the food items could be found in the nutrition database: '
               '${itemNames.join(", ")}. '

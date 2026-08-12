@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../design_system/colors/app_colors.dart';
 import '../../../../design_system/spacing/app_spacing.dart';
 import '../../../../design_system/typography/app_typography.dart';
+import '../../domain/entities/blood_pressure_entity.dart';
 import '../providers/health_providers.dart';
 import '../widgets/add_reading_bottom_sheet.dart';
 import '../widgets/health_chart_card.dart';

@@ -23,6 +23,36 @@ class WorkoutHistoryEntry {
   final int exercisesCompleted;
   final String? notes;
   final int? rating; // 1–5
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'workoutId': workoutId,
+      'workoutTitle': workoutTitle,
+      'category': category,
+      'completedAt': completedAt.toIso8601String(),
+      'durationMinutes': durationMinutes,
+      'caloriesBurned': caloriesBurned,
+      'exercisesCompleted': exercisesCompleted,
+      'notes': notes,
+      'rating': rating,
+    };
+  }
+
+  factory WorkoutHistoryEntry.fromMap(Map<String, dynamic> map) {
+    return WorkoutHistoryEntry(
+      id: map['id'] as String? ?? '',
+      workoutId: map['workoutId'] as String? ?? '',
+      workoutTitle: map['workoutTitle'] as String? ?? '',
+      category: map['category'] as String? ?? '',
+      completedAt: DateTime.parse(map['completedAt'] as String),
+      durationMinutes: (map['durationMinutes'] as num?)?.toInt() ?? 0,
+      caloriesBurned: (map['caloriesBurned'] as num?)?.toInt() ?? 0,
+      exercisesCompleted: (map['exercisesCompleted'] as num?)?.toInt() ?? 0,
+      notes: map['notes'] as String?,
+      rating: (map['rating'] as num?)?.toInt(),
+    );
+  }
 }
 
 /// Aggregated fitness statistics.
@@ -62,6 +92,42 @@ class FitnessStatsEntity {
 
   // Monthly calories (30 values)
   final List<double> monthlyCaloriesData;
+
+  Map<String, dynamic> toMap() {
+    return {
+      'totalWorkouts': totalWorkouts,
+      'totalMinutes': totalMinutes,
+      'totalCalories': totalCalories,
+      'currentStreak': currentStreak,
+      'longestStreak': longestStreak,
+      'weeklyWorkouts': weeklyWorkouts,
+      'weeklyCalories': weeklyCalories,
+      'weeklyMinutes': weeklyMinutes,
+      'weeklyDistance': weeklyDistance,
+      'weeklyCaloriesData': weeklyCaloriesData,
+      'weeklyMinutesData': weeklyMinutesData,
+      'weeklyFrequencyData': weeklyFrequencyData,
+      'monthlyCaloriesData': monthlyCaloriesData,
+    };
+  }
+
+  factory FitnessStatsEntity.fromMap(Map<String, dynamic> map) {
+    return FitnessStatsEntity(
+      totalWorkouts: (map['totalWorkouts'] as num?)?.toInt() ?? 0,
+      totalMinutes: (map['totalMinutes'] as num?)?.toInt() ?? 0,
+      totalCalories: (map['totalCalories'] as num?)?.toInt() ?? 0,
+      currentStreak: (map['currentStreak'] as num?)?.toInt() ?? 0,
+      longestStreak: (map['longestStreak'] as num?)?.toInt() ?? 0,
+      weeklyWorkouts: (map['weeklyWorkouts'] as num?)?.toInt() ?? 0,
+      weeklyCalories: (map['weeklyCalories'] as num?)?.toInt() ?? 0,
+      weeklyMinutes: (map['weeklyMinutes'] as num?)?.toInt() ?? 0,
+      weeklyDistance: (map['weeklyDistance'] as num?)?.toDouble() ?? 0.0,
+      weeklyCaloriesData: List<double>.from((map['weeklyCaloriesData'] as List? ?? []).map((x) => (x as num).toDouble())),
+      weeklyMinutesData: List<double>.from((map['weeklyMinutesData'] as List? ?? []).map((x) => (x as num).toDouble())),
+      weeklyFrequencyData: List<double>.from((map['weeklyFrequencyData'] as List? ?? []).map((x) => (x as num).toDouble())),
+      monthlyCaloriesData: List<double>.from((map['monthlyCaloriesData'] as List? ?? []).map((x) => (x as num).toDouble())),
+    );
+  }
 }
 
 /// Daily activity summary for the dashboard.
@@ -97,5 +163,35 @@ class DailyActivityEntity {
   double get distanceFraction =>
       (distanceKm / distanceGoalKm).clamp(0.0, 1.0);
   double get stepsFraction => (stepsTaken / stepsGoal).clamp(0.0, 1.0);
+
+  Map<String, dynamic> toMap() {
+    return {
+      'date': date.toIso8601String(),
+      'caloriesBurned': caloriesBurned,
+      'caloriesGoal': caloriesGoal,
+      'activeMinutes': activeMinutes,
+      'activeMinutesGoal': activeMinutesGoal,
+      'distanceKm': distanceKm,
+      'distanceGoalKm': distanceGoalKm,
+      'stepsTaken': stepsTaken,
+      'stepsGoal': stepsGoal,
+      'workoutsCompleted': workoutsCompleted,
+    };
+  }
+
+  factory DailyActivityEntity.fromMap(Map<String, dynamic> map) {
+    return DailyActivityEntity(
+      date: DateTime.parse(map['date'] as String),
+      caloriesBurned: (map['caloriesBurned'] as num?)?.toInt() ?? 0,
+      caloriesGoal: (map['caloriesGoal'] as num?)?.toInt() ?? 2000,
+      activeMinutes: (map['activeMinutes'] as num?)?.toInt() ?? 0,
+      activeMinutesGoal: (map['activeMinutesGoal'] as num?)?.toInt() ?? 30,
+      distanceKm: (map['distanceKm'] as num?)?.toDouble() ?? 0.0,
+      distanceGoalKm: (map['distanceGoalKm'] as num?)?.toDouble() ?? 5.0,
+      stepsTaken: (map['stepsTaken'] as num?)?.toInt() ?? 0,
+      stepsGoal: (map['stepsGoal'] as num?)?.toInt() ?? 10000,
+      workoutsCompleted: (map['workoutsCompleted'] as num?)?.toInt() ?? 0,
+    );
+  }
 }
 

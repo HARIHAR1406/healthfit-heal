@@ -1,7 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/utils/app_logger.dart';
-import '../../data/repositories/nutrition_mock_repository.dart';
+import '../../data/datasources/nutrition_local_datasource.dart';
+import '../../data/datasources/nutrition_remote_datasource.dart';
+import '../../data/repositories/nutrition_repository_impl.dart';
 import '../../domain/entities/food_entity.dart';
 import '../../domain/entities/meal_entity.dart';
 import '../../domain/entities/nutrition_tracking_entity.dart';
@@ -10,8 +12,21 @@ import 'nutrition_state.dart';
 
 // ── Repository Provider ────────────────────────────────────────────────────────
 
+final nutritionLocalDatasourceProvider = Provider<NutritionLocalDatasource>(
+  (_) => NutritionLocalDatasource(),
+  name: 'nutritionLocalDatasourceProvider',
+);
+
+final nutritionRemoteDatasourceProvider = Provider<NutritionRemoteDatasource>(
+  (_) => NutritionRemoteDatasource(),
+  name: 'nutritionRemoteDatasourceProvider',
+);
+
 final nutritionRepositoryProvider = Provider<NutritionRepository>(
-  (_) => NutritionMockRepository(),
+  (ref) => NutritionRepositoryImpl(
+    localDatasource: ref.watch(nutritionLocalDatasourceProvider),
+    remoteDatasource: ref.watch(nutritionRemoteDatasourceProvider),
+  ),
   name: 'nutritionRepositoryProvider',
 );
 

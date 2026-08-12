@@ -55,6 +55,24 @@ class MealFoodEntry {
   double get proteinG => facts.proteinG;
   double get carbsG => facts.carbsG;
   double get fatG => facts.fatG;
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'food': food.toMap(),
+      'servings': servings,
+      'loggedAt': loggedAt.toIso8601String(),
+    };
+  }
+
+  factory MealFoodEntry.fromMap(Map<String, dynamic> map) {
+    return MealFoodEntry(
+      id: map['id'] as String? ?? '',
+      food: FoodEntity.fromMap(map['food'] as Map<String, dynamic>? ?? {}),
+      servings: (map['servings'] as num?)?.toDouble() ?? 1.0,
+      loggedAt: DateTime.parse(map['loggedAt'] as String),
+    );
+  }
 }
 
 /// One meal within a day plan.
@@ -81,6 +99,29 @@ class MealEntity {
       entries.fold(0, (s, e) => s + e.fatG);
 
   bool get isEmpty => entries.isEmpty;
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'type': type.name,
+      'entries': entries.map((e) => e.toMap()).toList(),
+      'date': date.toIso8601String(),
+    };
+  }
+
+  factory MealEntity.fromMap(Map<String, dynamic> map) {
+    return MealEntity(
+      id: map['id'] as String? ?? '',
+      type: MealType.values.firstWhere(
+        (e) => e.name == (map['type'] as String?),
+        orElse: () => MealType.breakfast,
+      ),
+      entries: List<MealFoodEntry>.from(
+        (map['entries'] as List? ?? []).map((x) => MealFoodEntry.fromMap(x as Map<String, dynamic>)),
+      ),
+      date: DateTime.parse(map['date'] as String),
+    );
+  }
 }
 
 /// A full day's meal plan + nutrition totals.
@@ -129,6 +170,28 @@ class DailyNutritionEntity {
     final water = (waterFraction * 25).clamp(0, 25);
     return (protein + carbs + fat + water).round();
   }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'date': date.toIso8601String(),
+      'meals': meals.map((m) => m.toMap()).toList(),
+      'goals': goals.toMap(),
+      'waterMl': waterMl,
+      'waterGoalMl': waterGoalMl,
+    };
+  }
+
+  factory DailyNutritionEntity.fromMap(Map<String, dynamic> map) {
+    return DailyNutritionEntity(
+      date: DateTime.parse(map['date'] as String),
+      meals: List<MealEntity>.from(
+        (map['meals'] as List? ?? []).map((x) => MealEntity.fromMap(x as Map<String, dynamic>)),
+      ),
+      goals: NutritionGoals.fromMap(map['goals'] as Map<String, dynamic>? ?? {}),
+      waterMl: (map['waterMl'] as num?)?.toInt() ?? 0,
+      waterGoalMl: (map['waterGoalMl'] as num?)?.toInt() ?? 2500,
+    );
+  }
 }
 
 /// Daily nutrition goals.
@@ -150,5 +213,29 @@ class NutritionGoals {
   final double fiberGoalG;
   final int waterGoalMl;
   final double sodiumGoalMg;
+
+  Map<String, dynamic> toMap() {
+    return {
+      'caloriesGoal': caloriesGoal,
+      'proteinGoalG': proteinGoalG,
+      'carbsGoalG': carbsGoalG,
+      'fatGoalG': fatGoalG,
+      'fiberGoalG': fiberGoalG,
+      'waterGoalMl': waterGoalMl,
+      'sodiumGoalMg': sodiumGoalMg,
+    };
+  }
+
+  factory NutritionGoals.fromMap(Map<String, dynamic> map) {
+    return NutritionGoals(
+      caloriesGoal: (map['caloriesGoal'] as num?)?.toDouble() ?? 2000.0,
+      proteinGoalG: (map['proteinGoalG'] as num?)?.toDouble() ?? 150.0,
+      carbsGoalG: (map['carbsGoalG'] as num?)?.toDouble() ?? 250.0,
+      fatGoalG: (map['fatGoalG'] as num?)?.toDouble() ?? 70.0,
+      fiberGoalG: (map['fiberGoalG'] as num?)?.toDouble() ?? 30.0,
+      waterGoalMl: (map['waterGoalMl'] as num?)?.toInt() ?? 2500,
+      sodiumGoalMg: (map['sodiumGoalMg'] as num?)?.toDouble() ?? 2300.0,
+    );
+  }
 }
 

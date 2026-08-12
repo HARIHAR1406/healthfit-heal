@@ -75,5 +75,30 @@ class AchievementEntity {
 
   double get progressFraction =>
       (progressCurrent / progressTarget).clamp(0.0, 1.0);
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'type': type.name,
+      'unlockedAt': unlockedAt?.toIso8601String(),
+      'isUnlocked': isUnlocked,
+      'progressCurrent': progressCurrent,
+      'progressTarget': progressTarget,
+    };
+  }
+
+  factory AchievementEntity.fromMap(Map<String, dynamic> map) {
+    return AchievementEntity(
+      id: map['id'] as String? ?? '',
+      type: AchievementType.values.firstWhere(
+        (e) => e.name == (map['type'] as String?),
+        orElse: () => AchievementType.firstWorkout,
+      ),
+      unlockedAt: map['unlockedAt'] != null ? DateTime.parse(map['unlockedAt'] as String) : null,
+      isUnlocked: map['isUnlocked'] as bool? ?? false,
+      progressCurrent: (map['progressCurrent'] as num?)?.toInt() ?? 0,
+      progressTarget: (map['progressTarget'] as num?)?.toInt() ?? 1,
+    );
+  }
 }
 

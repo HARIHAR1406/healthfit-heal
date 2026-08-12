@@ -4,6 +4,7 @@ import 'package:healthfit_heal/features/fitness/domain/engines/workout_analysis_
 import 'package:healthfit_heal/features/fitness/domain/entities/adaptive/workout_adaptation.dart';
 import 'package:healthfit_heal/features/fitness/domain/entities/adaptive/workout_progression.dart';
 import 'package:healthfit_heal/features/fitness/domain/entities/workout_entity.dart';
+import 'package:healthfit_heal/features/fitness/domain/entities/fitness_stats_entity.dart';
 import 'package:healthfit_heal/features/fitness/domain/entities/workout_session_entity.dart';
 
 void main() {
@@ -25,14 +26,12 @@ void main() {
         exercises: [
           ExerciseEntity(
             id: 'e1',
-            title: 'Pushups',
-            type: ExerciseType.reps,
+            name: 'Pushups',
             sets: 3,
             reps: 10,
             restSeconds: 60,
             targetMuscles: ['Chest'],
-            equipment: [],
-            instructions: [],
+            instructions: 'Do pushups',
           ),
         ],
         targetMuscles: [],
@@ -67,25 +66,21 @@ void main() {
         exercises: [
           ExerciseEntity(
             id: 'e1',
-            title: 'Pushups',
-            type: ExerciseType.reps,
+            name: 'Pushups',
             sets: 3,
             reps: 10,
             restSeconds: 60,
             targetMuscles: ['Chest'],
-            equipment: [],
-            instructions: [],
+            instructions: 'Do pushups',
           ),
           ExerciseEntity(
             id: 'e2',
-            title: 'Squats',
-            type: ExerciseType.reps,
+            name: 'Squats',
             sets: 3,
             reps: 10,
             restSeconds: 60,
             targetMuscles: ['Legs'],
-            equipment: [],
-            instructions: [],
+            instructions: 'Do squats',
           ),
         ],
         targetMuscles: [],

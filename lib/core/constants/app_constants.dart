@@ -11,6 +11,8 @@ abstract final class AppConstants {
   static const String hiveSettingsBox = 'settings_box';
   static const String hiveCacheBox = 'cache_box';
   static const String hiveHealthBox = 'health_box';
+  static const String hiveFitnessBox = 'fitness_box';
+  static const String hiveNutritionBox = 'nutrition_box';
 
   // ── Secure Storage Keys ───────────────────────────────────────────────────
   static const String secureKeyAccessToken = 'access_token';

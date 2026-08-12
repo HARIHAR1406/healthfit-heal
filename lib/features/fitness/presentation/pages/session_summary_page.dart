@@ -10,7 +10,9 @@ import '../../domain/entities/workout_session_entity.dart';
 import '../providers/fitness_providers.dart';
 import '../providers/adaptive_workout_providers.dart';
 import '../providers/fitness_state.dart';
-import '../../domain/entities/workout_analysis_engine.dart';
+import '../../domain/engines/workout_analysis_engine.dart';
+import '../../domain/entities/adaptive/workout_quality.dart';
+import '../../domain/entities/adaptive/workout_adaptation.dart';
 
 /// Post-workout summary shown when a session finishes.
 class SessionSummaryPage extends ConsumerWidget {

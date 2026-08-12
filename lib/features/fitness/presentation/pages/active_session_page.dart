@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import '../../../../design_system/colors/app_colors.dart';
 import '../../../../design_system/spacing/app_spacing.dart';
 import '../../../../design_system/typography/app_typography.dart';
+import '../../domain/entities/workout_entity.dart';
 import '../../domain/entities/workout_session_entity.dart';
 import '../providers/fitness_providers.dart';
 import '../providers/fitness_state.dart';

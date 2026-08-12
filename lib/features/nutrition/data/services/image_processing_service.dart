@@ -229,12 +229,12 @@ class ImageProcessingService {
 
   String _mb(int bytes) => (bytes / 1024 / 1024).toStringAsFixed(1);
 
-  _ImageFormat? _detectFormat(Uint8List bytes) {
+  ImageFormat? _detectFormat(Uint8List bytes) {
     if (bytes.length < 4) return null;
 
     // JPEG: FF D8 FF
     if (bytes[0] == 0xFF && bytes[1] == 0xD8 && bytes[2] == 0xFF) {
-      return _ImageFormat.jpeg;
+      return ImageFormat.jpeg;
     }
 
     // PNG: 89 50 4E 47
@@ -242,7 +242,7 @@ class ImageProcessingService {
         bytes[1] == 0x50 &&
         bytes[2] == 0x4E &&
         bytes[3] == 0x47) {
-      return _ImageFormat.png;
+      return ImageFormat.png;
     }
 
     // WEBP: 52 49 46 46 ... 57 45 42 50
@@ -255,7 +255,7 @@ class ImageProcessingService {
         bytes[9] == 0x45 &&
         bytes[10] == 0x42 &&
         bytes[11] == 0x50) {
-      return _ImageFormat.webp;
+      return ImageFormat.webp;
     }
 
     return null;
@@ -264,15 +264,15 @@ class ImageProcessingService {
 
 // ── Image Format ───────────────────────────────────────────────────────────────
 
-enum _ImageFormat {
+enum ImageFormat {
   jpeg,
   png,
   webp;
 
   String get mimeType => switch (this) {
-        _ImageFormat.jpeg => 'image/jpeg',
-        _ImageFormat.png => 'image/png',
-        _ImageFormat.webp => 'image/webp',
+        ImageFormat.jpeg => 'image/jpeg',
+        ImageFormat.png => 'image/png',
+        ImageFormat.webp => 'image/webp',
       };
 }
 
@@ -296,7 +296,7 @@ class ImageValidationResult {
 
   factory ImageValidationResult.valid({
     required Uint8List bytes,
-    required _ImageFormat detectedFormat,
+    required ImageFormat detectedFormat,
   }) =>
       ImageValidationResult._(
         isValid: true,
@@ -316,7 +316,7 @@ class ImageValidationResult {
 
   final bool isValid;
   final Uint8List? bytes;
-  final _ImageFormat? detectedFormat;
+  final ImageFormat? detectedFormat;
   final ImageValidationError? error;
   final String? errorMessage;
 }

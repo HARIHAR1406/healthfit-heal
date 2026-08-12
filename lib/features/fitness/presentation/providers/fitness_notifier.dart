@@ -3,19 +3,34 @@ import 'dart:async';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/utils/app_logger.dart';
-import '../../data/repositories/fitness_mock_repository.dart';
+import '../../data/datasources/fitness_local_datasource.dart';
+import '../../data/datasources/fitness_remote_datasource.dart';
+import '../../data/repositories/fitness_repository_impl.dart';
 import '../../domain/entities/fitness_stats_entity.dart';
 import '../../domain/entities/workout_entity.dart';
 import '../../domain/entities/workout_session_entity.dart';
-import '../../domain/entities/daily_activity_entity.dart';
+import '../../domain/entities/fitness_stats_entity.dart';
 import '../../domain/entities/achievement_entity.dart';
 import '../../domain/repositories/fitness_repository.dart';
 import 'fitness_state.dart';
 
 // ── Repository Provider ────────────────────────────────────────────────────────
 
+final fitnessLocalDatasourceProvider = Provider<FitnessLocalDatasource>(
+  (_) => FitnessLocalDatasource(),
+  name: 'fitnessLocalDatasourceProvider',
+);
+
+final fitnessRemoteDatasourceProvider = Provider<FitnessRemoteDatasource>(
+  (_) => FitnessRemoteDatasource(),
+  name: 'fitnessRemoteDatasourceProvider',
+);
+
 final fitnessRepositoryProvider = Provider<FitnessRepository>(
-  (_) => FitnessMockRepository(),
+  (ref) => FitnessRepositoryImpl(
+    localDatasource: ref.watch(fitnessLocalDatasourceProvider),
+    remoteDatasource: ref.watch(fitnessRemoteDatasourceProvider),
+  ),
   name: 'fitnessRepositoryProvider',
 );
 

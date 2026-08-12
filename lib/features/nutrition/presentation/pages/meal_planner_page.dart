@@ -6,6 +6,7 @@ import '../../../../core/router/route_names.dart';
 import '../../../../design_system/colors/app_colors.dart';
 import '../../../../design_system/spacing/app_spacing.dart';
 import '../../../../design_system/typography/app_typography.dart';
+import '../../domain/entities/food_entity.dart';
 import '../../domain/entities/meal_entity.dart';
 import '../providers/nutrition_providers.dart';
 import '../providers/nutrition_state.dart';
